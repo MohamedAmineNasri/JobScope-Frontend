@@ -4,7 +4,7 @@ import './Not_Found'
 
 const NotFound = () => {
     return (
-      <>
+      <div>
         <div className='body'>
             <div className="text">
                 <div>ERROR</div>
@@ -21,7 +21,7 @@ const NotFound = () => {
                 />
             </div>
         </div>
-      </>
+      </div>
     );
 
 }
