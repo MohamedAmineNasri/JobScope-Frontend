@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from "./jobofferplatform.module.css";
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { jobLoadAction } from '../../redux/actions/jobAction';
 import { jobTypeLoadAction } from '../../redux/actions/jobTypeAction';
 import {
@@ -15,6 +15,9 @@ MenuItem, MenuList,
 // import MenuItem from "@mui/material/MenuItem";
 import SelectComponent from '../../components/SelectComponent';
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import SearchInputEl from '../../components/SearchInputEl';
+import { userLogoutAction } from '../../redux/actions/userAction';
+import { USER_SIGNIN_SUCCESS } from '../../redux/constants/userConstant';
 
 
 const  JobList = (props) => {
@@ -27,6 +30,7 @@ const  JobList = (props) => {
     const { keyword, location } = useParams();
     //const jobTypes = useSelector((state) => state.jobTypes); // Access the job types from the redux store
     const { jobType } = useSelector((state) => state.jobTypeAll);
+  const { userInfo } = useSelector((state) => state.signIn);
 
     useEffect(() => {
       dispatch(jobLoadAction(page, keyword, cat, location));
@@ -59,8 +63,23 @@ const  JobList = (props) => {
       }));
     };
   
-  
+  const linkStyle = {
+    textDecoration: "none", // Hide the underline
+  };
+     // log out user
+    // const logOutUser = () => {
+    //     dispatch(userLogoutAction());
+    //     window.location.reload(true);
+    //     setTimeout(() => {
+    //         Navigate('/');
+    //     }, 500)
+    // }
+const navigate = useNavigate();
 
+const logOutUser = () => {
+  localStorage.removeItem("userInfo");
+  navigate("/login");
+};
 
 
     return (
@@ -77,75 +96,7 @@ const  JobList = (props) => {
                     <span className={styles["text002"]}>
                       <span>Filter job by category</span>
                     </span>
-                    {/* <div className={styles["frame34"]}>
-                      <div className={styles["frame31"]}>
-                        <img
-                          src="/external2/ellipse5113-hrps-200h.png"
-                          alt="Ellipse5113"
-                          className={styles["ellipse5"]}
-                        />
-                        <span className={styles["text004"]}>
-                          <span>Near me</span>
-                        </span>
-                      </div>
-                      <div className={styles["frame32"]}>
-                        <div className={styles["group1"]}>
-                          <img
-                            src="/external2/ellipse6117-ug7c-200h.png"
-                            alt="Ellipse6117"
-                            className={styles["ellipse6"]}
-                          />
-                          <img
-                            src="/external2/ellipse7118-gi6s-200h.png"
-                            alt="Ellipse7118"
-                            className={styles["ellipse7"]}
-                          />
-                        </div>
-                        <span className={styles["text006"]}>
-                          <span>Remote job</span>
-                        </span>
-                      </div>
-                      <div className={styles["frame33"]}>
-                        <img
-                          src="/external2/ellipse5121-u4m2-200h.png"
-                          alt="Ellipse5121"
-                          className={styles["ellipse501"]}
-                        />
-                        <span className={styles["text008"]}>
-                          <span>Exact location</span>
-                        </span>
-                      </div>
-                      <div className={styles["frame341"]}>
-                        <img
-                          src="/external2/ellipse5124-o357-200h.png"
-                          alt="Ellipse5124"
-                          className={styles["ellipse502"]}
-                        />
-                        <span className={styles["text010"]}>
-                          <span>Within 15 km</span>
-                        </span>
-                      </div>
-                      <div className={styles["frame351"]}>
-                        <img
-                          src="/external2/ellipse5127-bjxs-200h.png"
-                          alt="Ellipse5127"
-                          className={styles["ellipse503"]}
-                        />
-                        <span className={styles["text012"]}>
-                          <span>Within 30 km</span>
-                        </span>
-                      </div>
-                      <div className={styles["frame361"]}>
-                        <img
-                          src="/external2/ellipse5130-nvkb-200h.png"
-                          alt="Ellipse5130"
-                          className={styles["ellipse504"]}
-                        />
-                        <span className={styles["text014"]}>
-                          <span>Within 50 km</span>
-                        </span>
-                      </div>
-                    </div> */}
+
                     <div className={styles["frame34"]}>
                       <SelectComponent
                         handleChangeCategory={handleChangeCategory}
@@ -162,7 +113,7 @@ const  JobList = (props) => {
                           <Typography
                             component="h4"
                             sx={{
-                             // color: palette.secondary.main,
+                              // color: palette.secondary.main,
                               fontWeight: 600,
                             }}
                           >
@@ -175,7 +126,7 @@ const  JobList = (props) => {
                                   <ListItemIcon>
                                     <LocationOnIcon
                                       sx={{
-                                       // color: palette.secondary.main,
+                                        // color: palette.secondary.main,
                                         fontSize: 18,
                                       }}
                                     />
@@ -885,10 +836,12 @@ const  JobList = (props) => {
                     className={styles["magnifying-glass"]}
                   />
                   <span className={styles["text175"]}>
-                    <span>What position are you looking for ?</span>
+                    {/* <span>What position are you looking for ?</span> */}
+                    {/* <input/> */}
+                    <SearchInputEl />
                   </span>
                 </div>
-                <div className={styles["frame142"]}>
+                {/* <div className={styles["frame142"]}>
                   <img
                     src="/external2/mappinline1523-t71j.svg"
                     alt="MapPinLine1523"
@@ -897,12 +850,12 @@ const  JobList = (props) => {
                   <span className={styles["text177"]}>
                     <span>Location</span>
                   </span>
-                </div>
-                <button className={styles["button09"]}>
+                </div> */}
+                {/* <button className={styles["button09"]}>
                   <span className={styles["text179"]}>
                     <span>Search job</span>
                   </span>
-                </button>
+                </button> */}
               </div>
             </div>
           </div>
@@ -940,16 +893,38 @@ const  JobList = (props) => {
                 </span>
               </div>
               <div className={styles["column1"]}>
-                <button className={styles["button10"]}>
+                {/* <button className={styles["button10"]}>
                   <span className={styles["text191"]}>
-                    <span>Log in</span>
+                    <Link to="/login" style={linkStyle}>
+                      Log in
+                    </Link>
                   </span>
-                </button>
-                <button className={styles["button11"]}>
-                  <span className={styles["text193"]}>
-                    <span>Sign up</span>
+                </button> */}
+                <div className={styles["button10"]}>
+                  <span className={styles["text191"]}>
+                    
+                    {userInfo ? (
+                      <button
+                        onClick={logOutUser}
+                        className={styles["button09"]}
+                        style={{ cursor: "pointer" }}
+                      >
+                        Log Out
+                      </button>
+                    ) : (
+                      <Link to="/login" style={linkStyle}>
+                        Log In
+                      </Link>
+                    )}
                   </span>
-                </button>
+                </div>
+                {!userInfo && (
+                  <button className={styles["button11"]}>
+                    <span className={styles["text193"]}>
+                      <span>Sign up</span>
+                    </span>
+                  </button>
+                )}
               </div>
             </div>
           </div>

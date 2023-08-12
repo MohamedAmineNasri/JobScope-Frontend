@@ -1,0 +1,1436 @@
+.sign-in-container {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  
+  align-items: center;
+  flex-direction: column;
+}
+.sign-in-sign-in {
+  width: 100%;
+  height: 1024px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 0;
+  background-color: rgba(255, 255, 255, 1);
+}
+.sign-in-ellipse1 {
+  top: -99px;
+  left: -547px;
+  width: 1220px;
+  height: 1220px;
+  position: absolute;
+}
+.sign-in-text {
+  top: 50px;
+  left: 733px;
+  color: rgba(9, 4, 70, 1);
+  height: auto;
+  position: absolute;
+  font-size: 50px;
+  font-style: Bold;
+  text-align: left;
+  font-family: Poppins;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.sign-in-text02 {
+  top: 185px;
+  left: 743px;
+  color: rgba(9, 4, 70, 1);
+  height: auto;
+  position: absolute;
+  font-size: 20px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Poppins;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.sign-in-text04 {
+  top: 275px;
+  left: 743px;
+  color: rgb(9, 4, 70);
+  height: auto;
+  position: absolute;
+  font-size: 20px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Poppins;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.sign-in-text05 {
+  top: 375px;
+  left: 743px;
+  color: rgba(9, 4, 70, 1);
+  height: auto;
+  position: absolute;
+  font-size: 20px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Poppins;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.sign-in-text07 {
+  top: 590px;
+  left: 771px;
+  color: rgba(9, 4, 70, 1);
+  height: auto;
+  position: absolute;
+  font-size: 20px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Poppins;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.sign-in-text09 {
+  top: 725px;
+  left: 909px;
+  color: rgba(9, 4, 70, 1);
+  height: auto;
+  position: absolute;
+  font-size: 20px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Poppins;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.sign-in-text11 {
+  top: 650px;
+  left: 733px;
+  color: rgb(9, 4, 70);
+  height: auto;
+  position: absolute;
+  font-size: 20px;
+  font-style: SemiBold;
+  text-align: left;
+  font-family: Poppins;
+  font-weight: 600;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.sign-in-text12 {
+  top: 486px;
+  left: 1131px;
+  color: rgba(9, 4, 70, 1);
+  height: auto;
+  position: absolute;
+  font-size: 20px;
+  font-style: Regular;
+  text-align: right;
+  font-family: Poppins;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.sign-in-rectangle5 {
+  top: 310px;
+  left: 733px;
+  width: 575px;
+  height: 60px;
+  position: absolute;
+  border-radius: 12px;
+}
+.sign-in-rectangle6 {
+  top: 410px;
+  left: 733px;
+  width: 575px;
+  height: 60px;
+  position: absolute;
+  border-radius: 12px;
+}
+.sign-in-rectangle7 {
+  top: 491px;
+  left: 743px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  border-radius: 2px;
+}
+.sign-in-animation {
+  top: 78px;
+  left: -15px;
+  width: 590px;
+  height: 727.527587890625px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.sign-in-group {
+  top: 0px;
+  left: -125px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector {
+  top: 0px;
+  left: 0px;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+}
+.sign-in-vector001 {
+  top: 28.859447479248047px;
+  left: 21.417070388793945px;
+  width: 57px;
+  height: 47px;
+  position: absolute;
+}
+.sign-in-group01 {
+  top: 193px;
+  left: 471px;
+  width: 185px;
+  height: 515.572021484375px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-group02 {
+  top: 431.81365966796875px;
+  left: 0px;
+  width: 84.10195922851562px;
+  height: 83.75836181640625px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector002 {
+  top: 0px;
+  left: 0px;
+  width: 84px;
+  height: 84px;
+  position: absolute;
+}
+.sign-in-group03 {
+  top: 9.371488571166992px;
+  left: 27.66557502746582px;
+  width: 36.976585388183594px;
+  height: 42.347145080566406px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector003 {
+  top: -3.9657209072174737e-7px;
+  left: 7.280936241149902px;
+  width: 30px;
+  height: 41px;
+  position: absolute;
+}
+.sign-in-group04 {
+  top: 15.907390594482422px;
+  left: -3.5560299238568405e-7px;
+  width: 8.99898624420166px;
+  height: 26.439754486083984px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector004 {
+  top: 0px;
+  left: 0px;
+  width: 9px;
+  height: 26px;
+  position: absolute;
+}
+.sign-in-vector005 {
+  top: 2.1917035579681396px;
+  left: 3.176095962524414px;
+  width: 2px;
+  height: 2px;
+  position: absolute;
+}
+.sign-in-group05 {
+  top: 380.81365966796875px;
+  left: 179px;
+  width: 26.207653045654297px;
+  height: 29.999996185302734px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector006 {
+  top: 0px;
+  left: 5.165734767913818px;
+  width: 21px;
+  height: 29px;
+  position: absolute;
+}
+.sign-in-group06 {
+  top: 11.265170097351074px;
+  left: 0px;
+  width: 6.376554012298584px;
+  height: 18.734827041625977px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector007 {
+  top: 0px;
+  left: 0px;
+  width: 6px;
+  height: 19px;
+  position: absolute;
+}
+.sign-in-vector008 {
+  top: 1.5595920085906982px;
+  left: 2.2505459785461426px;
+  width: 2px;
+  height: 2px;
+  position: absolute;
+}
+.sign-in-group07 {
+  top: 167.5101318359375px;
+  left: 0.000004762719981954433px;
+  width: 589.9862060546875px;
+  height: 560.0174560546875px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-group08 {
+  top: 502.3974609375px;
+  left: 0px;
+  width: 582.7884521484375px;
+  height: 57.62000274658203px;
+  display: flex;
+  opacity: 0.06;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector009 {
+  top: 0px;
+  left: 0px;
+  width: 583px;
+  height: 58px;
+  position: absolute;
+}
+.sign-in-group09 {
+  top: 0px;
+  left: 29.664152145385742px;
+  width: 493.53045654296875px;
+  height: 546.5408935546875px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-group10 {
+  top: 148.03466796875px;
+  left: 65.80355834960938px;
+  width: 399.25323486328125px;
+  height: 383.175048828125px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector010 {
+  top: 0px;
+  left: 0px;
+  width: 399px;
+  height: 383px;
+  position: absolute;
+}
+.sign-in-vector011 {
+  top: 42.08728790283203px;
+  left: 100.8001480102539px;
+  width: 232px;
+  height: 220px;
+  position: absolute;
+}
+.sign-in-vector012 {
+  top: 252.3738555908203px;
+  left: 201.95883178710938px;
+  width: 75px;
+  height: 46px;
+  position: absolute;
+}
+.sign-in-vector013 {
+  top: 258.7182312011719px;
+  left: 220.88339233398438px;
+  width: 49px;
+  height: 19px;
+  position: absolute;
+}
+.sign-in-vector014 {
+  top: 82.93787384033203px;
+  left: 325.5744323730469px;
+  width: 34px;
+  height: 61px;
+  position: absolute;
+}
+.sign-in-vector015 {
+  top: 34.02937698364258px;
+  left: 32.578433990478516px;
+  width: 356px;
+  height: 345px;
+  position: absolute;
+}
+.sign-in-group11 {
+  top: 0px;
+  left: 0px;
+  width: 493.53045654296875px;
+  height: 546.5408935546875px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-group12 {
+  top: 84.52085876464844px;
+  left: 274.2442321777344px;
+  width: 111.82479095458984px;
+  height: 52.79676055908203px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector016 {
+  top: 0px;
+  left: 0px;
+  width: 112px;
+  height: 53px;
+  position: absolute;
+}
+.sign-in-vector017 {
+  top: 23.074430465698242px;
+  left: 56.33436584472656px;
+  width: 31px;
+  height: 10px;
+  position: absolute;
+}
+.sign-in-vector018 {
+  top: 27.825925827026367px;
+  left: 61.48583221435547px;
+  width: 23px;
+  height: 7px;
+  position: absolute;
+}
+.sign-in-group13 {
+  top: 472.2794189453125px;
+  left: 0px;
+  width: 121.00686645507812px;
+  height: 74.26144409179688px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector019 {
+  top: -0.0000035557404771680012px;
+  left: 1.9031908512115479px;
+  width: 119px;
+  height: 66px;
+  position: absolute;
+}
+.sign-in-vector020 {
+  top: 27.00438690185547px;
+  left: 13.72081470489502px;
+  width: 30px;
+  height: 28px;
+  position: absolute;
+}
+.sign-in-vector021 {
+  top: 27.020551681518555px;
+  left: 22.75579071044922px;
+  width: 11px;
+  height: 11px;
+  position: absolute;
+}
+.sign-in-vector022 {
+  top: 38.13931655883789px;
+  left: 0px;
+  width: 97px;
+  height: 36px;
+  position: absolute;
+}
+.sign-in-group14 {
+  top: 281.0680847167969px;
+  left: 95.1335678100586px;
+  width: 168.5673828125px;
+  height: 264.8968200683594px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-group15 {
+  top: 184.2995147705078px;
+  left: 0.0000024903561097744387px;
+  width: 98.31436157226562px;
+  height: 80.59733581542969px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector023 {
+  top: 0px;
+  left: 0px;
+  width: 95px;
+  height: 75px;
+  position: absolute;
+}
+.sign-in-vector024 {
+  top: 44.959075927734375px;
+  left: 10.852364540100098px;
+  width: 34px;
+  height: 30px;
+  position: absolute;
+}
+.sign-in-vector025 {
+  top: 48.88329315185547px;
+  left: 16.442228317260742px;
+  width: 10px;
+  height: 14px;
+  position: absolute;
+}
+.sign-in-vector026 {
+  top: 45.92803192138672px;
+  left: 1.4029425382614136px;
+  width: 97px;
+  height: 35px;
+  position: absolute;
+}
+.sign-in-vector027 {
+  top: 0.000014827098311798181px;
+  left: 29.235660552978516px;
+  width: 139px;
+  height: 205px;
+  position: absolute;
+}
+.sign-in-vector028 {
+  top: 183.46875px;
+  left: 54.93449020385742px;
+  width: 47px;
+  height: 12px;
+  position: absolute;
+}
+.sign-in-vector029 {
+  top: 33.4382438659668px;
+  left: 74.77629089355469px;
+  width: 19px;
+  height: 153px;
+  position: absolute;
+}
+.sign-in-group16 {
+  top: 61.78150177001953px;
+  left: 101.3358154296875px;
+  width: 122.58323669433594px;
+  height: 178.86451721191406px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-group17 {
+  top: -23.663484573364258px;
+  left: 40.9863568295566px;
+  width: 54.419036865234375px;
+  height: 62.023887634277344px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector030 {
+  top: 0px;
+  left: 0px;
+  width: 54px;
+  height: 62px;
+  position: absolute;
+}
+.sign-in-vector031 {
+  top: 9.12949549762618px;
+  left: 25.374028147823083px;
+  width: 18px;
+  height: 13px;
+  position: absolute;
+}
+.sign-in-vector032 {
+  top: 23.40359926760084px;
+  left: 25.83972197401272px;
+  width: 17px;
+  height: 12px;
+  position: absolute;
+}
+.sign-in-vector033 {
+  top: 38.16754072181584px;
+  left: 22.03603649300507px;
+  width: 123px;
+  height: 135px;
+  position: absolute;
+}
+.sign-in-group18 {
+  top: 101.80434262728659px;
+  left: 72.68247420564359px;
+  width: 21.983240127563477px;
+  height: 10.479632377624512px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector034 {
+  top: 0px;
+  left: 0px;
+  width: 22px;
+  height: 5px;
+  position: absolute;
+}
+.sign-in-vector035 {
+  top: -4.8399605514841255px;
+  left: 8.88708269824457px;
+  width: 11px;
+  height: 10px;
+  position: absolute;
+}
+.sign-in-vector036 {
+  top: 23.474168375264753px;
+  left: 60.82600462950222px;
+  width: 26px;
+  height: 21px;
+  position: absolute;
+}
+.sign-in-group19 {
+  top: 0px;
+  left: 219.5486602783203px;
+  width: 184.01544189453125px;
+  height: 368.72430419921875px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-group20 {
+  top: 110.03910827636719px;
+  left: -0.0000026200164029432926px;
+  width: 184.01544189453125px;
+  height: 258.6851806640625px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-group21 {
+  top: 0px;
+  left: 0px;
+  width: 184.01544189453125px;
+  height: 258.6851806640625px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector037 {
+  top: 0px;
+  left: 0px;
+  width: 184px;
+  height: 259px;
+  position: absolute;
+}
+.sign-in-vector038 {
+  top: 71.95355224609375px;
+  left: 126.44782257080078px;
+  width: 33px;
+  height: 151px;
+  position: absolute;
+}
+.sign-in-vector039 {
+  top: 21.58164405822754px;
+  left: 91.66255950927734px;
+  width: 8px;
+  height: 5px;
+  position: absolute;
+}
+.sign-in-vector040 {
+  top: 17.382869720458984px;
+  left: 75.15818786621094px;
+  width: 8px;
+  height: 5px;
+  position: absolute;
+}
+.sign-in-vector041 {
+  top: 11.914217948913574px;
+  left: 53.64349365234375px;
+  width: 18px;
+  height: 16px;
+  position: absolute;
+}
+.sign-in-vector042 {
+  top: 93.96453094482422px;
+  left: 39.06086349487305px;
+  width: 79px;
+  height: 23px;
+  position: absolute;
+}
+.sign-in-vector043 {
+  top: 140.54556274414062px;
+  left: 23.868356704711914px;
+  width: 82px;
+  height: 50px;
+  position: absolute;
+}
+.sign-in-vector044 {
+  top: 20.486154556274414px;
+  left: 117.40141296386719px;
+  width: 45px;
+  height: 16px;
+  position: absolute;
+}
+.sign-in-vector045 {
+  top: 165.1890869140625px;
+  left: 15.42236328125px;
+  width: 2px;
+  height: 7px;
+  position: absolute;
+}
+.sign-in-vector046 {
+  top: 157.84124755859375px;
+  left: 18.716793060302734px;
+  width: 1px;
+  height: 3px;
+  position: absolute;
+}
+.sign-in-vector047 {
+  top: 67.16264343261719px;
+  left: 27.861865997314453px;
+  width: 7px;
+  height: 45px;
+  position: absolute;
+}
+.sign-in-group22 {
+  top: -1.616700728845899e-8px;
+  left: 58.35855484008789px;
+  width: 79.78974914550781px;
+  height: 122.04893493652344px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-group23 {
+  top: 0px;
+  left: 3.546560287475586px;
+  width: 76.2431869506836px;
+  height: 122.04893493652344px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector048 {
+  top: 33.508548736572266px;
+  left: 4.323509693145752px;
+  width: 7px;
+  height: 23px;
+  position: absolute;
+}
+.sign-in-vector049 {
+  top: 0px;
+  left: 0px;
+  width: 76px;
+  height: 101px;
+  position: absolute;
+}
+.sign-in-group24 {
+  top: 84.3135986328125px;
+  left: 18.12978172302246px;
+  width: 41.68080520629883px;
+  height: 37.735347747802734px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector050 {
+  top: 0px;
+  left: 0px;
+  width: 42px;
+  height: 38px;
+  position: absolute;
+}
+.sign-in-vector051 {
+  top: 14.146605491638184px;
+  left: -4.797777819476323e-7px;
+  width: 30px;
+  height: 18px;
+  position: absolute;
+}
+.sign-in-vector052 {
+  top: 56.712162017822266px;
+  left: 0.9168139696121216px;
+  width: 11px;
+  height: 21px;
+  position: absolute;
+}
+.sign-in-vector053 {
+  top: 24.4913387298584px;
+  left: 3.292556047439575px;
+  width: 62px;
+  height: 80px;
+  position: absolute;
+}
+.sign-in-vector054 {
+  top: 21.33843994140625px;
+  left: 10.733469009399414px;
+  width: 57px;
+  height: 51px;
+  position: absolute;
+}
+.sign-in-vector055 {
+  top: 43.81167984008789px;
+  left: 32.07094192504883px;
+  width: 15px;
+  height: 9px;
+  position: absolute;
+}
+.sign-in-vector056 {
+  top: 42.45431137084961px;
+  left: 8.504886627197266px;
+  width: 15px;
+  height: 7px;
+  position: absolute;
+}
+.sign-in-vector057 {
+  top: 64.8263931274414px;
+  left: 32.91703414916992px;
+  width: 13px;
+  height: 5px;
+  position: absolute;
+}
+.sign-in-vector058 {
+  top: 61.44648361206055px;
+  left: 5.468898773193359px;
+  width: 9px;
+  height: 5px;
+  position: absolute;
+}
+.sign-in-vector059 {
+  top: 55.336204528808594px;
+  left: 32.499210357666016px;
+  width: 4px;
+  height: 7px;
+  position: absolute;
+}
+.sign-in-vector060 {
+  top: 53.23681640625px;
+  left: 12.490510940551758px;
+  width: 4px;
+  height: 7px;
+  position: absolute;
+}
+.sign-in-vector061 {
+  top: 70.83477020263672px;
+  left: 11.555708885192871px;
+  width: 22px;
+  height: 6px;
+  position: absolute;
+}
+.sign-in-vector062 {
+  top: 82.18191528320312px;
+  left: 53.43167495727539px;
+  width: 6px;
+  height: 9px;
+  position: absolute;
+}
+.sign-in-vector063 {
+  top: 64.09545135498047px;
+  left: 56.806827545166016px;
+  width: 17px;
+  height: 23px;
+  position: absolute;
+}
+.sign-in-vector064 {
+  top: 69.68147277832031px;
+  left: 57.498714447021484px;
+  width: 11px;
+  height: 12px;
+  position: absolute;
+}
+.sign-in-vector065 {
+  top: 73.99060821533203px;
+  left: 60.83552551269531px;
+  width: 6px;
+  height: 4px;
+  position: absolute;
+}
+.sign-in-vector066 {
+  top: 49.30883026123047px;
+  left: 17.1168155670166px;
+  width: 10px;
+  height: 19px;
+  position: absolute;
+}
+.sign-in-group25 {
+  top: 55.83681106567383px;
+  left: -7.734624887234531e-7px;
+  width: 69.73699951171875px;
+  height: 11.238673210144043px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-group26 {
+  top: 0px;
+  left: 0px;
+  width: 47.22837829589844px;
+  height: 11.238673210144043px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-group27 {
+  top: 1.1142897605895996px;
+  left: 26.500667572021484px;
+  width: 20.727710723876953px;
+  height: 10.124382019042969px;
+  display: flex;
+  opacity: 0.50;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector067 {
+  top: 0px;
+  left: 0px;
+  width: 21px;
+  height: 10px;
+  position: absolute;
+}
+.sign-in-group28 {
+  top: 0px;
+  left: 0px;
+  width: 20.727760314941406px;
+  height: 10.124382019042969px;
+  display: flex;
+  opacity: 0.50;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector068 {
+  top: 0px;
+  left: 0px;
+  width: 21px;
+  height: 10px;
+  position: absolute;
+}
+.sign-in-vector069 {
+  top: 3.466634750366211px;
+  left: 20.07823944091797px;
+  width: 7px;
+  height: 2px;
+  position: absolute;
+}
+.sign-in-vector070 {
+  top: 3.6105291843414307px;
+  left: 46.572349548339844px;
+  width: 23px;
+  height: 5px;
+  position: absolute;
+}
+.sign-in-group29 {
+  top: 299.3755187988281px;
+  left: 79.18072509765625px;
+  width: 284.8861389160156px;
+  height: 196.35240173339844px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector071 {
+  top: 0px;
+  left: 0px;
+  width: 285px;
+  height: 196px;
+  position: absolute;
+}
+.sign-in-vector072 {
+  top: 40.248714447021484px;
+  left: 41.31972885131836px;
+  width: 237px;
+  height: 140px;
+  position: absolute;
+}
+.sign-in-vector073 {
+  top: 169.82473754882812px;
+  left: 4.418180465698242px;
+  width: 46px;
+  height: 14px;
+  position: absolute;
+}
+.sign-in-group30 {
+  top: 194.83045959472656px;
+  left: 91.50382232666016px;
+  width: 175.97515869140625px;
+  height: 130.04319763183594px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector074 {
+  top: 117.40087890625px;
+  left: 40.336307525634766px;
+  width: 18px;
+  height: 135px;
+  position: absolute;
+}
+.sign-in-vector075 {
+  top: 0px;
+  left: 0px;
+  width: 98px;
+  height: 123px;
+  position: absolute;
+}
+.sign-in-vector076 {
+  top: 86.63125610351562px;
+  left: 59.91178512573242px;
+  width: 26px;
+  height: 25px;
+  position: absolute;
+}
+.sign-in-group31 {
+  top: 15.910101890563965px;
+  left: 7.208983898162842px;
+  width: 21.026643753051758px;
+  height: 22.82718849182129px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector077 {
+  top: 0px;
+  left: 0px;
+  width: 21px;
+  height: 23px;
+  position: absolute;
+}
+.sign-in-group32 {
+  top: 6.720567226409912px;
+  left: 6.246635437011719px;
+  width: 7.370614528656006px;
+  height: 5.0257954597473145px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector078 {
+  top: 0.4683128297328949px;
+  left: 5.329205513000488px;
+  width: 2px;
+  height: 5px;
+  position: absolute;
+}
+.sign-in-vector079 {
+  top: 0px;
+  left: 0px;
+  width: 2px;
+  height: 5px;
+  position: absolute;
+}
+.sign-in-vector080 {
+  top: 10.97821044921875px;
+  left: 5.1286725997924805px;
+  width: 11px;
+  height: 6px;
+  position: absolute;
+}
+.sign-in-group33 {
+  top: 5.708151340484619px;
+  left: 69.92424011230469px;
+  width: 34.720523834228516px;
+  height: 116.87097930908203px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector081 {
+  top: 0px;
+  left: 0px;
+  width: 35px;
+  height: 117px;
+  position: absolute;
+}
+.sign-in-vector082 {
+  top: 4.893937110900879px;
+  left: 6.665421009063721px;
+  width: 22px;
+  height: 111px;
+  position: absolute;
+}
+.sign-in-vector083 {
+  top: 51.21870040893555px;
+  left: 34.74732971191406px;
+  width: 22px;
+  height: 22px;
+  position: absolute;
+}
+.sign-in-vector084 {
+  top: 132.96664428710938px;
+  left: 285.1908264160156px;
+  width: 31px;
+  height: 125px;
+  position: absolute;
+}
+.sign-in-vector085 {
+  top: 129.38162231445312px;
+  left: 260.1368103027344px;
+  width: 39px;
+  height: 125px;
+  position: absolute;
+}
+.sign-in-vector086 {
+  top: 328.65325927734375px;
+  left: 322.8008728027344px;
+  width: 40px;
+  height: 62px;
+  position: absolute;
+}
+.sign-in-group34 {
+  top: 254.65780639648438px;
+  left: 278.3358154296875px;
+  width: 136.15191650390625px;
+  height: 169.2847137451172px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-group35 {
+  top: 46.974022280713314px;
+  left: 49.8193596803643px;
+  width: 40.96961212158203px;
+  height: 62.71314239501953px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector087 {
+  top: 0px;
+  left: 0px;
+  width: 41px;
+  height: 63px;
+  position: absolute;
+}
+.sign-in-vector088 {
+  top: -8.98259052626463px;
+  left: 26.00873483635405px;
+  width: 19px;
+  height: 8px;
+  position: absolute;
+}
+.sign-in-vector089 {
+  top: -11.078942262309056px;
+  left: 37.63418521234314px;
+  width: 13px;
+  height: 14px;
+  position: absolute;
+}
+.sign-in-vector090 {
+  top: -34.015437833737735px;
+  left: 32.07269692222786px;
+  width: 136px;
+  height: 123px;
+  position: absolute;
+}
+.sign-in-group36 {
+  top: -13.45811454686509px;
+  left: 159.35664111260166px;
+  width: 20.6592960357666px;
+  height: 12.648843765258789px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector091 {
+  top: 0px;
+  left: 0px;
+  width: 21px;
+  height: 10px;
+  position: absolute;
+}
+.sign-in-vector092 {
+  top: 0.12558489843905818px;
+  left: 0.7801704500884625px;
+  width: 9px;
+  height: 12px;
+  position: absolute;
+}
+.sign-in-vector093 {
+  top: 19.222035437535396px;
+  left: 99.77759476438541px;
+  width: 31px;
+  height: 14px;
+  position: absolute;
+}
+.sign-in-group37 {
+  top: 407.6990051269531px;
+  left: 417.7129211425781px;
+  width: 172.27325439453125px;
+  height: 136.9964599609375px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-group38 {
+  top: 50.08427429199219px;
+  left: 0.000011598007404245436px;
+  width: 172.27325439453125px;
+  height: 86.91218566894531px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector094 {
+  top: 0px;
+  left: 0px;
+  width: 172px;
+  height: 87px;
+  position: absolute;
+}
+.sign-in-vector095 {
+  top: 21.31105613708496px;
+  left: 0.9845781326293945px;
+  width: 170px;
+  height: 57px;
+  position: absolute;
+}
+.sign-in-vector096 {
+  top: 15.7564058303833px;
+  left: 20.01683235168457px;
+  width: 130px;
+  height: 44px;
+  position: absolute;
+}
+.sign-in-group39 {
+  top: 0.000006560531801369507px;
+  left: 10.3506498336792px;
+  width: 137.12225341796875px;
+  height: 106.2245101928711px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector097 {
+  top: 39.775421142578125px;
+  left: 15.02287483215332px;
+  width: 116px;
+  height: 59px;
+  position: absolute;
+}
+.sign-in-vector098 {
+  top: 44.81393051147461px;
+  left: 77.77172088623047px;
+  width: 50px;
+  height: 26px;
+  position: absolute;
+}
+.sign-in-vector099 {
+  top: 0px;
+  left: 0px;
+  width: 55px;
+  height: 65px;
+  position: absolute;
+}
+.sign-in-group40 {
+  top: 20.532581329345703px;
+  left: 74.35935974121094px;
+  width: 54.36276626586914px;
+  height: 49.042808532714844px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-group41 {
+  top: -8.600278533776873e-7px;
+  left: 36.52070999145508px;
+  width: 17.178133010864258px;
+  height: 18.509071350097656px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector100 {
+  top: 0px;
+  left: 0px;
+  width: 17px;
+  height: 19px;
+  position: absolute;
+}
+.sign-in-vector101 {
+  top: 4.450265884399414px;
+  left: 3.859656810760498px;
+  width: 10px;
+  height: 12px;
+  position: absolute;
+}
+.sign-in-group42 {
+  top: 6.984206199645996px;
+  left: -0.0000037029410577815725px;
+  width: 19.757993698120117px;
+  height: 16.489665985107422px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.sign-in-vector102 {
+  top: 0px;
+  left: 0px;
+  width: 20px;
+  height: 16px;
+  position: absolute;
+}
+.sign-in-vector103 {
+  top: 3.780360221862793px;
+  left: 3.851130723953247px;
+  width: 13px;
+  height: 11px;
+  position: absolute;
+}
+.sign-in-vector104 {
+  top: 11.063961029052734px;
+  left: 4.108434200286865px;
+  width: 50px;
+  height: 38px;
+  position: absolute;
+}
+.sign-in-vector105 {
+  top: 64.67729949951172px;
+  left: 100.86677551269531px;
+  width: 36px;
+  height: 40px;
+  position: absolute;
+}
+.sign-in-vector106 {
+  top: 65.93692016601562px;
+  left: 62.0501594543457px;
+  width: 36px;
+  height: 40px;
+  position: absolute;
+}
+.sign-in-vector107 {
+  top: 61.694828033447266px;
+  left: 12.567096710205078px;
+  width: 44px;
+  height: 34px;
+  position: absolute;
+}
+.sign-in-vector108 {
+  top: 54.417930603027344px;
+  left: 95.9741439819336px;
+  width: 9px;
+  height: 6px;
+  position: absolute;
+}
+.sign-in-vector109 {
+  top: 49.980674743652344px;
+  left: 87.166015625px;
+  width: 8px;
+  height: 4px;
+  position: absolute;
+}
+.sign-in-vector110 {
+  top: 49.71991729736328px;
+  left: 106.46504211425781px;
+  width: 8px;
+  height: 4px;
+  position: absolute;
+}
+.sign-in-signin1 {
+  top: 576px;
+  left: 733px;
+  width: 575px;
+  height: 80px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.sign-in-rectangle12 {
+  top: 0px;
+  left: 0px;
+  width: 575px;
+  height: 80px;
+  position: absolute;
+}
+.sign-in-text14 {
+  top: 17px;
+  left: 236px;
+  color: rgba(248, 168, 27, 1);
+  height: auto;
+  position: absolute;
+  font-size: 30px;
+  font-style: SemiBold;
+  text-align: left;
+  font-family: Poppins;
+  font-weight: 600;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.sign-in-text16 {
+  top: 650px;
+  color: rgb(9, 4, 70);
+  right: 189px;
+  height: auto;
+  position: absolute;
+  font-size: 20px;
+  font-style: SemiBold;
+  text-align: left;
+  font-family: Poppins;
+  font-weight: 600;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
