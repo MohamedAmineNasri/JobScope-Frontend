@@ -450,64 +450,6 @@ const Home = () => {
                 <span>Featured Job Circulars</span>
               </span>
               {/* job cards */}
-
-{/* <div className="desktop7-group355">
-  {jobs &&
-    jobs.map((job, index) => (
-      <div
-        key={job._id}
-        style={{
-          top: `${Math.floor(index / 4) * 328}px`, // Adjust the vertical position to create rows
-          left: `${(index % 4) * 294}px`, // Adjust the horizontal position to arrange cards in a row
-          width: '268px',
-          height: '308px',
-          display: 'flex',
-          position: 'absolute',
-          alignItems: 'flex-start',
-          flexShrink: 1,
-        }}
-      >
-        <img alt="Rectangle1582114" src="external/rectangle1582114-kys.svg" className="desktop7-rectangle158" />
-        <div className="desktop7-group354">
-          <div className="desktop7-group353">
-            <img alt="Ellipse892117" src="external/ellipse892117-9tff-200h.png" className="desktop7-ellipse89" />
-            <div className="desktop7-group352" style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <span className="desktop7-text091" style={{ marginRight: '8px', whiteSpace: 'nowrap' }}>
-                {job.title}
-              </span>
-              <span className="desktop7-text093">Microsoft</span>
-            </div>
-          </div>
-          <div className="desktop7-group350">
-            <span className="desktop7-text095">
-              <span>Fulltime</span>
-            </span>
-            <span className="desktop7-text097" style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <span  style={{ marginRight: '8px', whiteSpace: 'nowrap' }}>{job.title}</span>
-            </span>
-          </div>
-          <span className="desktop7-text099">
-            <span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat nunc ac a magna at elementum. Cras arcu
-              varius in aliquam habitant fermentum. Mi sit lorem mollis vitae quis curabitur vestibulum.
-            </span>
-          </span>
-          <div className="desktop7-group35401">
-            <span className="desktop7-text101">
-              <span>$2500/month</span>
-            </span>
-            <div className="desktop7-group394">
-              <div className="desktop7-group349">
-                <span className="desktop7-text103">
-                  <span>Apply Now</span>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    ))}
-</div> */}
 <div>
       {/* Your existing code here */}
       <div className="desktop7-group355">

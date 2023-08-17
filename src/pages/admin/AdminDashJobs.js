@@ -1,24 +1,105 @@
-    import React from 'react'
+    import React, { useEffect } from 'react'
     import { Helmet } from "react-helmet";
     import "./AdminDashboard.css";
     import GroupAddIcon from "@mui/icons-material/GroupAdd";
     import DashboardIcon from "@mui/icons-material/Dashboard";
     import WorkIcon from "@mui/icons-material/Work";
     import CategoryIcon from "@mui/icons-material/Category";
-    import StatComponent from "../../components/StatComponent.js";
-    import { Box, Stack, Typography } from "@mui/material";
-    import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
-    import ChartComponent from '../../components/ChartComponent';
-    import { Chart } from "react-google-charts";
-    import { data, options } from "./data/data";
+    import { Box, Button, Paper, Typography } from "@mui/material";
+    import { DataGrid, gridClasses } from "@mui/x-data-grid";
+    import { Link } from "react-router-dom";
+    import AddIcon from "@mui/icons-material/Add";
+import { useDispatch, useSelector } from 'react-redux';
+import { jobLoadAction } from '../../redux/actions/jobAction';
 
+const AdminDashJobs = () => {
+    const dispatch = useDispatch();
 
+    useEffect(() => {
+      dispatch(jobLoadAction());
+    }, []);
 
+    const { jobs, loading } = useSelector((state) => state.loadJobs);
+    let data = [];
+    data = jobs !== undefined && jobs.length > 0 ? jobs : [];
 
+    //delete job by Id
+    const deleteJobById = (e, id) => {
+      console.log(id);
+    };
 
-    const AdminDashboard = () => {
-    return (
-        <div className="dashboard-container">
+    const columns = [
+      {
+        field: "_id",
+        headerName: "Job ID",
+        width: 150,
+        editable: true,
+      },
+      {
+        field: "title",
+        headerName: "Job name",
+        width: 150,
+      },
+      {
+        field: "jobType",
+        headerName: "Category",
+        width: 150,
+        valueGetter: (data) =>
+          data.row.jobType ? data.row.jobType.jobTypeName : "N/A",
+      },
+      {
+        field: "user",
+        headerName: "User",
+        width: 150,
+        valueGetter: (data) => data.row.user.firstName,
+      },
+      {
+        field: "available",
+        headerName: "available",
+        width: 150,
+        renderCell: (values) => (values.row.available ? "Yes" : "No"),
+      },
+
+      {
+        field: "salary",
+        headerName: "Salary",
+        type: Number,
+        width: 150,
+        renderCell: (values) => "$" + values.row.salary,
+      },
+
+      {
+        field: "Actions",
+        width: 200,
+        renderCell: (values) => (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              width: "170px",
+            }}
+          >
+            <Button variant="contained">
+              <Link
+                style={{ color: "white", textDecoration: "none" }}
+                to={`/admin/edit/job/${values.row._id}`}
+              >
+                Edit
+              </Link>
+            </Button>
+            <Button
+              onClick={(e) => deleteJobById(e, values.row._id)}
+              variant="contained"
+              color="error"
+            >
+              Delete
+            </Button>
+          </Box>
+        ),
+      },
+    ];
+  return (
+     <div className="dashboard-container">
         <Helmet>
             <title>exported project</title>
         </Helmet>
@@ -60,25 +141,24 @@
                     <div className="dashboard-list-item2">
                         <div className="dashboard-container03">
                         <div className="dashboard-icon02">
-                            <GroupAddIcon /> 
+                            <GroupAddIcon />
                         </div>
                         </div>
                     </div>
                     <div className="dashboard-list-item3">
                         <div className="dashboard-container04">
                         <div className="dashboard-icon03">
-                            <WorkIcon/>
+                            <WorkIcon />
                         </div>
                         </div>
                     </div>
                     <div className="dashboard-list-item4">
                         <div className="dashboard-container05">
                         <div className="dashboard-icon04">
-                            <CategoryIcon/>
+                            <CategoryIcon />
                         </div>
                         </div>
                     </div>
-                
                     </div>
                     <div className="dashboard-section-separator1">
                     <div className="dashboard-list-subheader1">
@@ -89,9 +169,7 @@
                         />
                     </div>
                     </div>
-                    <div className="dashboard-list-item6">
-        
-                    </div>
+                    <div className="dashboard-list-item6"></div>
                     <div className="dashboard-settings">
                     <div className="dashboard-container08">
                         <div className="dashboard-icon07">
@@ -167,51 +245,45 @@
                 </div>
                 <div className="dashboard-table">
                     <div className="dashboard-content1">
-                        <Box>
-                <Typography variant="h4" sx={{ color: "white", pb: 3 }}>
-                    Dashboard
-                </Typography>
-                <Stack
-                    direction={{ xs: 'column', sm: 'row' }}
-                    spacing={{ xs: 1, sm: 2, md: 4 }}
-                >
+                        <Box >
 
-                    <StatComponent
-                        value="45621"
-                        icon={<SupervisorAccountIcon sx={{ color: "#fafafa", fontSize: 30 }} />}
-                        description="Administrators"
-                        money=''
-                    />
-                    <StatComponent
-                        value="450"
-                        icon={<WorkIcon sx={{ color: "#fafafa", fontSize: 30 }} />}
-                        description="Jobs"
-                        money=''
-                    />
-                    <StatComponent
-                        value="6548"
-                        icon={<CategoryIcon sx={{ color: "#fafafa", fontSize: 30 }} />}
-                        description="Jobs categories"
-                        money=''
-                    />
-
-                </Stack>
-
-                <Stack direction={{ xs: 'column', sm: 'row' }} sx={{ mt: 3 }}
-                    spacing={{ xs: 1, sm: 2, md: 4 }}>
-                    <ChartComponent>
-                        <Chart
-                            chartType="Bar"
-                            data={data}
-                            options={options}
-                            width="100%"
-                            height="300px"
-                            legendToggle
-                        />
-                    </ChartComponent>
-                </Stack>
-
+            <Typography variant="h4" sx={{ color: "black", pb: 3 }}>
+                Jobs list
+            </Typography>
+            <Box sx={{ pb: 2, display: "flex", justifyContent: "right" }}>
+                <Button variant='contained' color="success" startIcon={<AddIcon />}> <Link style={{ color: "white", textDecoration: "none" }} to="/admin/job/create">Create Job</Link></Button>
             </Box>
+            <Paper sx={{ bgcolor: "#807777" }} >
+
+                <Box sx={{ height: 400, width: '100%' }}>
+                    <DataGrid
+                        getRowId={(row) => row._id}
+                        sx={{
+
+                            '& .MuiTablePagination-displayedRows': {
+                                color: 'white',
+                            },
+                            color: 'white',
+                            [`& .${gridClasses.row}`]: {
+                                bgcolor: (theme) =>
+                                    // theme.palette.mode === 'light' ? grey[200] : grey[900],
+                                    theme.palette.secondary.main
+                            },
+                            button: {
+                                color: '#ffffff'
+                            }
+
+                        }}
+                        rows={data}
+                        columns={columns}
+                        pageSize={5}
+                        rowsPerPageOptions={[5]}
+                        checkboxSelection
+                    />
+                </Box>
+            </Paper>
+
+        </Box>
                     </div>
                 </div>
                 </div>
@@ -219,7 +291,7 @@
             </div>
         </div>
         </div>
-    );
-    }
+    )
+}
 
-    export default AdminDashboard
+export default AdminDashJobs

@@ -18,9 +18,10 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import SearchInputEl from '../../components/SearchInputEl';
 import { userLogoutAction } from '../../redux/actions/userAction';
 import { USER_SIGNIN_SUCCESS } from '../../redux/constants/userConstant';
+import moment from 'moment';
 
 
-const  JobList = (props) => {
+const  JobList = ({props}) => {
     const { jobs, setUniqueLocation, pages, loading } = useSelector(
       (state) => state.loadJobs
     );
@@ -576,7 +577,11 @@ const logOutUser = () => {
                                     className={styles["calendar-blank"]}
                                   />
                                   <span className={styles["text076"]}>
-                                    <span>{job.updatedAt}</span>
+                                    <span>
+                                      {moment(job.updatedAt).format(
+                                        "YYYY / MM / DD"
+                                      )}
+                                    </span>
                                   </span>
                                 </div>
                               </div>
@@ -585,9 +590,21 @@ const logOutUser = () => {
                               <span>{job.description}</span>
                             </span>
                             <span>
-                              <button className={styles["button07"]}>
+                              <button
+                                className={styles["button07"]}
+                                style={{ cursor: "pointer" }}
+                              >
                                 <span className={styles["text161"]}>
-                                  <span>More </span>
+                                  <Link
+                                    style={{
+                                      textDecoration: "none",
+                                      color: "white",
+                                      boxShadow: 0,
+                                    }}
+                                    to={`/jobdetails/${job._id}`}
+                                  >
+                                    <span>More </span>
+                                  </Link>
                                 </span>
                               </button>
                             </span>
@@ -902,7 +919,6 @@ const logOutUser = () => {
                 </button> */}
                 <div className={styles["button10"]}>
                   <span className={styles["text191"]}>
-                    
                     {userInfo ? (
                       <button
                         onClick={logOutUser}

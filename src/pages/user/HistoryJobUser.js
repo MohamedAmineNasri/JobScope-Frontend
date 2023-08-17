@@ -4,6 +4,7 @@ import "./UserDashboard.css";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import WorkHistoryIcon from "@mui/icons-material/WorkHistory";
 import UserJobsHistory from "./UserJobsHistory";
+import { Link } from "react-router-dom";
 
 const HistoryJobUser = () => {
   return (
@@ -42,7 +43,12 @@ const HistoryJobUser = () => {
                   <div className="dashboard-list-item1">
                     <div className="dashboard-container02">
                       <div className="dashboard-icon01">
-                        <DashboardIcon />
+                        <Link
+                          to="/UserHomeDash"
+                          style={{ color: "inherit", textDecoration: "none" }}
+                        >
+                          <DashboardIcon />
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -56,11 +62,16 @@ const HistoryJobUser = () => {
                   <div className="dashboard-list-item3">
                     <div className="dashboard-container04">
                       <div className="dashboard-icon03">
-                        <img
-                          src="/external4/personoutline1174-82b9.svg"
-                          alt="PersonOutline1174"
-                          className="dashboard-person-outline"
-                        />
+                        <Link
+                          to="/UserDash"
+                          style={{ color: "inherit", textDecoration: "none" }}
+                        >
+                          <img
+                            src="/external4/personoutline1174-82b9.svg"
+                            alt="PersonOutline1174"
+                            className="dashboard-person-outline"
+                          />
+                        </Link>
                       </div>
                     </div>
                   </div>

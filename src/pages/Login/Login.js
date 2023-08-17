@@ -1,70 +1,68 @@
-    import React, { useEffect } from 'react'
-    import { Helmet } from 'react-helmet'
-    import './sign-in.css'
-    import LockClockOutlined from "@mui/icons-material/LockClockOutlined";
-    import TextField from "@mui/material/TextField";
-    import Button from "@mui/material/Button";
-    import { useFormik } from "formik";
-    import * as yup from "yup";
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from "react-router-dom";
-import { userSignInAction } from '../../redux/actions/userAction';
-import { Avatar, Box } from '@mui/material';
-import { USER_SIGNIN_SUCCESS } from '../../redux/constants/userConstant';
+        import React, { useEffect } from 'react'
+        import { Helmet } from 'react-helmet'
+        import './sign-in.css'
+        import LockClockOutlined from "@mui/icons-material/LockClockOutlined";
+        import TextField from "@mui/material/TextField";
+        import Button from "@mui/material/Button";
+        import { useFormik } from "formik";
+        import * as yup from "yup";
+    import { useDispatch, useSelector } from 'react-redux';
+    import { useNavigate } from "react-router-dom";
+    import { userSignInAction } from '../../redux/actions/userAction';
+    import { Avatar, Box } from '@mui/material';
+    import { USER_SIGNIN_SUCCESS } from '../../redux/constants/userConstant';
 
 
-
-        const validationSchema = yup.object({
-        email: yup
-            .string('Enter your email')
-            .email('Enter a valid email')
-            .required('Email is required'),
-        password: yup
-            .string('Enter your password')
-            .min(8, 'Password should be of minimum 8 characters length')
-            .required('Password is required'),
+    const validationSchema = yup.object({
+    email: yup
+        .string("Enter your email")
+        .email("Enter a valid email")
+        .required("Email is required"),
+    password: yup
+        .string("Enter your password")
+        .min(8, "Password should be of minimum 8 characters length")
+        .required("Password is required"),
     });
 
     const Login = (props) => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { isAuthenticated } = useSelector((state) => state.signIn);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const { isAuthenticated } = useSelector((state) => state.signIn);
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      const user = JSON.parse(localStorage.getItem("userInfo"));
-    //   {console.log("user is", user)}
-    //   {console.log("user is", user.user.role)}
+    useEffect(() => {
+        if (isAuthenticated) {
+        const user = JSON.parse(localStorage.getItem("userInfo"));
+            {console.log("user is", user.role)}
+        //   {console.log("user is", user.user.role)}
 
-      if (user && user.user.role === "admin") {
-        navigate("/AdminDash");
-      } else {
-        navigate("/UserDash");
-      }
-    }
-  }, [isAuthenticated, navigate]);
+        if (user && user.role === "admin") {
+            navigate("/AdminDash");
+        } else {
+            navigate("/UserHomeDash");
+        }
+        }
+    }, [isAuthenticated, navigate]);
 
- const handleSubmit = async (values, actions) => {
-   const result = await dispatch(userSignInAction(values));
-   if (result.success) {
-     localStorage.setItem(USER_SIGNIN_SUCCESS, JSON.stringify(result.user));
-   }
-   actions.resetForm();
- };
+    const handleSubmit = async (values, actions) => {
+        const result = await dispatch(userSignInAction(values));
+        if (result.success) {
+        localStorage.setItem(USER_SIGNIN_SUCCESS, JSON.stringify(result.user));
+        }
+        actions.resetForm();
+    };
 
-        const formik = useFormik({
-            initialValues: {
-            email: "",
-            password: "",
-            },
-            validationSchema: validationSchema,
-            onSubmit: (values, actions) => {
-            //  alert(JSON.stringify(values, null, 2));
-            dispatch(userSignInAction(values));
-            actions.resetForm();
-            },
-        });
-
+    const formik = useFormik({
+        initialValues: {
+        email: "",
+        password: "",
+        },
+        validationSchema: validationSchema,
+        onSubmit: (values, actions) => {
+        //  alert(JSON.stringify(values, null, 2));
+        dispatch(userSignInAction(values));
+        actions.resetForm();
+        },
+    });
 
     return (
         <div className="sign-in-container">
@@ -84,74 +82,103 @@ import { USER_SIGNIN_SUCCESS } from '../../redux/constants/userConstant';
             <span>Sign in to continue your progress</span>
             </span>
             {/* <span className="sign-in-text04">Email </span>
-            <span className="sign-in-text05">
-            <span>Password</span>
-            </span> */}
-            <Box sx={{ height: '81vh', display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <Box onSubmit={formik.handleSubmit} component="form" className="sign-in-text04" >
-                    <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", width: "300%" }}>
-                        <TextField sx={{ mb: 3 }}
-                            fullWidth
-                            id="email"
-                            label="E-mail"
-                            name='email'
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                            placeholder="E-mail"
-                            value={formik.values.email}
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            error={formik.touched.email && Boolean(formik.errors.email)}
-                            helperText={formik.touched.email && formik.errors.email}
-                        />
-                        <br/>
-                        <TextField sx={{ mb: 3 }}
-                            fullWidth
-                            id="password"
-                            name="password"
-                            label="Password"
-                            type="password"
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                            placeholder="Password"
-                            value={formik.values.password}
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            error={formik.touched.password && Boolean(formik.errors.password)}
-                            helperText={formik.touched.password && formik.errors.password}
-                        />
-                        <br/>
-                        <Button fullWidth variant="contained" type='submit' sx={{ backgroundColor: "#ed1c24" }}>Log In</Button>
-                    </Box>
+                <span className="sign-in-text05">
+                <span>Password</span>
+                </span> */}
+            <Box
+            sx={{
+                height: "81vh",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+            }}
+            >
+            <Box
+                onSubmit={formik.handleSubmit}
+                component="form"
+                className="sign-in-text04"
+            >
+                <Box
+                sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    width: "300%",
+                }}
+                >
+                <TextField
+                    sx={{ mb: 3 }}
+                    fullWidth
+                    id="email"
+                    label="E-mail"
+                    name="email"
+                    InputLabelProps={{
+                    shrink: true,
+                    }}
+                    placeholder="E-mail"
+                    value={formik.values.email}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    error={formik.touched.email && Boolean(formik.errors.email)}
+                    helperText={formik.touched.email && formik.errors.email}
+                />
+                <br />
+                <TextField
+                    sx={{ mb: 3 }}
+                    fullWidth
+                    id="password"
+                    name="password"
+                    label="Password"
+                    type="password"
+                    InputLabelProps={{
+                    shrink: true,
+                    }}
+                    placeholder="Password"
+                    value={formik.values.password}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    error={
+                    formik.touched.password && Boolean(formik.errors.password)
+                    }
+                    helperText={formik.touched.password && formik.errors.password}
+                />
+                <br />
+                <Button
+                    fullWidth
+                    variant="contained"
+                    type="submit"
+                    sx={{ backgroundColor: "#ed1c24" }}
+                >
+                    Log In
+                </Button>
                 </Box>
             </Box>
+            </Box>
             {/* <span className="sign-in-text07">
-            <span>Remember me</span>
-            </span> */}
+                <span>Remember me</span>
+                </span> */}
             <span className="sign-in-text07">
             <span>Don’t have an account?</span>
             </span>
             <span className="sign-in-text11">Register Here As A Company</span>
             {/* <span className="sign-in-text12">
-            <span>Forget password?</span>
-            </span> */}
+                <span>Forget password?</span>
+                </span> */}
             {/* <img
-            src="/external3/rectangle51171-adru-200h.png"
-            alt="Rectangle51171"
-            className="sign-in-rectangle5"
-            />
-            <img
-            src="/external3/rectangle61173-yslc-200h.png"
-            alt="Rectangle61173"
-            className="sign-in-rectangle6"
-            /> */}
+                src="/external3/rectangle51171-adru-200h.png"
+                alt="Rectangle51171"
+                className="sign-in-rectangle5"
+                />
+                <img
+                src="/external3/rectangle61173-yslc-200h.png"
+                alt="Rectangle61173"
+                className="sign-in-rectangle6"
+                /> */}
             {/* <img
-            src="/external3/rectangle71174-eqnc-200h.png"
-            alt="Rectangle71174"
-            className="sign-in-rectangle7"
-            /> */}
+                src="/external3/rectangle71174-eqnc-200h.png"
+                alt="Rectangle71174"
+                className="sign-in-rectangle7"
+                /> */}
             <div className="sign-in-animation">
             <div className="sign-in-group">
                 <img src alt="VectorI114" className="sign-in-vector" />
@@ -789,13 +816,13 @@ import { USER_SIGNIN_SUCCESS } from '../../redux/constants/userConstant';
             </div>
             <div className="sign-in-signin1">
             {/* <img
-                src="/external3/rectangle12i534-816r-200h.png"
-                alt="Rectangle12I534"
-                className="sign-in-rectangle12"
-            /> */}
+                    src="/external3/rectangle12i534-816r-200h.png"
+                    alt="Rectangle12I534"
+                    className="sign-in-rectangle12"
+                /> */}
             {/* <span className="sign-in-text14">
-                <span>sign in</span>
-            </span> */}
+                    <span>sign in</span>
+                </span> */}
             </div>
             <span className="sign-in-text16">Register As A Job Seeker</span>
         </div>
@@ -803,4 +830,4 @@ import { USER_SIGNIN_SUCCESS } from '../../redux/constants/userConstant';
     );
     };
 
-    export default Login;
+        export default Login;

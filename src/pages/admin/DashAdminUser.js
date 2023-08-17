@@ -1,22 +1,80 @@
-    import React from 'react'
+    import React, { useEffect } from 'react'
     import { Helmet } from "react-helmet";
     import "./AdminDashboard.css";
     import GroupAddIcon from "@mui/icons-material/GroupAdd";
     import DashboardIcon from "@mui/icons-material/Dashboard";
     import WorkIcon from "@mui/icons-material/Work";
     import CategoryIcon from "@mui/icons-material/Category";
-    import StatComponent from "../../components/StatComponent.js";
-    import { Box, Stack, Typography } from "@mui/material";
-    import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
-    import ChartComponent from '../../components/ChartComponent';
-    import { Chart } from "react-google-charts";
-    import { data, options } from "./data/data";
+import moment from 'moment';
+import { Box, Button, Paper, Typography, gridClasses  } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { allUserAction } from '../../redux/actions/userAction';
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 
 
 
+    const DashAdminUser = () => {
+            const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(allUserAction());
+    }, []);
 
 
-    const AdminDashboard = () => {
+    const { users, loading } = useSelector(state => state.allUsers);
+    let data = [];
+    data = (users !== undefined && users.length > 0) ? users : []
+
+    const deleteUserById = (e, id) => {
+        console.log(id);
+    }
+
+    const columns = [
+
+        {
+            field: '_id',
+            headerName: 'User ID',
+            width: 150,
+            editable: true,
+        },
+
+        {
+            field: 'email',
+            headerName: 'E_mail',
+            width: 150,
+        },
+
+        {
+            field: 'role',
+            headerName: 'User status',
+            width: 150,
+            renderCell: (params) => (
+                params.row.role === "admin" ? "Admin" : "Regular user"
+            )
+        },
+
+        {
+            field: 'createdAt',
+            headerName: 'Creation date',
+            width: 150,
+            renderCell: (params) => (
+                moment(params.row.createdAt).format('YYYY-MM-DD HH:MM:SS')
+            )
+        },
+
+        {
+            field: "Actions",
+            width: 200,
+            renderCell: (values) => (
+                <Box sx={{ display: "flex", justifyContent: "space-between", width: "170px" }}>
+                    <Button variant="contained"><Link style={{ color: "white", textDecoration: "none" }} to={`/admin/edit/user/${values.row._id}`}>Edit</Link></ Button>
+                    < Button onClick={(e) => deleteUserById(e, values.row._id)} variant="contained" color="error">Delete</ Button>
+                </Box>
+            )
+        }
+    ];
+
     return (
         <div className="dashboard-container">
         <Helmet>
@@ -60,25 +118,24 @@
                     <div className="dashboard-list-item2">
                         <div className="dashboard-container03">
                         <div className="dashboard-icon02">
-                            <GroupAddIcon /> 
+                            <GroupAddIcon />
                         </div>
                         </div>
                     </div>
                     <div className="dashboard-list-item3">
                         <div className="dashboard-container04">
                         <div className="dashboard-icon03">
-                            <WorkIcon/>
+                            <WorkIcon />
                         </div>
                         </div>
                     </div>
                     <div className="dashboard-list-item4">
                         <div className="dashboard-container05">
                         <div className="dashboard-icon04">
-                            <CategoryIcon/>
+                            <CategoryIcon />
                         </div>
                         </div>
                     </div>
-                
                     </div>
                     <div className="dashboard-section-separator1">
                     <div className="dashboard-list-subheader1">
@@ -89,9 +146,7 @@
                         />
                     </div>
                     </div>
-                    <div className="dashboard-list-item6">
-        
-                    </div>
+                    <div className="dashboard-list-item6"></div>
                     <div className="dashboard-settings">
                     <div className="dashboard-container08">
                         <div className="dashboard-icon07">
@@ -167,49 +222,44 @@
                 </div>
                 <div className="dashboard-table">
                     <div className="dashboard-content1">
-                        <Box>
-                <Typography variant="h4" sx={{ color: "white", pb: 3 }}>
-                    Dashboard
+                        <Box >
+
+                <Typography variant="h4" sx={{ color: "black", pb: 3 }}>
+                    All users
                 </Typography>
-                <Stack
-                    direction={{ xs: 'column', sm: 'row' }}
-                    spacing={{ xs: 1, sm: 2, md: 4 }}
-                >
+                <Box sx={{ pb: 2, display: "flex", justifyContent: "right" }}>
+                    <Button variant='contained' color="success" startIcon={<GroupAddIcon />}> Create user</Button>
+                </Box>
+                <Paper sx={{ bgcolor: "#807777" }} >
 
-                    <StatComponent
-                        value="45621"
-                        icon={<SupervisorAccountIcon sx={{ color: "#fafafa", fontSize: 30 }} />}
-                        description="Administrators"
-                        money=''
-                    />
-                    <StatComponent
-                        value="450"
-                        icon={<WorkIcon sx={{ color: "#fafafa", fontSize: 30 }} />}
-                        description="Jobs"
-                        money=''
-                    />
-                    <StatComponent
-                        value="6548"
-                        icon={<CategoryIcon sx={{ color: "#fafafa", fontSize: 30 }} />}
-                        description="Jobs categories"
-                        money=''
-                    />
+                    <Box sx={{ height: 400, width: '100%' }}>
+                        <DataGrid
+                            sx={{
 
-                </Stack>
+                                '& .MuiTablePagination-displayedRows': {
+                                    color: 'black',
+                                },
+                                color: 'black',
+                                [`& .${gridClasses.row}`]: {
+                                    bgcolor: (theme) =>
+                                        // theme.palette.mode === 'light' ? grey[200] : grey[900],
+                                        theme.palette.secondary.main
+                                },
+                                button: {
+                                    color: '#ffffff'
+                                }
 
-                <Stack direction={{ xs: 'column', sm: 'row' }} sx={{ mt: 3 }}
-                    spacing={{ xs: 1, sm: 2, md: 4 }}>
-                    <ChartComponent>
-                        <Chart
-                            chartType="Bar"
-                            data={data}
-                            options={options}
-                            width="100%"
-                            height="300px"
-                            legendToggle
+                            }}
+                            getRowId={(row) => row._id}
+                            rows={data}
+                            columns={columns}
+                            pageSize={3}
+                            rowsPerPageOptions={[3]}
+                            checkboxSelection
+                            slots={{ toolbar: GridToolbar }}
                         />
-                    </ChartComponent>
-                </Stack>
+                    </Box>
+                </Paper>
 
             </Box>
                     </div>
@@ -222,4 +272,4 @@
     );
     }
 
-    export default AdminDashboard
+    export default DashAdminUser
