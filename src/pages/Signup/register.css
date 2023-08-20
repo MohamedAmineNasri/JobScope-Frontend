@@ -1,0 +1,854 @@
+    .register-container {
+    width: 100%;
+    display: flex;
+    overflow: auto;
+    min-height: 100vh;
+    align-items: center;
+    flex-direction: column;
+    }
+    .register-register {
+    width: 100%;
+    height: 1024px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    align-items: flex-start;
+    flex-shrink: 0;
+    background-color: rgba(255, 255, 255, 1);
+    }
+    .register-ellipse1 {
+    top: -98px;
+    left: 777px;
+    width: 1220px;
+    height: 1220px;
+    position: absolute;
+    }
+    .register-text {
+    top: 103px;
+    left: 133px;
+    color: #ed1c24;
+    height: auto;
+    position: absolute;
+    font-size: 50px;
+    font-style: Bold;
+    text-align: left;
+    font-family: Poppins;
+    font-weight: 700;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+    }
+    .register-text02 {
+    top: 176px;
+    left: 133px;
+    color: rgba(9, 4, 70, 1);
+    height: auto;
+    position: absolute;
+    font-size: 20px;
+    font-style: Regular;
+    text-align: left;
+    font-family: Poppins;
+    font-weight: 400;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+    }
+    .register-text04 {
+    top: 266px;
+    left: 143px;
+    color: rgba(9, 4, 70, 1);
+    height: auto;
+    position: absolute;
+    font-size: 20px;
+    font-style: Regular;
+    text-align: left;
+    font-family: Poppins;
+    font-weight: 400;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+    }
+    .register-text06 {
+    top: 266px;
+    left: 440px;
+    color: rgba(9, 4, 70, 1);
+    height: auto;
+    position: absolute;
+    font-size: 20px;
+    font-style: Regular;
+    text-align: left;
+    font-family: Poppins;
+    font-weight: 400;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+    }
+    .register-text08 {
+    top: 365px;
+    left: 143px;
+    color: rgba(9, 4, 70, 1);
+    height: auto;
+    position: absolute;
+    font-size: 20px;
+    font-style: Regular;
+    text-align: left;
+    font-family: Poppins;
+    font-weight: 400;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+    }
+    .register-text10 {
+    top: 461px;
+    left: 143px;
+    color: rgba(9, 4, 70, 1);
+    height: auto;
+    position: absolute;
+    font-size: 20px;
+    font-style: Regular;
+    text-align: left;
+    font-family: Poppins;
+    font-weight: 400;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+    }
+    .register-text12 {
+    top: 572px;
+    left: 171px;
+    color: rgba(9, 4, 70, 1);
+    height: auto;
+    position: absolute;
+    font-size: 20px;
+    font-style: Regular;
+    text-align: left;
+    font-family: Poppins;
+    font-weight: 400;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+    }
+    .register-text13 {
+    font-weight: 400;
+    }
+    .register-text14 {
+    font-weight: 500;
+    }
+    .register-rectangle5 {
+    top: 300px;
+    left: 133px;
+    width: 275px;
+    height: 60px;
+    position: absolute;
+    border-radius: 12px;
+    }
+    .register-rectangle8 {
+    top: 300px;
+    left: 432px;
+    width: 276px;
+    height: 60px;
+    position: absolute;
+    border-radius: 12px;
+    }
+    .register-rectangle6 {
+    top: 400px;
+    left: 133px;
+    width: 575px;
+    height: 60px;
+    position: absolute;
+    border-radius: 12px;
+    }
+    .register-rectangle9 {
+    top: 496px;
+    left: 133px;
+    width: 575px;
+    height: 60px;
+    position: absolute;
+    border-radius: 12px;
+    }
+    .register-rectangle10 {
+    top: 577px;
+    left: 143px;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    border-radius: 2px;
+    }
+    .register-animation2 {
+    top: 151px;
+    left: 876px;
+    width: 511px;
+    height: 719.2021484375px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 0;
+    }
+    .register-group {
+    top: 500.3812561035156px;
+    left: 311.45806884765625px;
+    width: 152.2179412841797px;
+    height: 201.4649658203125px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+    }
+    .register-group1 {
+    top: 7.4055376052856445px;
+    left: 3.6183159351348877px;
+    width: 144.98118591308594px;
+    height: 194.0594940185547px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+    }
+    .register-vector {
+    top: 0px;
+    left: 0px;
+    width: 29px;
+    height: 194px;
+    position: absolute;
+    }
+    .register-vector01 {
+    top: 0.00002025607682298869px;
+    left: 116.15667724609375px;
+    width: 29px;
+    height: 194px;
+    position: absolute;
+    }
+    .register-vector02 {
+    top: 65.36106872558594px;
+    left: 19.456602096557617px;
+    width: 113px;
+    height: 6px;
+    position: absolute;
+    }
+    .register-vector03 {
+    top: 0px;
+    left: 0px;
+    width: 152px;
+    height: 19px;
+    position: absolute;
+    }
+    .register-group2 {
+    top: 0px;
+    left: 0px;
+    width: 511.4817810058594px;
+    height: 422.3403625488281px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+    }
+    .register-group3 {
+    top: 17.96149253845215px;
+    left: 421.9417419433594px;
+    width: 10.2725830078125px;
+    height: 144.2528839111328px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+    }
+    .register-vector04 {
+    top: -0.00005533622606890276px;
+    left: 4.584390163421631px;
+    width: 1px;
+    height: 142px;
+    position: absolute;
+    }
+    .register-vector05 {
+    top: 133.980224609375px;
+    left: 0.00009097135625779629px;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    }
+    .register-vector06 {
+    top: -0.00004229592013871297px;
+    left: 57.97093200683594px;
+    width: 396px;
+    height: 411px;
+    position: absolute;
+    }
+    .register-vector07 {
+    top: 404.370849609375px;
+    left: 0px;
+    width: 511px;
+    height: 18px;
+    position: absolute;
+    }
+    .register-group4 {
+    top: 298.85791015625px;
+    left: 72.57006072998047px;
+    width: 83.15388488769531px;
+    height: 105.85047912597656px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+    }
+    .register-vector08 {
+    top: 1.6376560926437378px;
+    left: 1.1317886114120483px;
+    width: 80px;
+    height: 58px;
+    position: absolute;
+    }
+    .register-vector09 {
+    top: 9.151137351989746px;
+    left: 46.8866081237793px;
+    width: 36px;
+    height: 40px;
+    position: absolute;
+    }
+    .register-vector10 {
+    top: -0.000006123182174633257px;
+    left: 33.18735885620117px;
+    width: 20px;
+    height: 36px;
+    position: absolute;
+    }
+    .register-vector11 {
+    top: 9.556317329406738px;
+    left: -0.000007992348400875926px;
+    width: 34px;
+    height: 39px;
+    position: absolute;
+    }
+    .register-vector12 {
+    top: 14.722140312194824px;
+    left: 7.110731601715088px;
+    width: 26px;
+    height: 38px;
+    position: absolute;
+    }
+    .register-vector13 {
+    top: 10.438164710998535px;
+    left: 38.78974151611328px;
+    width: 8px;
+    height: 43px;
+    position: absolute;
+    }
+    .register-vector14 {
+    top: 17.411834716796875px;
+    left: 45.82430648803711px;
+    width: 25px;
+    height: 39px;
+    position: absolute;
+    }
+    .register-vector15 {
+    top: 47.57292556762695px;
+    left: 12.968196868896484px;
+    width: 55px;
+    height: 57px;
+    position: absolute;
+    }
+    .register-vector16 {
+    top: 90.8709945678711px;
+    left: 11.29697322845459px;
+    width: 58px;
+    height: 15px;
+    position: absolute;
+    }
+    .register-vector17 {
+    top: 59.04130935668945px;
+    left: 14.834888458251953px;
+    width: 50px;
+    height: 1px;
+    position: absolute;
+    }
+    .register-vector18 {
+    top: 74.16067504882812px;
+    left: 24.569801330566406px;
+    width: 32px;
+    height: 7px;
+    position: absolute;
+    }
+    .register-vector19 {
+    top: 49.21328353881836px;
+    left: 19.74113655090332px;
+    width: 30px;
+    height: 1px;
+    position: absolute;
+    }
+    .register-vector20 {
+    top: 17.96149253845215px;
+    left: 85.2469253540039px;
+    width: 1px;
+    height: 69px;
+    position: absolute;
+    }
+    .register-group5 {
+    top: 12.35776138305664px;
+    left: 42.37816619873047px;
+    width: 421.2364501953125px;
+    height: 73.0118637084961px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+    }
+    .register-vector21 {
+    top: 0px;
+    left: 0px;
+    width: 421px;
+    height: 22px;
+    position: absolute;
+    }
+    .register-vector22 {
+    top: 25.313276290893555px;
+    left: -0.000007176698090916034px;
+    width: 421px;
+    height: 22px;
+    position: absolute;
+    }
+    .register-vector23 {
+    top: 50.626834869384766px;
+    left: -0.000007176698090916034px;
+    width: 421px;
+    height: 22px;
+    position: absolute;
+    }
+    .register-group6 {
+    top: 151.1584014892578px;
+    left: 77.15486907958984px;
+    width: 420.1875305175781px;
+    height: 568.0437622070312px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+    }
+    .register-vector24 {
+    top: 548.6136474609375px;
+    left: 16.417526245117188px;
+    width: 65px;
+    height: 19px;
+    position: absolute;
+    }
+    .register-vector25 {
+    top: 458.64813232421875px;
+    left: 211.62686157226562px;
+    width: 44px;
+    height: 53px;
+    position: absolute;
+    }
+    .register-vector26 {
+    top: 437.6127624511719px;
+    left: 2.4959213733673096px;
+    width: 121px;
+    height: 123px;
+    position: absolute;
+    }
+    .register-vector27 {
+    top: 354.0830078125px;
+    left: 180.51788330078125px;
+    width: 71px;
+    height: 167px;
+    position: absolute;
+    }
+    .register-vector28 {
+    top: 49.00309371948242px;
+    left: 297.7631530761719px;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    }
+    .register-vector29 {
+    top: -0.00009493876859778538px;
+    left: 261.2265319824219px;
+    width: 155px;
+    height: 109px;
+    position: absolute;
+    }
+    .register-vector30 {
+    top: 226.67262268066406px;
+    left: 25.35613250732422px;
+    width: 328px;
+    height: 258px;
+    position: absolute;
+    }
+    .register-vector31 {
+    top: 118.9742660522461px;
+    left: 207.50254821777344px;
+    width: 209px;
+    height: 135px;
+    position: absolute;
+    }
+    .register-vector32 {
+    top: 159.79620361328125px;
+    left: 306.0901794433594px;
+    width: 101px;
+    height: 99px;
+    position: absolute;
+    }
+    .register-vector33 {
+    top: 24.578954696655273px;
+    left: 285.0527648925781px;
+    width: 94px;
+    height: 127px;
+    position: absolute;
+    }
+    .register-vector34 {
+    top: 4.019236087799072px;
+    left: 261.1332092285156px;
+    width: 47px;
+    height: 76px;
+    position: absolute;
+    }
+    .register-vector35 {
+    top: 31.883235931396484px;
+    left: 383.76953125px;
+    width: 36px;
+    height: 60px;
+    position: absolute;
+    }
+    .register-vector36 {
+    top: 91.71861267089844px;
+    left: 327.95220947265625px;
+    width: 17px;
+    height: 19px;
+    opacity: 0.46;
+    position: absolute;
+    }
+    .register-vector37 {
+    top: 63.2327880859375px;
+    left: 361.3271484375px;
+    width: 9px;
+    height: 9px;
+    position: absolute;
+    }
+    .register-vector38 {
+    top: 66.9585952758789px;
+    left: 366.3521728515625px;
+    width: 3px;
+    height: 6px;
+    position: absolute;
+    }
+    .register-vector39 {
+    top: 76.3999252319336px;
+    left: 301.7993469238281px;
+    width: 9px;
+    height: 6px;
+    position: absolute;
+    }
+    .register-vector40 {
+    top: 59.7510871887207px;
+    left: 310.79559326171875px;
+    width: 5px;
+    height: 7px;
+    position: absolute;
+    }
+    .register-vector41 {
+    top: 45.6852912902832px;
+    left: 310.79559326171875px;
+    width: 14px;
+    height: 5px;
+    position: absolute;
+    }
+    .register-vector42 {
+    top: 51.640296936035156px;
+    left: 305.3679504394531px;
+    width: 23px;
+    height: 23px;
+    position: absolute;
+    }
+    .register-vector43 {
+    top: 55.15279769897461px;
+    left: 298.7535705566406px;
+    width: 8px;
+    height: 4px;
+    position: absolute;
+    }
+    .register-vector44 {
+    top: 58.68391036987305px;
+    left: 326.4630432128906px;
+    width: 34px;
+    height: 3px;
+    position: absolute;
+    }
+    .register-vector45 {
+    top: 15.898575782775879px;
+    left: 296.0765075683594px;
+    width: 73px;
+    height: 54px;
+    position: absolute;
+    }
+    .register-vector46 {
+    top: 170.5665283203125px;
+    left: 308.634033203125px;
+    width: 16px;
+    height: 12px;
+    position: absolute;
+    }
+    .register-vector47 {
+    top: 166.15882873535156px;
+    left: 313.4687805175781px;
+    width: 16px;
+    height: 13px;
+    position: absolute;
+    }
+    .register-vector48 {
+    top: 163.7748565673828px;
+    left: 321.0377197265625px;
+    width: 16px;
+    height: 13px;
+    position: absolute;
+    }
+    .register-vector49 {
+    top: 175.08229064941406px;
+    left: 320.9423522949219px;
+    width: 17px;
+    height: 9px;
+    position: absolute;
+    }
+    .register-vector50 {
+    top: 201.92236328125px;
+    left: 328.0004577636719px;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    }
+    .register-vector51 {
+    top: 166.52371215820312px;
+    left: 122.5086441040039px;
+    width: 146px;
+    height: 94px;
+    position: absolute;
+    }
+    .register-vector52 {
+    top: 250.60610961914062px;
+    left: 262.86700439453125px;
+    width: 58px;
+    height: 10px;
+    position: absolute;
+    }
+    .register-vector53 {
+    top: 203.2449493408203px;
+    left: 181.3304901123047px;
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    }
+    .register-vector54 {
+    top: 170.21871948242188px;
+    left: 236.9977264404297px;
+    width: 10px;
+    height: 7px;
+    position: absolute;
+    }
+    .register-vector55 {
+    top: 251.89404296875px;
+    left: 263.6606750488281px;
+    width: 7px;
+    height: 7px;
+    position: absolute;
+    }
+    .register-vector56 {
+    top: 251.98605346679688px;
+    left: 272.4171142578125px;
+    width: 41px;
+    height: 1px;
+    position: absolute;
+    }
+    .register-vector57 {
+    top: 170.81564331054688px;
+    left: 124.03407287597656px;
+    width: 8px;
+    height: 10px;
+    position: absolute;
+    }
+    .register-vector58 {
+    top: 217.25375366210938px;
+    left: 72.25275421142578px;
+    width: 194px;
+    height: 223px;
+    position: absolute;
+    }
+    .register-vector59 {
+    top: 245.685546875px;
+    left: 148.1048126220703px;
+    width: 73px;
+    height: 123px;
+    position: absolute;
+    }
+    .register-vector60 {
+    top: 248.54800415039062px;
+    left: 161.63272094726562px;
+    width: 10px;
+    height: 27px;
+    position: absolute;
+    }
+    .register-vector61 {
+    top: 259.93963623046875px;
+    left: 168.54978942871094px;
+    width: 85px;
+    height: 16px;
+    position: absolute;
+    }
+    .register-vector62 {
+    top: 328.501708984375px;
+    left: 85.26530456542969px;
+    width: 58px;
+    height: 91px;
+    position: absolute;
+    }
+    .register-vector63 {
+    top: 494.6331787109375px;
+    left: 201.5064697265625px;
+    width: 27px;
+    height: 31px;
+    position: absolute;
+    }
+    .register-vector64 {
+    top: 542.79150390625px;
+    left: 0.00002655772004800383px;
+    width: 29px;
+    height: 25px;
+    position: absolute;
+    }
+    .register-vector65 {
+    top: 463.0645446777344px;
+    left: 228.8015899658203px;
+    width: 5px;
+    height: 6px;
+    position: absolute;
+    }
+    .register-vector66 {
+    top: 530.9874877929688px;
+    left: 60.9652099609375px;
+    width: 4px;
+    height: 8px;
+    position: absolute;
+    }
+    .register-vector67 {
+    top: 399.92059326171875px;
+    left: 152.6950225830078px;
+    width: 75px;
+    height: 31px;
+    position: absolute;
+    }
+    .register-vector68 {
+    top: 262.7538146972656px;
+    left: 262.83050537109375px;
+    width: 31px;
+    height: 24px;
+    position: absolute;
+    }
+    .register-vector69 {
+    top: 264.5746154785156px;
+    left: 270.1614074707031px;
+    width: 24px;
+    height: 12px;
+    position: absolute;
+    }
+    .register-vector70 {
+    top: 460.91015625px;
+    left: 32.027809143066406px;
+    width: 81px;
+    height: 18px;
+    position: absolute;
+    }
+    .register-vector71 {
+    top: 138.05752563476562px;
+    left: 262.87542724609375px;
+    width: 12px;
+    height: 61px;
+    position: absolute;
+    }
+    .register-vector72 {
+    top: 145.451904296875px;
+    left: 371.3619384765625px;
+    width: 14px;
+    height: 56px;
+    position: absolute;
+    }
+    .register-vector73 {
+    top: 154.10455322265625px;
+    left: 378.1224365234375px;
+    width: 9px;
+    height: 13px;
+    position: absolute;
+    }
+    .register-vector74 {
+    top: 213.26126098632812px;
+    left: 374.90576171875px;
+    width: 37px;
+    height: 20px;
+    position: absolute;
+    }
+    .register-vector75 {
+    top: 196.25228881835938px;
+    left: 290.30780029296875px;
+    width: 15px;
+    height: 6px;
+    position: absolute;
+    }
+    .register-vector76 {
+    top: 200.52740478515625px;
+    left: 293.8676452636719px;
+    width: 8px;
+    height: 5px;
+    position: absolute;
+    }
+    .register-vector77 {
+    top: 137.33096313476562px;
+    left: 336.6365661621094px;
+    width: 30px;
+    height: 18px;
+    position: absolute;
+    }
+    .register-vector78 {
+    top: 131.63328552246094px;
+    left: 302.77276611328125px;
+    width: 8px;
+    height: 17px;
+    position: absolute;
+    }
+    .register-vector79 {
+    top: 119.97161865234375px;
+    left: 324.3716735839844px;
+    width: 37px;
+    height: 30px;
+    position: absolute;
+    }
+    .register-vector80 {
+    top: 148.9383544921875px;
+    left: 331.6952209472656px;
+    width: 7px;
+    height: 7px;
+    position: absolute;
+    }
+    .register-text15 {
+    top: 717px;
+    left: 142px;
+    color: rgba(9, 4, 70, 1);
+    height: auto;
+    position: absolute;
+    font-size: 20px;
+    font-style: Regular;
+    text-align: left;
+    font-family: Poppins;
+    font-weight: 400;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+    }
+    .register-text17 {
+    top: 718px;
+    left: 384px;
+    color: rgba(9, 4, 70, 1);
+    height: auto;
+    position: absolute;
+    font-size: 20px;
+    font-style: SemiBold;
+    text-align: left;
+    font-family: Poppins;
+    font-weight: 600;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+    }

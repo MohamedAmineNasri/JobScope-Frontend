@@ -19,6 +19,8 @@ import JobDetails from "./pages/JOBLISTING/JobDetails";
 import DashAdminUser from "./pages/admin/DashAdminUser";
 import AdminDashJobs from "./pages/admin/AdminDashJobs";
 import AdminCatDash from "./pages/admin/AdminCatDash";
+import Signup from "./pages/Signup/Signup";
+import SignupCompany from "./pages/Signup/SignupCompany";
 
 
 function App() {
@@ -35,6 +37,8 @@ function App() {
           <Route path="/search/location/:location" element={<JobList />} />
           <Route path="/search/:keyword" element={<JobList />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/signupcompany" element={<SignupCompany />} />
           <Route path="/jobdetails/:id" element={<JobDetails />} />
           <Route
             path="/AdminDash"
