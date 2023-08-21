@@ -118,11 +118,22 @@ export const userSignUpAction = (userData) => async (dispatch) => {
   dispatch({ type: USER_SIGNUP_REQUEST });
 
   try {
-    const response = await axios.post("/api/signup", userData);
+    const formData = new FormData();
+    for (const key in userData) {
+      formData.append(key, userData[key]);
+    }
+
+    const response = await axios.post("/api/signup", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data", // Make sure to set the content type
+      },
+    });
+
+    console.log("Response from Backend:", response.data);
 
     dispatch({
       type: USER_SIGNUP_SUCCESS,
-      payload: response.data.user, // Adjust this according to your response structure
+      payload: response.data.user,
     });
   } catch (error) {
     dispatch({

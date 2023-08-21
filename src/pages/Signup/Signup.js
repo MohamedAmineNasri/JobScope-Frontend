@@ -36,29 +36,21 @@ import { userSignUpAction } from '../../redux/actions/userAction';
             const navigate = useNavigate();
 
             const formik = useFormik({
-            initialValues: {
+              initialValues: {
                 firstName: "",
                 lastName: "",
                 email: "",
                 password: "",
                 role: "user", // Set the initial role
-            },
-            validationSchema: validationSchema,
-            onSubmit: (values) => {
-                try {
-                    dispatch(userSignUpAction(values));
-                   // navigate("/login");
-                } catch (error) {
-                    
-                }
-                // Your submit logic here
-               // console.log(values);
-            },
+                cv: "",
+              },
+              validationSchema: validationSchema,
+              onSubmit: async (values) => {
+                console.log("Form Values:", values);
+                dispatch(userSignUpAction(values));
+              },
             });
-
-
             
-
         return (
         <div className="register-container">
             <Helmet>
@@ -173,6 +165,25 @@ import { userSignUpAction } from '../../redux/actions/userAction';
                     }
                     helperText={formik.touched.password && formik.errors.password}
                     />
+  <TextField
+  sx={{ mb: 3 }}
+  fullWidth
+  id="cv"
+  name="cv"
+  label="Upload CV (PDF)"
+  type="file" // Make sure the input type is set to "file"
+  InputLabelProps={{
+    shrink: true,
+  }}
+  inputProps={{
+    accept: '.pdf', // Specify the accepted file format
+  }}
+  onChange={(event) => formik.setFieldValue('cv', event.target.files[0])} // Set the value of the uploaded file
+  error={formik.touched.cv && Boolean(formik.errors.cv)}
+  helperText={formik.touched.cv && formik.errors.cv}
+/>
+
+
                     <Button
                     fullWidth
                     variant="contained"
