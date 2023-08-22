@@ -5,7 +5,7 @@
     import DashboardIcon from "@mui/icons-material/Dashboard";
     import WorkIcon from "@mui/icons-material/Work";
     import CategoryIcon from "@mui/icons-material/Category";
-    import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Paper, TextField, Typography } from "@mui/material";
+    import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, Paper, TextField, Typography } from "@mui/material";
     import { DataGrid, gridClasses } from "@mui/x-data-grid";
     import { Link, useParams } from "react-router-dom";
     import AddIcon from "@mui/icons-material/Add";
@@ -25,18 +25,16 @@ const AdminDashJobs = () => {
   const [jobdescription, setjobdescription] = useState("");
   const [jobdsalary, setjobdsalary] = useState("");
   const [selectedJobId, setSelectedJobId] = useState(null);
+  const [page, setPage] = useState(1);
+  const [cat, setCat] = React.useState("");
+  const { keyword, location: urlLocation } = useParams(); // Rename location to urlLocation
+  const { jobType } = useSelector((state) => state.jobTypeAll);
+  const [location, setLocation] = useState("");
+  const [selectedjobId, setSelectedjobid] = useState(null);
 
-  // const [page, setPage] = useState(1);
-  // const [cat, setCat] = React.useState("");
-  // const { keyword, location } = useParams();
-  // const { jobType } = useSelector((state) => state.jobTypeAll);
-  // const [location, setLocation] = useState("");
-    const [page, setPage] = useState(1);
-    const [cat, setCat] = React.useState("");
-    const { keyword, location: urlLocation } = useParams(); // Rename location to urlLocation
-    const { jobType } = useSelector((state) => state.jobTypeAll);
-    const [location, setLocation] = useState("");
-    const [selectedjobId, setSelectedjobid] = useState(null);
+
+  const [year, setYear] = useState(""); // Add year state
+  const [specialization, setSpecialization] = useState(""); // Add specialization state
 
   useEffect(() => {
     dispatch(jobLoadAction());
@@ -66,20 +64,31 @@ const AdminDashJobs = () => {
     setjobdsalary("");
   };
   // const handleCreateJob = () => {
-  //   //dispatch(createJobTypeAction(categoryName));
+  //   const jobData = {
+  //     title: jobtitle,
+  //     description: jobdescription,
+  //     salary: jobdsalary,
+  //     location: location, // Use the selected location
+  //     JobType: cat,
+  //   };
+  //   dispatch(createJobAction(jobData));
   //   handleCloseDialogCreate();
   // };
+
   const handleCreateJob = () => {
     const jobData = {
       title: jobtitle,
       description: jobdescription,
       salary: jobdsalary,
-      location: location, // Use the selected location
+      location: location,
       JobType: cat,
+      year: year, // Add year
+      specialization: specialization, // Add specialization
     };
     dispatch(createJobAction(jobData));
     handleCloseDialogCreate();
   };
+
   const handleChangeLocation = (e) => {
     setLocation(e.target.value); // Update the location state
   };
@@ -91,17 +100,30 @@ const AdminDashJobs = () => {
   let data = [];
   //data = jobs !== undefined && jobs.length > 0 ? jobs : [];
   const [gridData, setGridData] = useState([]);
-    useEffect(() => {
-      if (jobs) {
-        setGridData(jobs);
-      }
-    }, [jobs]);
+  useEffect(() => {
+    if (jobs) {
+      setGridData(jobs);
+    }
+  }, [jobs]);
 
   //delete job by Id
   const deleteJobById = (e, id) => {
     console.log(id);
   };
 
+  // const handleUpdateJob = () => {
+  //   const jobData = {
+  //     title: jobtitle,
+  //     description: jobdescription,
+  //     salary: jobdsalary,
+  //     location: location,
+  //     JobType: cat,
+  //   };
+  //   if (selectedJobId) {
+  //     dispatch(updateJobAction(selectedJobId, jobData.title, jobData.salary)); // Pass the correct field names
+  //     handleCloseDialog();
+  //   }
+  // };
 const handleUpdateJob = () => {
   const jobData = {
     title: jobtitle,
@@ -109,21 +131,21 @@ const handleUpdateJob = () => {
     salary: jobdsalary,
     location: location,
     JobType: cat,
+    year: year, // Add year
+    specialization: specialization, // Add specialization
   };
   if (selectedJobId) {
-    dispatch(updateJobAction(selectedJobId, jobData.title, jobData.salary)); // Pass the correct field names
+    dispatch(updateJobAction(selectedJobId, jobData.title, jobData.salary));
     handleCloseDialog();
   }
 };
 
-
-
-   const handleDeleteJob = (id) => {
-     if (window.confirm("Are you sure you want to delete this Job Offer?")) {
-       dispatch(deleteJobAction(id));
-       console.log(id);
-     }
-   };
+  const handleDeleteJob = (id) => {
+    if (window.confirm("Are you sure you want to delete this Job Offer?")) {
+      dispatch(deleteJobAction(id));
+      console.log(id);
+    }
+  };
 
   useEffect(() => {
     dispatch(jobLoadAction(page, keyword, cat, location));
@@ -134,20 +156,6 @@ const handleUpdateJob = () => {
   useEffect(() => {
     dispatch(jobTypeLoadAction());
   }, []);
-
-  //   const handleUpdateCategory = () => {
-  //     if (selectedCategoryId) {
-  //       dispatch(updateJobTypeAction(selectedCategoryId, categoryName)); // Dispatch your update action
-  //       handleCloseDialog();
-  //     }
-  //   };
-
-  //   const handleDeleteCategory = (categoryId) => {
-  //     if (window.confirm("Are you sure you want to delete this category?")) {
-  //       dispatch(deleteJobTypeAction(categoryId));
-  //     }
-  //   };
-
   const columns = [
     {
       field: "_id",
@@ -443,6 +451,61 @@ const handleUpdateJob = () => {
                           handleChangeLocation={handleChangeLocation} // Pass the handler
                           location={location}
                         />
+                         <TextField
+      select
+      fullWidth
+      id="year"
+      label="Year"
+      name="year"
+      InputLabelProps={{
+        shrink: true,
+      }}
+      value={year}
+      onChange={(e) => setYear(e.target.value)}
+      //error={/* Handle error based on your validation logic */}
+      //helperText={/* Helper text based on your validation logic */}
+    >
+      {["first", "second", "third", "fourth", "fifth"].map((yearOption) => (
+        <MenuItem key={yearOption} value={yearOption}>
+          {yearOption}
+        </MenuItem>
+      ))}
+    </TextField>
+
+    <TextField
+      select
+      fullWidth
+      id="specialization"
+      label="Specialization"
+      name="specialization"
+      InputLabelProps={{
+        shrink: true,
+      }}
+      value={specialization}
+      onChange={(e) => setSpecialization(e.target.value)}
+     // error={/* Handle error based on your validation logic */}
+     // helperText={/* Helper text based on your validation logic */}
+    >
+      {[
+        "CLOUD",
+        "TWIN",
+        "DS",
+        "SIM",
+        "BI",
+        "SAE",
+        "WIN",
+        "IOSYS",
+        "SLEAM",
+        "INFINI",
+        "GAMIX",
+        "NIDS",
+        "SE",
+      ].map((specializationOption) => (
+        <MenuItem key={specializationOption} value={specializationOption}>
+          {specializationOption}
+        </MenuItem>
+      ))}
+    </TextField>
                       </DialogContent>
                       <DialogActions>
                         <Button
@@ -456,10 +519,7 @@ const handleUpdateJob = () => {
                         </Button>
                       </DialogActions>
                     </Dialog>
-                    <Dialog
-                      open={isDialogOpen}
-                      onClose={handleCloseDialog}
-                    >
+                    <Dialog open={isDialogOpen} onClose={handleCloseDialog}>
                       <DialogTitle>Update Job Offer</DialogTitle>
                       <DialogContent>
                         {/* Add your form or content for creating a category */}
