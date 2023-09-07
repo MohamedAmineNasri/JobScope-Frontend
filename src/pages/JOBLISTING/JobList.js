@@ -880,19 +880,19 @@ const logOutUser = () => {
             <div className={styles["container1"]}>
               <div className={styles["frame471"]}>
                 <div className={styles["group3"]}>
-                  <img
+                  {/* <img
                     src="/external2/ellipse81534-p1-200h.png"
                     alt="Ellipse81534"
                     className={styles["ellipse8"]}
-                  />
+                  /> */}
                   <img
-                    src="/external2/ellipse91535-ssik-200h.png"
+                    src="/external2/espritlogo.jpg"
                     alt="Ellipse91535"
                     className={styles["ellipse9"]}
                   />
                 </div>
                 <span className={styles["text181"]}>
-                  <span>namless</span>
+                  {/* <span>namless</span> */}
                 </span>
               </div>
               <div className={styles["column"]}>
@@ -900,10 +900,14 @@ const logOutUser = () => {
                   <span>Start a search</span>
                 </span>
                 <span className={styles["text185"]}>
-                  <span>Jobs list</span>
+                  <Link to="/joblist" className={styles["text185"]}>
+                    Jobs list
+                  </Link>
                 </span>
                 <span className={styles["text187"]}>
-                  <span>Salary estimate</span>
+                  <Link to="/joblist" className={styles["text185"]}>
+                    Home
+                  </Link>
                 </span>
                 <span className={styles["text189"]}>
                   <span>Pricing</span>

@@ -21,6 +21,13 @@ import AdminDashJobs from "./pages/admin/AdminDashJobs";
 import AdminCatDash from "./pages/admin/AdminCatDash";
 import Signup from "./pages/Signup/Signup";
 import SignupCompany from "./pages/Signup/SignupCompany";
+import JobOffers from "./pages/admin/JobOffers";
+import CompanyRoute from "./components/CompanyRoute";
+import CompanyDashUser from "./pages/company/CompanyDashUser";
+import CompanyDashJobs from "./pages/company/CompanyDashJobs";
+import CompanyJobOffers from "./pages/company/CompanyJobOffers";
+import CompanyInfoDashboard from "./pages/company/CompanyInfoDashboard";
+import CompanyAccountDashboard from "./pages/company/CompanyAccountDashboard";
 
 
 function App() {
@@ -40,6 +47,8 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/signupcompany" element={<SignupCompany />} />
           <Route path="/jobdetails/:id" element={<JobDetails />} />
+    
+
           <Route
             path="/AdminDash"
             element={
@@ -57,6 +66,22 @@ function App() {
             }
           />
           <Route
+            path="/JobOffer"
+            element={
+              <AdminRoute>
+                <JobOffers />
+              </AdminRoute>
+            }
+          />
+          <Route
+            path="/CompanyJobOffer"
+            element={
+              <CompanyRoute>
+                <CompanyJobOffers />
+              </CompanyRoute>
+            }
+          />
+          <Route
             path="/AdminUserDash"
             element={
               <AdminRoute>
@@ -64,12 +89,21 @@ function App() {
               </AdminRoute>
             }
           />
+
           <Route
             path="/AdminJobsDash"
             element={
               <AdminRoute>
                 <AdminDashJobs />
               </AdminRoute>
+            }
+          />
+          <Route
+            path="/CompanyJobsDash"
+            element={
+              <CompanyRoute>
+                <CompanyDashJobs />
+              </CompanyRoute>
             }
           />
           <Route
@@ -97,11 +131,27 @@ function App() {
             }
           />
           <Route
+            path="/CompanyInfo"
+            element={
+              <CompanyRoute>
+                <CompanyInfoDashboard />
+              </CompanyRoute>
+            }
+          />
+          <Route
             path="/UserDash"
             element={
               <UserRoute>
                 <UserDashboard />
               </UserRoute>
+            }
+          />
+          <Route
+            path="/CompanyDash"
+            element={
+              <CompanyRoute>
+                <CompanyAccountDashboard />
+              </CompanyRoute>
             }
           />
           {/* Home Dashboard For User */}
@@ -111,6 +161,14 @@ function App() {
               <UserRoute>
                 <HomeDashUser />
               </UserRoute>
+            }
+          />
+          <Route
+            path="/CompanyHomeDash"
+            element={
+              <CompanyRoute>
+                <CompanyDashUser />
+              </CompanyRoute>
             }
           />
         </Routes>

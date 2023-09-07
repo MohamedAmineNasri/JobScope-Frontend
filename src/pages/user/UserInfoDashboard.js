@@ -18,23 +18,23 @@ import { userProfileAction } from "../../redux/actions/userAction";
     return (
         <>
         <Box sx={{ maxWidth: "80%", margin: "auto", pt: 10 }}>
-            <Card sx={{ minWidth: 1200, bgcolor: palette.secondary.midNightBlue }}>
+            <Card sx={{ minWidth: 1200, bgcolor: "#f05151" }}>
             <CardContent>
-                <Typography sx={{ fontSize: 16 }} color="#000000" gutterBottom>
+                <Typography sx={{ fontSize: 16 }} color="white" gutterBottom>
                 Personal Info
                 </Typography>
                 <hr style={{ marginBottom: "30px" }} />
-                <Typography variant="h6" component="div" sx={{ color: "#000000" }}>
+                <Typography variant="h6" component="div" sx={{ color: "white" }}>
                 First name: {user && user.firstName}
                 </Typography>
-                <Typography variant="h6" component="div" sx={{ color: "#000000" }}>
+                <Typography variant="h6" component="div" sx={{ color: "white" }}>
                 Last name: {user && user.lastName}
                 </Typography>
-                <Typography variant="h6" component="div" sx={{ color: "#000000" }}>
+                <Typography variant="h6" component="div" sx={{ color: "white" }}>
                 E-mail: {user && user.email}
                 </Typography>
                 <Typography
-                sx={{ mb: 1.5, color: "grey", pt: 2 }}
+                sx={{ mb: 1.5, color: "white", pt: 2 }}
                 color="text.secondary"
                 >
                 Status: {user && user.role === "user" ? "Regular user" : "Admin"}

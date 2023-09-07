@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { jobLoadAction } from '../redux/actions/jobAction';
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { jobTypeLoadAction } from '../redux/actions/jobTypeAction';
+import styles from "./JOBLISTING/jobofferplatform.module.css";
+
 
 
 const Home = () => {
@@ -12,8 +14,10 @@ const Home = () => {
     const [cat, setCat] = React.useState("");
     const { keyword, location } = useParams();
     const jobTypes = useSelector(state => state.jobTypes); // Access the job types from the redux store
-
-
+    const { userInfo } = useSelector((state) => state.signIn);
+const linkStyle = {
+    textDecoration: "none", // Hide the underline
+  };
     useEffect(() => {
           dispatch(jobLoadAction(page, keyword, cat, location));
       }, [page, keyword, cat, location]);
@@ -24,6 +28,13 @@ const Home = () => {
      const handleChangeCategory = (e) => {
         setCat(e.target.value);
     }
+
+    const navigate = useNavigate();
+
+    const logOutUser = () => {
+  localStorage.removeItem("userInfo");
+  navigate("/login");
+};
 
  // State to track expanded job titles
   const [expandedJobTitles, setExpandedJobTitles] = useState({});
@@ -85,32 +96,77 @@ const Home = () => {
           <div className="desktop7-container">
             <div className="desktop7-desktop7">
               <div className="desktop7-group337">
-                <div className="desktop7-group334">
-                  <span className="desktop7-text">
-                    <span>Staffing</span>
-                    <span>Solutions</span>
+                <div className={styles["navbar"]}>
+                  <div className={styles["container1"]}>
+                    <div className={styles["frame471"]}>
+                      <div className={styles["group3"]}>
+                        <img
+                          src="/external2/espritlogo.jpg"
+                          alt="Ellipse91535"
+                          className={styles["ellipse9"]}
+                        />
+                      </div>
+                      <span className={styles["text181"]}>
+                        {/* <span>Esprit Job Scope</span> */}
+                      </span>
+                    </div>
+                    <div className={styles["column"]}>
+                      <span className={styles["text183"]}>
+                        <span>Start a search</span>
+                      </span>
+                      <span className={styles["text185"]}>
+                        <Link to="/joblist" className={styles["text185"]}>
+                          Jobs list
+                        </Link>
+                      </span>
+                      <span className={styles["text187"]}>
+                        <Link to="/joblist" className={styles["text185"]}>
+                          Home
+                        </Link>
+                      </span>
+                      <span className={styles["text189"]}>
+                        <span>Pricing</span>
+                      </span>
+                    </div>
+                    <div
+                      className={styles["column1"]}
+                      style={{ marginRight: "100px" }}
+                    >
+                      {/* <button className={styles["button10"]}>
+                  <span className={styles["text191"]}>
+                    <Link to="/login" style={linkStyle}>
+                      Log in
+                    </Link>
                   </span>
-                  <img
-                    src="/external/vector3926-qd.svg"
-                    alt="Magnifying glass icon for search"
-                    className="desktop7-vector39"
-                  />
+                </button> */}
+                      <div className={styles["button10"]}>
+                        <span className={styles["text191"]}>
+                          {userInfo ? (
+                            <button
+                              onClick={logOutUser}
+                              className={styles["button09"]}
+                              style={{ cursor: "pointer" }}
+                            >
+                              Log Out
+                            </button>
+                          ) : (
+                            <Link to="/login" style={linkStyle}>
+                              Log In
+                            </Link>
+                          )}
+                        </span>
+                      </div>
+                      {!userInfo && (
+                        <button className={styles["button11"]}>
+                          <span className={styles["text193"]}>
+                            <span>Sign up</span>
+                          </span>
+                        </button>
+                      )}
+                    </div>
+                  </div>
                 </div>
-                <div className="desktop7-frame337">
-                  <span className="desktop7-text003">
-                    <span>Home</span>
-                  </span>
-                  <span className="desktop7-text005">
-                    <span>Find Jobs</span>
-                  </span>
-                  <span className="desktop7-text007">
-                    <span>Find Candidates</span>
-                  </span>
-                  <span className="desktop7-text009">
-                    <span>Articles</span>
-                  </span>
-                </div>
-                <div className="desktop7-group336">
+                {/* <div className="desktop7-group336">
                   <span className="desktop7-text011">
                     <span>Log in</span>
                   </span>
@@ -119,7 +175,7 @@ const Home = () => {
                       <span>Register Now</span>
                     </span>
                   </div>
-                </div>
+                </div> */}
               </div>
               <span className="desktop7-text015">
                 <span className="desktop7-text016">Get The</span>
@@ -450,85 +506,146 @@ const Home = () => {
                 <span>Featured Job Circulars</span>
               </span>
               {/* job cards */}
-<div>
-      {/* Your existing code here */}
-      <div className="desktop7-group355">
-        {jobs &&
-          jobs.map((job, index) => (
-            <div
-              key={job._id}
-              style={{
-                top: `${Math.floor(index / 4) * 328}px`,
-                left: `${(index % 4) * 294}px`,
-                width: '268px',
-                height: '308px',
-                display: 'flex',
-                position: 'absolute',
-                alignItems: 'flex-start',
-                flexShrink: 1,
-              }}
-              >
-              <img alt="Rectangle1582114" src="external/rectangle1582114-kys.svg" className="desktop7-rectangle158" />
-              <div className="desktop7-group354">
-                <div className="desktop7-group353">
-                  <img alt="Ellipse892117" src="external/ellipse892117-9tff-200h.png" className="desktop7-ellipse89" />
-                  <div className="desktop7-group352" style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    {/* Use JavaScript to conditionally truncate or expand the title */}
-                    <span
-                      className="desktop7-text091"
-                      style={{ marginRight: '8px', whiteSpace: 'nowrap', cursor: 'pointer' }}
-                    >
-                        {job.jobType ? jobTypeMap[job.jobType] : "No category"}               
-                    </span>
-                    <span className="desktop7-text093">Microsoft</span>
-                  </div>
-                </div>
-                {/* ... Your other code ... */}
-                <div className="desktop7-group350">
-                  <span className="desktop7-text095">
-                    <span>Location:{job.location}</span>
-                  </span>
-                  <span className="desktop7-text097" style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <span
-                      style={{ marginRight: '8px', whiteSpace: 'nowrap', cursor: 'pointer' }}
-                      onClick={() => toggleExpandedJobTitle(job._id)}
-                    >
-                      {expandedJobTitles[job._id] ? job.title : job.title.slice(0, 18) + '...'}
-                      
-                    </span>
-                  </span>
-                </div>
-                <span
-                  className="desktop7-text099"
-                  style={{ cursor: 'pointer' }}
-                  onClick={() => toggleExpandedJobDescription(job._id)}
-                >
-                  <span>
-                    {expandedJobDescriptions[job._id] ? job.description : job.description.slice(0, 181) + '...'}
-                  </span>
-                </span>
-                <div className="desktop7-group35401">
-                  <span className="desktop7-text101">
-                    <span>{job.salary} DT</span>
-                  </span>
-                  <div className="desktop7-group394">
-                    <div className="desktop7-group349">
-                      <span className="desktop7-text103">
-                        <span>See More</span>
-                      </span>
-                    </div>
-                  </div>
+              <div>
+                {/* Your existing code here */}
+                <div className="desktop7-group355">
+                  {jobs &&
+                    jobs.slice(0, 8).map(
+                      (
+                        job,
+                        index // Use slice to get the first 6 items
+                      ) => (
+                        <div
+                          key={job._id}
+                          style={{
+                            top: `${Math.floor(index / 4) * 328}px`,
+                            left: `${(index % 4) * 294}px`,
+                            width: "268px",
+                            height: "308px",
+                            display: "flex",
+                            position: "absolute",
+                            alignItems: "flex-start",
+                            flexShrink: 1,
+                          }}
+                        >
+                          <img
+                            alt="Rectangle1582114"
+                            src="external/rectangle1582114-kys.svg"
+                            className="desktop7-rectangle158"
+                          />
+                          <div className="desktop7-group354">
+                            <div className="desktop7-group353">
+                              <img
+                                alt="Ellipse892117"
+                                src="external/ellipse892117-9tff-200h.png"
+                                className="desktop7-ellipse89"
+                              />
+                              <div
+                                className="desktop7-group352"
+                                style={{
+                                  flexDirection: "row",
+                                  alignItems: "center",
+                                }}
+                              >
+                                {/* Use JavaScript to conditionally truncate or expand the title */}
+                                <span
+                                  className="desktop7-text091"
+                                  style={{
+                                    marginRight: "8px",
+                                    whiteSpace: "nowrap",
+                                    cursor: "pointer",
+                                  }}
+                                >
+                                  {job.jobType
+                                    ? jobTypeMap[job.jobType]
+                                    : "No category"}
+                                </span>
+                                <span className="desktop7-text093">
+                                  Microsoft
+                                </span>
+                              </div>
+                            </div>
+                            {/* ... Your other code ... */}
+                            <div className="desktop7-group350">
+                              <span className="desktop7-text095">
+                                <span>Location:{job.location}</span>
+                              </span>
+                              <span
+                                className="desktop7-text097"
+                                style={{
+                                  flexDirection: "row",
+                                  alignItems: "center",
+                                }}
+                              >
+                                <span
+                                  style={{
+                                    marginRight: "8px",
+                                    whiteSpace: "nowrap",
+                                    cursor: "pointer",
+                                  }}
+                                  onClick={() =>
+                                    toggleExpandedJobTitle(job._id)
+                                  }
+                                >
+                                  {expandedJobTitles[job._id]
+                                    ? job.title
+                                    : job.title.slice(0, 18) + "..."}
+                                </span>
+                              </span>
+                            </div>
+                            <span
+                              className="desktop7-text099"
+                              style={{ cursor: "pointer" }}
+                              onClick={() =>
+                                toggleExpandedJobDescription(job._id)
+                              }
+                            >
+                              <span>
+                                {expandedJobDescriptions[job._id]
+                                  ? job.description
+                                  : job.description.slice(0, 181) + "..."}
+                              </span>
+                            </span>
+                            <div className="desktop7-group35401">
+                              <span className="desktop7-text101">
+                                <span>{job.salary} DT</span>
+                              </span>
+                              <div className="desktop7-group394">
+                                <div className="desktop7-group349">
+                                  {/* <span className="desktop7-text103">
+                                  <span>See More</span>
+                                </span> */}
+                                  <span className={styles["text161"]}>
+                                    <Link
+                                      style={{
+                                        textDecoration: "none",
+                                        color: "white",
+                                        boxShadow: 0,
+                                      }}
+                                      to={`/jobdetails/${job._id}`}
+                                    >
+                                      <span
+                                        className="desktop7-text103"
+                                        style={{
+                                          display: "flex",
+                                          justifyContent: "center", // Horizontally center the content
+                                          alignItems: "center", // Vertically center the content
+                                        }}
+                                      >
+                                        See More
+                                      </span>
+                                    </Link>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )
+                    )}
                 </div>
               </div>
-            </div>
-          ))}
-      </div>
-    </div>
 
-              
-              
-              
-              
               <div className="desktop7-group361">
                 <span className="desktop7-text211">
                   <span>Find More Jobs</span>
@@ -2227,12 +2344,12 @@ const Home = () => {
                 <div className="desktop7-frame368">
                   <div className="desktop7-group3341">
                     <span className="desktop7-text232">
-                      <span>Staffing</span>
-                      <span>Solutions</span>
+                      {/* <span>Staffing</span>
+                      <span>Solutions</span> */}
                     </span>
                     <img
                       alt="Vector392636"
-                      src="external/vector392636-hhv.svg"
+                      src="/external2/espritlogo.jpg"
                       className="desktop7-vector391"
                     />
                   </div>
@@ -2258,45 +2375,13 @@ const Home = () => {
                     src="external/vector412643-klz5.svg"
                     className="desktop7-vector41"
                   />
-                  <span className="desktop7-text245">
-                    <span>@staffingSolutions All right reserved.</span>
-                  </span>
+                
                 </div>
               </div>
               <span className="desktop7-text247">
                 <span>Enter your email...</span>
               </span>
             </div>
-            <footer className="desktop7-footer">
-              <img
-                alt="logo"
-                src="https://presentation-website-assets.teleporthq.io/logos/logo.png"
-                className="desktop7-image"
-              />
-              <span className="desktop7-text249">
-                © 2021 teleportHQ, All Rights Reserved.
-              </span>
-              <div className="desktop7-icon-group">
-                <svg
-                  viewBox="0 0 950.8571428571428 1024"
-                  className="desktop7-icon"
-                >
-                  <path d="M925.714 233.143c-25.143 36.571-56.571 69.143-92.571 95.429 0.571 8 0.571 16 0.571 24 0 244-185.714 525.143-525.143 525.143-104.571 0-201.714-30.286-283.429-82.857 14.857 1.714 29.143 2.286 44.571 2.286 86.286 0 165.714-29.143 229.143-78.857-81.143-1.714-149.143-54.857-172.571-128 11.429 1.714 22.857 2.857 34.857 2.857 16.571 0 33.143-2.286 48.571-6.286-84.571-17.143-148-91.429-148-181.143v-2.286c24.571 13.714 53.143 22.286 83.429 23.429-49.714-33.143-82.286-89.714-82.286-153.714 0-34.286 9.143-65.714 25.143-93.143 90.857 112 227.429 185.143 380.571 193.143-2.857-13.714-4.571-28-4.571-42.286 0-101.714 82.286-184.571 184.571-184.571 53.143 0 101.143 22.286 134.857 58.286 41.714-8 81.714-23.429 117.143-44.571-13.714 42.857-42.857 78.857-81.143 101.714 37.143-4 73.143-14.286 106.286-28.571z"></path>
-                </svg>
-                <svg
-                  viewBox="0 0 877.7142857142857 1024"
-                  className="desktop7-icon2"
-                >
-                  <path d="M585.143 512c0-80.571-65.714-146.286-146.286-146.286s-146.286 65.714-146.286 146.286 65.714 146.286 146.286 146.286 146.286-65.714 146.286-146.286zM664 512c0 124.571-100.571 225.143-225.143 225.143s-225.143-100.571-225.143-225.143 100.571-225.143 225.143-225.143 225.143 100.571 225.143 225.143zM725.714 277.714c0 29.143-23.429 52.571-52.571 52.571s-52.571-23.429-52.571-52.571 23.429-52.571 52.571-52.571 52.571 23.429 52.571 52.571zM438.857 152c-64 0-201.143-5.143-258.857 17.714-20 8-34.857 17.714-50.286 33.143s-25.143 30.286-33.143 50.286c-22.857 57.714-17.714 194.857-17.714 258.857s-5.143 201.143 17.714 258.857c8 20 17.714 34.857 33.143 50.286s30.286 25.143 50.286 33.143c57.714 22.857 194.857 17.714 258.857 17.714s201.143 5.143 258.857-17.714c20-8 34.857-17.714 50.286-33.143s25.143-30.286 33.143-50.286c22.857-57.714 17.714-194.857 17.714-258.857s5.143-201.143-17.714-258.857c-8-20-17.714-34.857-33.143-50.286s-30.286-25.143-50.286-33.143c-57.714-22.857-194.857-17.714-258.857-17.714zM877.714 512c0 60.571 0.571 120.571-2.857 181.143-3.429 70.286-19.429 132.571-70.857 184s-113.714 67.429-184 70.857c-60.571 3.429-120.571 2.857-181.143 2.857s-120.571 0.571-181.143-2.857c-70.286-3.429-132.571-19.429-184-70.857s-67.429-113.714-70.857-184c-3.429-60.571-2.857-120.571-2.857-181.143s-0.571-120.571 2.857-181.143c3.429-70.286 19.429-132.571 70.857-184s113.714-67.429 184-70.857c60.571-3.429 120.571-2.857 181.143-2.857s120.571-0.571 181.143 2.857c70.286 3.429 132.571 19.429 184 70.857s67.429 113.714 70.857 184c3.429 60.571 2.857 120.571 2.857 181.143z"></path>
-                </svg>
-                <svg
-                  viewBox="0 0 602.2582857142856 1024"
-                  className="desktop7-icon4"
-                >
-                  <path d="M548 6.857v150.857h-89.714c-70.286 0-83.429 33.714-83.429 82.286v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571c0-144.571 88.571-223.429 217.714-223.429 61.714 0 114.857 4.571 130.286 6.857z"></path>
-                </svg>
-              </div>
-            </footer>
           </div>
         </div>
       </div>

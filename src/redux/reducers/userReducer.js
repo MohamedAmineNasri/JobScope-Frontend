@@ -4,6 +4,9 @@ import {
   ALL_USER_LOAD_REQUEST,
   ALL_USER_LOAD_RESET,
   ALL_USER_LOAD_SUCCESS,
+  GET_USERS_APPLIED_TO_JOB_FAIL,
+  GET_USERS_APPLIED_TO_JOB_REQUEST,
+  GET_USERS_APPLIED_TO_JOB_SUCCESS,
   USER_APPLY_JOB_FAIL,
   USER_APPLY_JOB_REQUEST,
   USER_APPLY_JOB_RESET,
@@ -44,6 +47,23 @@ export const userReducerSignIn = (state = {}, action) => {
       };
     case USER_SIGNIN_RESET:
       return {};
+    case GET_USERS_APPLIED_TO_JOB_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case GET_USERS_APPLIED_TO_JOB_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        appliedUsers: action.payload,
+      };
+    case GET_USERS_APPLIED_TO_JOB_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
     default:
       return state;
   }
@@ -141,3 +161,5 @@ export const userReducerSignUp = (state = {}, action) => {
       return state;
   }
 };
+
+

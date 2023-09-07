@@ -5566,10 +5566,10 @@
   text-decoration: none;
 }
 .details-vector39 {
-  top: 20px;
+  top: 5px;
   left: 0px;
   width: 104px;
-  height: 17px;
+  height: 50px;
   position: absolute;
 }
 .details-text077 {
@@ -10970,7 +10970,7 @@
   text-decoration: none;
 }
 .details-job-details {
-  top: 86px;
+  top: 109px;
   left: 19px;
   width: 1440px;
   height: 500px;
@@ -11025,7 +11025,7 @@
 .details-text151 {
   top: 110px;
   left: 334px;
-  color: rgba(0, 0, 0, 1);
+  color: red;
   width: 964px;
   height: auto;
   position: absolute;
@@ -11033,10 +11033,13 @@
   font-style: Medium;
   text-align: left;
   font-family: Poppins;
-  font-weight: 500;
   line-height: 80px;
   font-stretch: normal;
   text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  font-weight: bold;
 }
 .details-text153 {
   top: 602px;
@@ -11124,7 +11127,7 @@ gap: 8px;
 .details-text226 {
   top: 567px;
   left: 84px;
-  color: rgba(0, 0, 0, 1);
+  color: red;
   width: 295px;
   height: auto;
   position: absolute;
@@ -11132,7 +11135,7 @@ gap: 8px;
   font-style: Bold;
   text-align: left;
   font-family: Poppins;
-  font-weight: 700;
+  font-weight: bold;
   line-height: 30px;
   font-stretch: normal;
   text-decoration: none;
@@ -11181,7 +11184,8 @@ gap: 8px;
   font-weight: 300;
 }
 .details-text250 {
-  font-weight: 500;
+  font-weight: bold;
+  color: red;
 }
 .details-text251 {
   font-weight: 400;
@@ -11200,6 +11204,8 @@ gap: 8px;
 }
 .details-text262 {
   font-weight: 600;
+  color: red;
+  font-weight: bold;
 }
 .details-text263 {
   font-weight: 700;

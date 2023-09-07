@@ -1,252 +1,261 @@
-    import React, { useEffect, useState } from 'react'
-    import { Helmet } from "react-helmet";
-    import "./AdminDashboard.css";
-    import GroupAddIcon from "@mui/icons-material/GroupAdd";
-    import DashboardIcon from "@mui/icons-material/Dashboard";
-    import WorkIcon from "@mui/icons-material/Work";
-    import CategoryIcon from "@mui/icons-material/Category";
-    import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, Paper, TextField, Typography } from "@mui/material";
-    import { DataGrid, gridClasses } from "@mui/x-data-grid";
-    import { Link, useNavigate, useParams } from "react-router-dom";
-    import AddIcon from "@mui/icons-material/Add";
-import { useDispatch, useSelector } from 'react-redux';
-import { createJobAction, deleteJobAction, jobLoadAction, updateJobAction } from '../../redux/actions/jobAction';
-import SelectComponent from '../../components/SelectComponent';
-import { jobTypeLoadAction } from '../../redux/actions/jobTypeAction';
-import SelectComponentLocation from '../../components/SelectComponentLocation';
-import { allUserAction, userLogoutAction } from '../../redux/actions/userAction';
+import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
+import "../admin/AdminDashboard.css";
+import GroupAddIcon from "@mui/icons-material/GroupAdd";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import WorkIcon from "@mui/icons-material/Work";
+import CategoryIcon from "@mui/icons-material/Category";
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  MenuItem,
+  Paper,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { DataGrid, gridClasses } from "@mui/x-data-grid";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import AddIcon from "@mui/icons-material/Add";
+import { useDispatch, useSelector } from "react-redux";
 import LogoutIcon from "@mui/icons-material/Logout";
-//import { DataGrid } from "@mui/x-data-grid";
+import {
+  createJobAction,
+  deleteJobAction,
+  jobLoadAction,
+  updateJobAction,
+} from "../../redux/actions/jobAction";
+import SelectComponent from "../../components/SelectComponent";
+import { jobTypeLoadAction } from "../../redux/actions/jobTypeAction";
+import SelectComponentLocation from "../../components/SelectComponentLocation";
+import { allUserAction, userLogoutAction, userProfileAction } from "../../redux/actions/userAction";
 
-
-const AdminDashJobs = () => {
-  const dispatch = useDispatch();
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [isDialogOpenCreate, setisDialogOpenCreate] = useState(false);
-  const [jobtitle, setjobtitle] = useState("");
-  const [jobdescription, setjobdescription] = useState("");
-  const [jobdsalary, setjobdsalary] = useState("");
-  const [selectedJobId, setSelectedJobId] = useState(null);
-  const [page, setPage] = useState(1);
-  const [cat, setCat] = React.useState("");
-  const { keyword, location: urlLocation } = useParams(); // Rename location to urlLocation
-  const { jobType } = useSelector((state) => state.jobTypeAll);
-  const [location, setLocation] = useState("");
-  const [selectedjobId, setSelectedjobid] = useState(null);
-          const linkStyle = {
-            color: "#000", // Set the desired color for visited links
-            textDecoration: "none", // Remove underline
-            // Add other styling properties if needed
-          };
-
-
-  const [year, setYear] = useState(""); // Add year state
-  const [specialization, setSpecialization] = useState(""); // Add specialization state
-
-  useEffect(() => {
-    dispatch(jobLoadAction());
-  }, []);
-  const handleOpenDialog = (jobId) => {
-    setIsDialogOpen(true);
-    setSelectedJobId(jobId);
-  };
-
-    useEffect(() => {
-      dispatch(allUserAction());
-    }, []);
-
-  const handleCloseDialog = () => {
-    setIsDialogOpen(false);
-    setSelectedJobId(null);
-    setjobtitle("");
-    setjobdescription("");
-    setjobdsalary("");
-  };
-  const handleOpenDialogCreate = (jobId) => {
-    setisDialogOpenCreate(true);
-    setSelectedJobId(jobId);
-  };
-
-  const handleCloseDialogCreate = () => {
-    setisDialogOpenCreate(false);
-    setSelectedJobId(null);
-    setjobtitle("");
-    setjobdescription("");
-    setjobdsalary("");
-  };
-  // const handleCreateJob = () => {
-  //   const jobData = {
-  //     title: jobtitle,
-  //     description: jobdescription,
-  //     salary: jobdsalary,
-  //     location: location, // Use the selected location
-  //     JobType: cat,
-  //   };
-  //   dispatch(createJobAction(jobData));
-  //   handleCloseDialogCreate();
-  // };
-
-  const handleCreateJob = () => {
-    const jobData = {
-      title: jobtitle,
-      description: jobdescription,
-      salary: jobdsalary,
-      location: location,
-      JobType: cat,
-      year: year, // Add year
-      specialization: specialization, // Add specialization
-    };
-    dispatch(createJobAction(jobData));
-    handleCloseDialogCreate();
-  };
-
-  const handleChangeLocation = (e) => {
-    setLocation(e.target.value); // Update the location state
-  };
-
-  //const { jobs, loading } = useSelector((state) => state.loadJobs);
-  const { jobs, setUniqueLocation, pages, loading } = useSelector(
-    (state) => state.loadJobs
-  );
-  let data = [];
-  //data = jobs !== undefined && jobs.length > 0 ? jobs : [];
-  const [gridData, setGridData] = useState([]);
-  useEffect(() => {
-    if (jobs) {
-      setGridData(jobs);
-    }
-  }, [jobs]);
-
-  //delete job by Id
-  const deleteJobById = (e, id) => {
-    console.log(id);
-  };
-
-  // const handleUpdateJob = () => {
-  //   const jobData = {
-  //     title: jobtitle,
-  //     description: jobdescription,
-  //     salary: jobdsalary,
-  //     location: location,
-  //     JobType: cat,
-  //   };
-  //   if (selectedJobId) {
-  //     dispatch(updateJobAction(selectedJobId, jobData.title, jobData.salary)); // Pass the correct field names
-  //     handleCloseDialog();
-  //   }
-  // };
-const handleUpdateJob = () => {
-  const jobData = {
-    title: jobtitle,
-    description: jobdescription,
-    salary: jobdsalary,
-    location: location,
-    JobType: cat,
-    year: year, // Add year
-    specialization: specialization, // Add specialization
-  };
-  if (selectedJobId) {
-    dispatch(updateJobAction(selectedJobId, jobData.title, jobData.salary));
-    handleCloseDialog();
-  }
-};
-
-  const handleDeleteJob = (id) => {
-    if (window.confirm("Are you sure you want to delete this Job Offer?")) {
-      dispatch(deleteJobAction(id));
-      console.log(id);
-    }
-  };
-
-  useEffect(() => {
-    dispatch(jobLoadAction(page, keyword, cat, location));
-  }, [page, keyword, cat, location]);
-  const handleChangeCategory = (e) => {
-    setCat(e.target.value);
-  };
-  useEffect(() => {
-    dispatch(jobTypeLoadAction());
-  }, []);
-  const columns = [
-    {
-      field: "_id",
-      headerName: "Job ID",
-      width: 150,
-      editable: true,
-    },
-    {
-      field: "title",
-      headerName: "Job name",
-      width: 150,
-    },
-    {
-      field: "jobType",
-      headerName: "Category",
-      width: 150,
-      valueGetter: (data) =>
-        data.row.jobType ? data.row.jobType.jobTypeName : "N/A",
-    },
-    // {
-    //   field: "user",
-    //   headerName: "User",
-    //   width: 150,
-    //   valueGetter: (data) => data.row.user.firstName,
-    // },
-    {
-      field: "available",
-      headerName: "available",
-      width: 150,
-      renderCell: (values) => (values.row.available ? "Yes" : "No"),
-    },
-
-    {
-      field: "salary",
-      headerName: "Salary",
-      type: Number,
-      width: 150,
-      renderCell: (values) => "$" + values.row.salary,
-    },
-
-    {
-      field: "Actions",
-      width: 200,
-      renderCell: (values) => (
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            width: "170px",
-          }}
-        >
-          <Button
-            variant="contained"
-            onClick={() => handleOpenDialog(values.row._id)}
-          >
-            Edit
-          </Button>
-          <Button
-            onClick={() => handleDeleteJob(values.row._id)}
-            variant="contained"
-            color="error"
-          >
-            Delete
-          </Button>
-        </Box>
-      ),
-    },
-  ];
-  const navigate = useNavigate();
-
-     const { userInfo } = useSelector((state) => state.signIn);
-     const logOutUser = () => {
-       localStorage.removeItem("userInfo");
-       dispatch(userLogoutAction()); // Dispatch your logout action if needed
-       navigate("/login");
+const CompanyDashJobs = () => {
+     const dispatch = useDispatch();
+     const [isDialogOpen, setIsDialogOpen] = useState(false);
+     const [isDialogOpenCreate, setisDialogOpenCreate] = useState(false);
+     const [jobtitle, setjobtitle] = useState("");
+     const [jobdescription, setjobdescription] = useState("");
+     const [jobdsalary, setjobdsalary] = useState("");
+     const [selectedJobId, setSelectedJobId] = useState(null);
+     const [page, setPage] = useState(1);
+     const [cat, setCat] = React.useState("");
+     const { keyword, location: urlLocation } = useParams(); // Rename location to urlLocation
+     const { jobType } = useSelector((state) => state.jobTypeAll);
+     const [location, setLocation] = useState("");
+     const [selectedjobId, setSelectedjobid] = useState(null);
+     const linkStyle = {
+       color: "#000", // Set the desired color for visited links
+       textDecoration: "none", // Remove underline
+       // Add other styling properties if needed
      };
+
+     const [year, setYear] = useState(""); // Add year state
+     const [specialization, setSpecialization] = useState(""); // Add specialization state
+
+     useEffect(() => {
+       dispatch(jobLoadAction());
+     }, []);
+     const handleOpenDialog = (jobId) => {
+       setIsDialogOpen(true);
+       setSelectedJobId(jobId);
+     };
+
+     useEffect(() => {
+       dispatch(allUserAction());
+     }, []);
+
+     const handleCloseDialog = () => {
+       setIsDialogOpen(false);
+       setSelectedJobId(null);
+       setjobtitle("");
+       setjobdescription("");
+       setjobdsalary("");
+     };
+     const handleOpenDialogCreate = (jobId) => {
+       setisDialogOpenCreate(true);
+       setSelectedJobId(jobId);
+     };
+
+     const handleCloseDialogCreate = () => {
+       setisDialogOpenCreate(false);
+       setSelectedJobId(null);
+       setjobtitle("");
+       setjobdescription("");
+       setjobdsalary("");
+     };
+     // const handleCreateJob = () => {
+     //   const jobData = {
+     //     title: jobtitle,
+     //     description: jobdescription,
+     //     salary: jobdsalary,
+     //     location: location, // Use the selected location
+     //     JobType: cat,
+     //   };
+     //   dispatch(createJobAction(jobData));
+     //   handleCloseDialogCreate();
+     // };
+
+     const handleCreateJob = () => {
+       const jobData = {
+         title: jobtitle,
+         description: jobdescription,
+         salary: jobdsalary,
+         location: location,
+         JobType: cat,
+         year: year, // Add year
+         specialization: specialization, // Add specialization
+       };
+       dispatch(createJobAction(jobData));
+       handleCloseDialogCreate();
+     };
+
+     const handleChangeLocation = (e) => {
+       setLocation(e.target.value); // Update the location state
+     };
+
+     //const { jobs, loading } = useSelector((state) => state.loadJobs);
+     const { jobs, setUniqueLocation, pages, loading } = useSelector(
+       (state) => state.loadJobs
+     );
+     let data = [];
+     //data = jobs !== undefined && jobs.length > 0 ? jobs : [];
+     const { user } = useSelector((state) => state.userProfile);
+      useEffect(() => {
+        dispatch(userProfileAction());
+      }, []);
+     const [gridData, setGridData] = useState([]);
+    useEffect(() => {
+      if (user && jobs) {
+        // Check if user and jobs are not null or undefined
+        const userJobs = jobs.filter((job) => job.user === user._id);
+        console.log("user id", user._id);
+        console.log("the created the job id", jobs.filter((job) => job.user));
+        setGridData(userJobs);
+      }
+    }, [jobs, user]);
+
+     //delete job by Id
+     const deleteJobById = (e, id) => {
+       console.log(id);
+     };
+
+     const handleUpdateJob = () => {
+       const jobData = {
+         title: jobtitle,
+         description: jobdescription,
+         salary: jobdsalary,
+         location: location,
+         JobType: cat,
+         year: year, // Add year
+         specialization: specialization, // Add specialization
+       };
+       if (selectedJobId) {
+         dispatch(
+           updateJobAction(selectedJobId, jobData.title, jobData.salary)
+         );
+         handleCloseDialog();
+       }
+     };
+
+     const handleDeleteJob = (id) => {
+       if (window.confirm("Are you sure you want to delete this Job Offer?")) {
+         dispatch(deleteJobAction(id));
+         console.log(id);
+       }
+     };
+
+     useEffect(() => {
+       dispatch(jobLoadAction(page, keyword, cat, location));
+     }, [page, keyword, cat, location]);
+     const handleChangeCategory = (e) => {
+       setCat(e.target.value);
+     };
+     useEffect(() => {
+       dispatch(jobTypeLoadAction());
+     }, []);
+     const columns = [
+       {
+         field: "_id",
+         headerName: "Job ID",
+         width: 150,
+         editable: true,
+       },
+       {
+         field: "title",
+         headerName: "Job name",
+         width: 150,
+       },
+       {
+         field: "jobType",
+         headerName: "Category",
+         width: 150,
+         valueGetter: (data) =>
+           data.row.jobType ? data.row.jobType.jobTypeName : "N/A",
+       },
+       // {
+       //   field: "user",
+       //   headerName: "User",
+       //   width: 150,
+       //   valueGetter: (data) => data.row.user.firstName,
+       // },
+       {
+         field: "available",
+         headerName: "available",
+         width: 150,
+         renderCell: (values) => (values.row.available ? "Yes" : "No"),
+       },
+
+       {
+         field: "salary",
+         headerName: "Salary",
+         type: Number,
+         width: 150,
+         renderCell: (values) => "$" + values.row.salary,
+       },
+
+       {
+         field: "Actions",
+         width: 200,
+         renderCell: (values) => (
+           <Box
+             sx={{
+               display: "flex",
+               justifyContent: "space-between",
+               width: "170px",
+             }}
+           >
+             <Button
+               variant="contained"
+               onClick={() => handleOpenDialog(values.row._id)}
+             >
+               Edit
+             </Button>
+             <Button
+               onClick={() => handleDeleteJob(values.row._id)}
+               variant="contained"
+               color="error"
+             >
+               Delete
+             </Button>
+           </Box>
+         ),
+       },
+     ];
+       const navigate = useNavigate();
+        const { userInfo } = useSelector((state) => state.signIn);
+        const logOutUser = () => {
+          localStorage.removeItem("userInfo");
+          dispatch(userLogoutAction()); // Dispatch your logout action if needed
+          navigate("/login");
+        };
   return (
     <div className="dashboard-container">
       <Helmet>
-        <title>exported project</title>
+        <title>Company Dashboard</title>
       </Helmet>
       <div className="dashboard-dashboard">
         <div className="dashboard-frame1">
@@ -278,37 +287,23 @@ const handleUpdateJob = () => {
                 <div className="dashboard-appspages">
                   <div className="dashboard-list-item1">
                     <div className="dashboard-container02">
-                      <Link
-                        to="/AdminDash"
-                        className="dashboard-link"
-                        style={linkStyle}
-                      >
-                        <div className="dashboard-icon01">
+                      <div className="dashboard-icon01">
+                        <Link
+                          to="/CompanyHomeDash"
+                          style={{ color: "inherit", textDecoration: "none" }}
+                        >
                           <DashboardIcon />
-                        </div>
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="dashboard-list-item2">
-                    <div className="dashboard-container03">
-                      <Link
-                        to="/AdminUserDash"
-                        className="dashboard-link"
-                        style={linkStyle}
-                      >
-                        <div className="dashboard-icon02">
-                          <GroupAddIcon />
-                        </div>
-                      </Link>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                   <div className="dashboard-list-item3">
                     <div className="dashboard-container04">
                       <div className="dashboard-icon03">
                         <Link
-                          to="/AdminJobsDash"
+                          to="/CompanyJobsDash"
                           className="dashboard-link"
-                          style={linkStyle}
+                          style={{ color: "inherit", textDecoration: "none" }}
                         >
                           <WorkIcon />
                         </Link>
@@ -318,25 +313,28 @@ const handleUpdateJob = () => {
                   <div className="dashboard-list-item3">
                     <div className="dashboard-icon03">
                       <Link
-                        to="/JobOffer"
+                        to="/CompanyJobOffer"
                         className="dashboard-link"
-                        style={linkStyle}
+                        style={{ color: "inherit", textDecoration: "none" }}
                       >
                         <WorkIcon />
                       </Link>
                     </div>
                   </div>
-                  <div className="dashboard-list-item4">
-                    <div className="dashboard-container05">
-                      <Link
-                        to="/AdminCatDash"
-                        className="dashboard-link"
-                        style={linkStyle}
-                      >
-                        <div className="dashboard-icon04">
-                          <CategoryIcon />
-                        </div>
-                      </Link>
+                  <div className="dashboard-list-item3">
+                    <div className="dashboard-container04">
+                      <div className="dashboard-icon03">
+                        <Link
+                          to="/CompanyDash"
+                          style={{ color: "inherit", textDecoration: "none" }}
+                        >
+                          <img
+                            src="/external4/personoutline1174-82b9.svg"
+                            alt="PersonOutline1174"
+                            className="dashboard-person-outline"
+                          />
+                        </Link>
+                      </div>
                     </div>
                   </div>
                   <div className="dashboard-list-item1">
@@ -651,4 +649,4 @@ const handleUpdateJob = () => {
   );
 };
 
-export default AdminDashJobs
+export default CompanyDashJobs;

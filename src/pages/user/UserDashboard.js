@@ -3,11 +3,22 @@
     import './UserDashboard.css'
     import DashboardIcon from '@mui/icons-material/Dashboard';
     import WorkHistoryIcon from "@mui/icons-material/WorkHistory";
-import UserJobsHistory from './UserJobsHistory';
-import { Link } from 'react-router-dom';
-import UserInfoDashboard from './UserInfoDashboard';
+    import UserJobsHistory from './UserJobsHistory';
+    import { Link, useNavigate } from 'react-router-dom';
+    import UserInfoDashboard from './UserInfoDashboard';
+    import LogoutIcon from '@mui/icons-material/Logout';
+    import { useDispatch, useSelector } from 'react-redux';
+    import { userLogoutAction } from '../../redux/actions/userAction';
 
     const UserDashboard = () => {
+      const navigate = useNavigate();
+     const dispatch = useDispatch();
+     const { userInfo } = useSelector((state) => state.signIn);
+     const logOutUser = () => {
+       localStorage.removeItem("userInfo");
+       dispatch(userLogoutAction()); // Dispatch your logout action if needed
+       navigate("/login");
+     };
     return (
       <div className="dashboard-container">
         <Helmet>
@@ -22,11 +33,16 @@ import UserInfoDashboard from './UserInfoDashboard';
                     <div className="dashboard-list-item">
                       <div className="dashboard-container01">
                         <div className="dashboard-icon">
-                          <img
-                            src="/external4/homeoutlined1174-3fl.svg"
-                            alt="HomeOutlined1174"
-                            className="dashboard-home-outlined"
-                          />
+                          <Link
+                            to="/"
+                            style={{ color: "inherit", textDecoration: "none" }}
+                          >
+                            <img
+                              src="/external4/homeoutlined1174-3fl.svg"
+                              alt="HomeOutlined1174"
+                              className="dashboard-home-outlined"
+                            />
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -78,6 +94,23 @@ import UserInfoDashboard from './UserInfoDashboard';
                               className="dashboard-person-outline"
                             />
                           </Link>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="dashboard-list-item1">
+                      <div className="dashboard-container02">
+                        <div className="dashboard-icon01">
+                          <button
+                            onClick={logOutUser}
+                            style={{
+                              background: "none",
+                              border: "none",
+                              padding: 0,
+                              cursor: "pointer",
+                            }}
+                          >
+                            <LogoutIcon />
+                          </button>
                         </div>
                       </div>
                     </div>

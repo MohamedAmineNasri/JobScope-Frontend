@@ -2,11 +2,12 @@
         import { Helmet } from "react-helmet";
         import "./register.css";
         import * as yup from "yup";
-    import { useFormik } from 'formik';
-    import { Box, Button, MenuItem, TextField } from '@mui/material';
-import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import { userSignUpAction } from '../../redux/actions/userAction';
+        import { useFormik } from 'formik';
+        import { Box, Button, MenuItem, TextField } from '@mui/material';
+        import { useDispatch } from 'react-redux';
+        import { Link, useNavigate } from 'react-router-dom';
+        import { userSignUpAction } from '../../redux/actions/userAction';
+
 
         const validationSchema = yup.object({
           firstName: yup
@@ -77,8 +78,12 @@ import { userSignUpAction } from '../../redux/actions/userAction';
 
               validationSchema: validationSchema,
               onSubmit: async (values) => {
-                console.log("Form Values:", values);
-                dispatch(userSignUpAction(values));
+                try {
+                  await dispatch(userSignUpAction(values));
+                  navigate("/login");
+                } catch (error) {
+                  // Handle error
+                }
               },
             });
             
@@ -731,14 +736,14 @@ import { userSignUpAction } from '../../redux/actions/userAction';
                   />
                 </div>
               </div>
-              {/* <span className="register-text15">
-                <span>Already signed up ?</span>
+              <span className="register-text15" style={{ top: "1000px" }}>
+                <span>Already signed up?</span>
               </span>
-              <span className="register-text17">
+              <span className="register-text17" style={{ top: "1000px" }}>
                 <Link to="/login">
                   <span>Click Here</span>
                 </Link>
-              </span> */}
+              </span>
             </div>
           </div>
         );

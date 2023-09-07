@@ -2,11 +2,12 @@ import { Helmet } from "react-helmet";
 import './JobDetails.css'
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { jobLoadAction, jobLoadSingleAction } from "../../redux/actions/jobAction";
 import { jobTypeLoadAction } from "../../redux/actions/jobTypeAction";
-import { userApplyJobAction } from "../../redux/actions/userAction";
+import { allUserAction, userApplyJobAction } from "../../redux/actions/userAction";
 import styles from "./jobofferplatform.module.css";
+
 
 
 const JobDetails = () => {
@@ -18,6 +19,16 @@ const JobDetails = () => {
     const [cat, setCat] = React.useState("");
     const { keyword, location } = useParams();
     const jobTypes = useSelector((state) => state.jobTypes); // Access the job types from the redux store
+     const { userInfo } = useSelector((state) => state.signIn);
+      const navigate = useNavigate();
+      const linkStyle = {
+        textDecoration: "none", // Hide the underline
+      };
+
+      const logOutUser = () => {
+        localStorage.removeItem("userInfo");
+        navigate("/login");
+      };
 
     useEffect(() => {
       dispatch(jobLoadAction(page, keyword, cat, location));
@@ -29,6 +40,10 @@ const JobDetails = () => {
     const handleChangeCategory = (e) => {
       setCat(e.target.value);
     };
+
+      useEffect(() => {
+            dispatch(allUserAction());
+        }, []);
 
     // State to track expanded job titles
     const [expandedJobTitles, setExpandedJobTitles] = useState({});
@@ -61,16 +76,36 @@ const JobDetails = () => {
           dispatch(jobLoadSingleAction(id));
         }, [id]);
 
-        const applyForAJob = () => {
-          dispatch(
-            userApplyJobAction({
-              title: singleJob && singleJob.title,
-              description: singleJob && singleJob.description,
-              salary: singleJob && singleJob.salary,
-              location: singleJob && singleJob.location,
-            })
-          );
-        };
+      const applyForAJob = () => {
+        const jobId = singleJob && singleJob._id;
+        console.log("Job ID:", jobId); // Add this line to check the value
+        dispatch(
+          userApplyJobAction({
+            jobId,
+            title: singleJob && singleJob.title,
+            description: singleJob && singleJob.description,
+            salary: singleJob && singleJob.salary,
+            location: singleJob && singleJob.location,
+          })
+        );
+      };
+      const { users, loadingg } = useSelector((state) => state.allUsers);
+      console.log("users",users)
+      const userId = singleJob && singleJob.user;
+      console.log("userId", userId);
+      let userDisplayName = ""; // Initialize an empty string
+
+      if (userId) {
+        // Find the user in the users array by matching the _id
+        const matchingUser = users.find((user) => user._id === userId);
+
+        if (matchingUser) {
+          // If a matching user is found, set the display name to the userName if it exists, or firstName if it doesn't
+          userDisplayName = matchingUser.userName || matchingUser.firstName;
+        }
+      }
+      
+
         
   return (
     <div className="details-container">
@@ -78,34 +113,80 @@ const JobDetails = () => {
         <title>exported project</title>
       </Helmet>
       <div className="details-desktop7">
-        <div className="details-group337">
-          <div className="details-group334">
-            <span className="details-text">
-              <span>Jobefy</span>
-            </span>
-          </div>
-          <div className="details-frame337">
-            <span className="details-text002">
-              <span>Home</span>
-            </span>
-            <span className="details-text004">
-              <span>Find Jobs</span>
-            </span>
-            <span className="details-text006">
-              <span>Find Candidates</span>
-            </span>
-            <span className="details-text008">
-              <span>Articles</span>
-            </span>
-          </div>
-          <div className="details-group336">
-            <span className="details-text010">
-              <span>Log in</span>
-            </span>
-            <div className="details-group335">
-              <span className="details-text012">
-                <span>Register Now</span>
-              </span>
+        <div className="desktop7-group337">
+          <div className={styles["navbar"]}>
+            <div className={styles["container1"]}>
+              <div className={styles["frame471"]}>
+                <div className={styles["group3"]}>
+                  {/* <img
+                    src="/external2/ellipse81534-p1-200h.png"
+                    alt="Ellipse81534"
+                    className={styles["ellipse8"]}
+                  /> */}
+                  <img
+                    src="/external2/espritlogo.jpg"
+                    alt="Ellipse91535"
+                    className={styles["ellipse9"]}
+                  />
+                </div>
+                <span className={styles["text181"]}>
+                  {/* <span>namless</span> */}
+                </span>
+              </div>
+              <div className={styles["column"]}>
+                <span className={styles["text183"]}>
+                  <span>Start a search</span>
+                </span>
+                <span className={styles["text185"]}>
+                  <Link to="/joblist" className={styles["text185"]}>
+                    Jobs list
+                  </Link>
+                </span>
+                <span className={styles["text187"]}>
+                  <Link to="/joblist" className={styles["text185"]}>
+                    Home
+                  </Link>
+                </span>
+                <span className={styles["text189"]}>
+                  <span>Pricing</span>
+                </span>
+              </div>
+              <div
+                className={styles["column1"]}
+                style={{ marginRight: "100px" }}
+              >
+                {/* <button className={styles["button10"]}>
+                  <span className={styles["text191"]}>
+                    <Link to="/login" style={linkStyle}>
+                      Log in
+                    </Link>
+                  </span>
+                </button> */}
+                <div className={styles["button10"]}>
+                  <span className={styles["text191"]}>
+                    {userInfo ? (
+                      <button
+                        onClick={logOutUser}
+                        className={styles["button09"]}
+                        style={{ cursor: "pointer" }}
+                      >
+                        Log Out
+                      </button>
+                    ) : (
+                      <Link to="/login" style={linkStyle}>
+                        Log In
+                      </Link>
+                    )}
+                  </span>
+                </div>
+                {!userInfo && (
+                  <button className={styles["button11"]}>
+                    <span className={styles["text193"]}>
+                      <span>Sign up</span>
+                    </span>
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -119,14 +200,14 @@ const JobDetails = () => {
           <div className="details-group366">
             <span className="details-text070">
               <span className="details-text071">
-                Ne voulez-vous jamais manquer une
+                Never Want to Miss
                 <span
                   dangerouslySetInnerHTML={{
                     __html: " ",
                   }}
                 />
               </span>
-              <span>opportunité d&apos;emploi?</span>
+              <span>Any d&apos;Job News?</span>
             </span>
             <div className="details-group365">
               <div className="details-group363">
@@ -142,12 +223,12 @@ const JobDetails = () => {
         <div className="details-group390">
           <div className="details-frame368">
             <div className="details-group3341">
-              <span className="details-text075">
+              {/* <span className="details-text075">
                 <span>Jobefy</span>
-              </span>
+              </span> */}
               <img
                 alt="Vector391561"
-                src="/external5/vector391561-4x5q.svg"
+                src="/external2/espritlogo.jpg"
                 className="details-vector39"
               />
             </div>
@@ -173,9 +254,6 @@ const JobDetails = () => {
               src="/external5/vector411561-rkv.svg"
               className="details-vector41"
             />
-            <span className="details-text087">
-              <span>@Jobefy All right reserved.</span>
-            </span>
           </div>
         </div>
         <span className="details-text089">
@@ -184,99 +262,111 @@ const JobDetails = () => {
         <div className="details-frame372">
           <div>
             {/* Your existing code here */}
+            {/* <div className="details-group3504"></div> */}
             <div className="details-group3504">
               {jobs &&
-                jobs.map((job, index) => (
-                  <div
-                    key={job._id}
-                    style={{
-                      top: `${Math.floor(index / 4) * 328}px`,
-                      left: `${(index % 4) * 294}px`,
-                      width: "268px",
-                      height: "308px",
-                      display: "flex",
-                      position: "absolute",
-                      alignItems: "flex-start",
-                      flexShrink: 1,
-                    }}
-                  >
-                    <img className="desktop7-rectangle158" />
-                    <div className="desktop7-group354">
-                      <div className="desktop7-group353">
-                        {/* <img
+                jobs.slice(0, 8).map(
+                  (
+                    job,
+                    index // Use slice to get the first 6 items
+                  ) => (
+                    <div
+                      key={job._id}
+                      style={{
+                        top: `${Math.floor(index / 4) * 328}px`,
+                        left: `${(index % 4) * 294}px`,
+                        width: "268px",
+                        height: "308px",
+                        display: "flex",
+                        position: "absolute",
+                        alignItems: "flex-start",
+                        flexShrink: 1,
+                      }}
+                    >
+                      <img className="desktop7-rectangle158" />
+                      <div className="desktop7-group354">
+                        <div className="desktop7-group353">
+                          {/* <img
                           alt="Ellipse892117"
                           src="/external2/ellipse892117-9tff-200h.png"
                           className="desktop7-ellipse89"
                         /> */}
-                        <div
-                          className="desktop7-group352"
-                          style={{ flexDirection: "row", alignItems: "center" }}
-                        >
-                          {/* Use JavaScript to conditionally truncate or expand the title */}
-                          <span
-                            className="desktop7-text091"
+                          <div
+                            className="desktop7-group352"
                             style={{
-                              marginRight: "8px",
-                              whiteSpace: "nowrap",
-                              cursor: "pointer",
+                              flexDirection: "row",
+                              alignItems: "center",
                             }}
                           >
-                            {job.jobType
-                              ? jobTypeMap[job.jobType]
-                              : "No category"}
-                          </span>
-                          <span className="desktop7-text093">Microsoft</span>
-                        </div>
-                      </div>
-                      {/* ... Your other code ... */}
-                      <div className="desktop7-group350">
-                        <span className="desktop7-text095">
-                          <span>Location:{job.location}</span>
-                        </span>
-                        <span
-                          className="desktop7-text097"
-                          style={{ flexDirection: "row", alignItems: "center" }}
-                        >
-                          <span
-                            style={{
-                              marginRight: "8px",
-                              whiteSpace: "nowrap",
-                              cursor: "pointer",
-                            }}
-                            onClick={() => toggleExpandedJobTitle(job._id)}
-                          >
-                            {expandedJobTitles[job._id]
-                              ? job.title
-                              : job.title.slice(0, 18) + "..."}
-                          </span>
-                        </span>
-                      </div>
-                      <span
-                        className="desktop7-text099"
-                        style={{ cursor: "pointer" }}
-                        onClick={() => toggleExpandedJobDescription(job._id)}
-                      >
-                        <span>
-                          {expandedJobDescriptions[job._id]
-                            ? job.description
-                            : job.description.slice(0, 181) + "..."}
-                        </span>
-                      </span>
-                      <div className="desktop7-group35401">
-                        <span className="desktop7-text101">
-                          <span>{job.salary} DT</span>
-                        </span>
-                        <div className="desktop7-group394">
-                          <div className="desktop7-group349">
-                            <span className="desktop7-text103">
-                              <span>See More</span>
+                            {/* Use JavaScript to conditionally truncate or expand the title */}
+                            <span
+                              className="desktop7-text091"
+                              style={{
+                                marginRight: "8px",
+                                whiteSpace: "nowrap",
+                                cursor: "pointer",
+                              }}
+                            >
+                              {job.jobType
+                                ? jobTypeMap[job.jobType]
+                                : "No category"}
                             </span>
+                            <span className="desktop7-text093">Microsoft</span>
+                          </div>
+                        </div>
+                        {/* ... Your other code ... */}
+                        <div className="desktop7-group350">
+                          <span className="desktop7-text095">
+                            <span>Location:{job.location}</span>
+                          </span>
+                          <span
+                            className="desktop7-text097"
+                            style={{
+                              flexDirection: "row",
+                              alignItems: "center",
+                            }}
+                          >
+                            <span
+                              style={{
+                                marginRight: "8px",
+                                whiteSpace: "nowrap",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => toggleExpandedJobTitle(job._id)}
+                            >
+                              {expandedJobTitles[job._id]
+                                ? job.title
+                                : job.title.slice(0, 18) + "..."}
+                            </span>
+                          </span>
+                        </div>
+                        <span
+                          className="desktop7-text099"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => toggleExpandedJobDescription(job._id)}
+                        >
+                          <span>
+                            {expandedJobDescriptions[job._id]
+                              ? job.description
+                              : job.description.slice(0, 181) + "..."}
+                          </span>
+                        </span>
+                        <div className="desktop7-group35401">
+                          <span className="desktop7-text101">
+                            <span>{job.salary} DT</span>
+                          </span>
+                          <div className="desktop7-group394">
+                            <div className="desktop7-group349">
+                              <span className="desktop7-text103">
+                                <span>See More</span>
+                              </span>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  )
+                )}
             </div>
           </div>
         </div>
@@ -2100,7 +2190,7 @@ const JobDetails = () => {
             </span>
           </span>
           <span className="details-text231">
-            <span className="details-text232">Company:</span>
+            <span className="details-text232">Company: </span>
             <span className="details-text233">
               {/* <span
                 dangerouslySetInnerHTML={{
@@ -2109,7 +2199,7 @@ const JobDetails = () => {
               /> */}
             </span>
             <span className="details-text234">
-              <span>Bachelor</span>
+              <span>{userDisplayName}</span>
               <br></br>
               <br></br>
               <br></br>
@@ -2144,7 +2234,7 @@ const JobDetails = () => {
             <span className="details-text250">Location:</span>
 
             <span className="details-text252">
-              <span>{singleJob && singleJob.location}</span>
+              <span> {singleJob && singleJob.location}</span>
               <br></br>
               <br></br>
               <br></br>
@@ -2165,7 +2255,7 @@ const JobDetails = () => {
             </span> */}
             <span className="details-text262">Salary :</span>
 
-            <span>DT {singleJob && singleJob.salary}</span>
+            <span> DT {singleJob && singleJob.salary}</span>
           </span>
         </div>
       </div>

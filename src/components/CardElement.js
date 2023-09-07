@@ -12,10 +12,10 @@ import AddIcon from "@mui/icons-material/Add";
 
 const CardElement = ({ jobTitle, description, category, location, id }) => {
   return (
-    <Card sx={{ minWidth: 1000, mb: 7, mt: 7 }}>
+    <Card sx={{ minWidth: 1000, mb: 7, mt: 7, bgcolor: "#f05151" }}>
       <CardContent>
         <Typography
-        //   sx={{ fontSize: 15, color: palette.secondary.main, fontWeight: 500 }}
+          //   sx={{ fontSize: 15, color: palette.secondary.main, fontWeight: 500 }}
           gutterBottom
         >
           <IconButton>

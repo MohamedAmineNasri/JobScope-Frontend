@@ -4,6 +4,18 @@ import {
   ALL_USER_LOAD_FAIL,
   ALL_USER_LOAD_REQUEST,
   ALL_USER_LOAD_SUCCESS,
+  COMPANY_SIGNUP_FAIL,
+  COMPANY_SIGNUP_REQUEST,
+  COMPANY_SIGNUP_SUCCESS,
+  GET_APPLIED_USERS_FAIL,
+  GET_APPLIED_USERS_REQUEST,
+  GET_APPLIED_USERS_SUCCESS,
+  GET_USERS_APPLIED_TO_JOB_FAIL,
+  GET_USERS_APPLIED_TO_JOB_REQUEST,
+  GET_USERS_APPLIED_TO_JOB_SUCCESS,
+  UPDATE_USER_APPLICATION_STATUS_FAIL,
+  UPDATE_USER_APPLICATION_STATUS_REQUEST,
+  UPDATE_USER_APPLICATION_STATUS_SUCCESS,
   USER_APPLY_JOB_FAIL,
   USER_APPLY_JOB_REQUEST,
   USER_APPLY_JOB_SUCCESS,
@@ -20,6 +32,8 @@ import {
   USER_SIGNUP_REQUEST,
   USER_SIGNUP_SUCCESS,
 } from "../constants/userConstant";
+import { useNavigate } from "react-router-dom";
+
 
 export const userSignInAction = (user) => async (dispatch) => {
   dispatch({ type: USER_SIGNIN_REQUEST });
@@ -76,6 +90,7 @@ export const userProfileAction = () => async (dispatch) => {
     });
   }
 };
+
 //user job apply action
 export const userApplyJobAction = (job) => async (dispatch) => {
     dispatch({ type: USER_APPLY_JOB_REQUEST });
@@ -128,7 +143,7 @@ export const userSignUpAction = (userData) => async (dispatch) => {
         "Content-Type": "multipart/form-data", // Make sure to set the content type
       },
     });
-
+    toast.success("Signup Successfully!");
     console.log("Response from Backend:", response.data);
 
     dispatch({
@@ -142,3 +157,96 @@ export const userSignUpAction = (userData) => async (dispatch) => {
     });
   }
 };
+
+
+export const companySignUpAction = (companyData) => async (dispatch) => {
+  dispatch({ type: COMPANY_SIGNUP_REQUEST });
+
+  try {
+    const response = await axios.post("/api/signupcompany", companyData, {
+      headers: {
+        "Content-Type": "application/json", // Set the content type accordingly
+      },
+    });
+    toast.success("Signup Successfully!");
+    console.log("Response from Backend:", response.data);
+
+    dispatch({
+      type: COMPANY_SIGNUP_SUCCESS,
+      payload: response.data.user,
+    });
+  } catch (error) {
+    dispatch({
+      type: COMPANY_SIGNUP_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+// Action to fetch users who applied to a specific job
+// export const getUsersAppliedToJobAction = (jobId) => async (dispatch) => {
+//   dispatch({ type: GET_USERS_APPLIED_TO_JOB_REQUEST });
+
+//   try {
+//     const response = await axios.get(`/api/users/applied/${jobId}`);
+//     const appliedUsers = response.data.users;
+
+//     dispatch({
+//       type: GET_USERS_APPLIED_TO_JOB_SUCCESS,
+//       payload: appliedUsers,
+//     });
+//   } catch (error) {
+//     dispatch({
+//       type: GET_USERS_APPLIED_TO_JOB_FAIL,
+//       payload: error.response.data.error,
+//     });
+//   }
+// };
+export const getUsersAppliedToJobAction = (jobId) => async (dispatch) => {
+  dispatch({ type: GET_USERS_APPLIED_TO_JOB_REQUEST });
+
+  try {
+    const response = await axios.get(`/api/users/applied/${jobId}`);
+    const appliedUsers = response.data.users;
+
+    dispatch({
+      type: GET_USERS_APPLIED_TO_JOB_SUCCESS,
+      payload: appliedUsers,
+    });
+  } catch (error) {
+    dispatch({
+      type: GET_USERS_APPLIED_TO_JOB_FAIL,
+      payload: error.response.data.error,
+    });
+  }
+};
+
+
+
+export const updateUserApplicationStatusAction =
+  (userId, jobId, newStatus) => async (dispatch) => {
+    dispatch({ type: UPDATE_USER_APPLICATION_STATUS_REQUEST });
+
+    try {
+      // Make an API request to update the user's application status
+      const response = await axios.put(
+        `/api/user/${userId}/jobHistory/${jobId}`, // Updated URL
+        {
+          applicationStatus: newStatus,
+        }
+      );
+
+      // Dispatch success action
+      dispatch({
+        type: UPDATE_USER_APPLICATION_STATUS_SUCCESS,
+        payload: response.data, // You can pass the response data if needed
+      });
+    } catch (error) {
+      // Dispatch failure action with error message
+      dispatch({
+        type: UPDATE_USER_APPLICATION_STATUS_FAIL,
+        payload: error.response.data.error, // You can customize the error payload
+      });
+    }
+  };
+  

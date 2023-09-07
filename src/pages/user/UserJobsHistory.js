@@ -17,7 +17,7 @@ const UserJobsHistory = () => {
   return (
     <>
       <Box>
-        <Typography variant="h4" sx={{ color: "#000000" }}>
+        <Typography variant="h4" sx={{ color: "#f05151" }}>
           {" "}
           Jobs History
         </Typography>

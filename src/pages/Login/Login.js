@@ -7,7 +7,7 @@
         import { useFormik } from "formik";
         import * as yup from "yup";
     import { useDispatch, useSelector } from 'react-redux';
-    import { useNavigate } from "react-router-dom";
+    import { Link, useNavigate } from "react-router-dom";
     import { userSignInAction } from '../../redux/actions/userAction';
     import { Avatar, Box } from '@mui/material';
     import { USER_SIGNIN_SUCCESS } from '../../redux/constants/userConstant';
@@ -29,19 +29,19 @@
     const navigate = useNavigate();
     const { isAuthenticated } = useSelector((state) => state.signIn);
 
-    useEffect(() => {
+        useEffect(() => {
         if (isAuthenticated) {
-        const user = JSON.parse(localStorage.getItem("userInfo"));
-            {console.log("user is", user.role)}
-        //   {console.log("user is", user.user.role)}
-
-        if (user && user.role === "admin") {
+            const user = JSON.parse(localStorage.getItem("userInfo"));
+            if (user && user.role === "admin") {
             navigate("/AdminDash");
-        } else {
+            } else if (user && user.role === "company") {
+            navigate("/CompanyHomeDash");
+            } else {
             navigate("/UserHomeDash");
+            }
         }
-        }
-    }, [isAuthenticated, navigate]);
+        }, [isAuthenticated, navigate]);
+
 
     const handleSubmit = async (values, actions) => {
         const result = await dispatch(userSignInAction(values));
@@ -160,7 +160,10 @@
             <span className="sign-in-text07">
             <span>Don’t have an account?</span>
             </span>
-            <span className="sign-in-text11">Register Here As A Company</span>
+            {/* <span className="sign-in-text11">Register Here As A Company</span> */}
+            <Link to="/signupcompany" className="sign-in-text11">
+                Register Here As A Company
+            </Link>
             {/* <span className="sign-in-text12">
                 <span>Forget password?</span>
                 </span> */}
@@ -824,7 +827,9 @@
                     <span>sign in</span>
                 </span> */}
             </div>
-            <span className="sign-in-text16">Register As A Job Seeker</span>
+                        <Link to="/signup" className="sign-in-text16">
+                    Register As A Job Seeker
+                        </Link>
         </div>
         </div>
     );

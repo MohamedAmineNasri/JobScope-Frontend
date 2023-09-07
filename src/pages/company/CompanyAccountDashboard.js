@@ -1,41 +1,26 @@
-    import React from 'react'
+    import React from "react";
     import { Helmet } from "react-helmet";
-    import "./AdminDashboard.css";
-    import GroupAddIcon from "@mui/icons-material/GroupAdd";
+    import "../user/UserDashboard.css";
     import DashboardIcon from "@mui/icons-material/Dashboard";
+    import WorkHistoryIcon from "@mui/icons-material/WorkHistory";
+    import UserJobsHistory from "../user/UserJobsHistory";
+    import { Link, useNavigate } from "react-router-dom";
+    import UserInfoDashboard from "../user/UserInfoDashboard";
     import WorkIcon from "@mui/icons-material/Work";
-    import CategoryIcon from "@mui/icons-material/Category";
-    import StatComponent from "../../components/StatComponent.js";
-    import { Box, Stack, Typography } from "@mui/material";
-    import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
-    import ChartComponent from '../../components/ChartComponent';
-    import { Chart } from "react-google-charts";
-    import { data, options } from "./data/data";
-import { Link, useNavigate } from 'react-router-dom';
-import LogoutIcon from "@mui/icons-material/Logout";
-import { useDispatch, useSelector } from 'react-redux';
-import { userLogoutAction } from '../../redux/actions/userAction';
+    import CompanyInfoDashboard from "./CompanyInfoDashboard";
+    import { useDispatch, useSelector } from "react-redux";
+    import LogoutIcon from "@mui/icons-material/Logout";
+import { userLogoutAction } from "../../redux/actions/userAction";
 
-
-
-
-
-    const AdminDashboard = () => {
-            const linkStyle = {
-        color: "#000", // Set the desired color for visited links
-        textDecoration: "none", // Remove underline
-        // Add other styling properties if needed
-    };
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-     const { userInfo } = useSelector((state) => state.signIn);
-     const logOutUser = () => {
-       localStorage.removeItem("userInfo");
-       dispatch(userLogoutAction()); // Dispatch your logout action if needed
-       navigate("/login");
-     };
-
-        
+    const CompanyAccountDashboard = () => {
+          const navigate = useNavigate();
+         const dispatch = useDispatch();
+         const { userInfo } = useSelector((state) => state.signIn);
+         const logOutUser = () => {
+           localStorage.removeItem("userInfo");
+           dispatch(userLogoutAction()); // Dispatch your logout action if needed
+           navigate("/login");
+         };
     return (
         <div className="dashboard-container">
         <Helmet>
@@ -71,46 +56,46 @@ import { userLogoutAction } from '../../redux/actions/userAction';
                     <div className="dashboard-appspages">
                     <div className="dashboard-list-item1">
                         <div className="dashboard-container02">
-                            <Link to="/AdminDash" className="dashboard-link" style={linkStyle}>
                         <div className="dashboard-icon01">
+                            <Link
+                            to="/CompanyHomeDash"
+                            style={{ color: "inherit", textDecoration: "none" }}
+                            >
                             <DashboardIcon />
+                            </Link>
                         </div>
-                        </Link>
-                        </div>
-                    </div>
-                    <div className="dashboard-list-item2">
-                        <div className="dashboard-container03">
-                        <Link to="/AdminUserDash" className="dashboard-link" style={linkStyle}>
-                            <div className="dashboard-icon02">
-                            <GroupAddIcon />
-                            </div>
-                        </Link>
                         </div>
                     </div>
                     <div className="dashboard-list-item3">
                         <div className="dashboard-container04">
                         <div className="dashboard-icon03">
-                            <Link to="/AdminJobsDash" className="dashboard-link" style={linkStyle}>
+                            <Link to="/CompanyJobsDash" className="dashboard-link" style={{ color: "inherit", textDecoration: "none" }}>
                                 <WorkIcon/>
                             </Link>
                         </div>
+                        </div>
+                    </div>
+                    <div className="dashboard-list-item3">                        
+                        <div className="dashboard-icon03">
+                            <Link to="/CompanyJobOffer" className="dashboard-link" style={{ color: "inherit", textDecoration: "none" }}>
+                                <WorkIcon/>
+                            </Link>
                         </div>
                     </div>
                     <div className="dashboard-list-item3">
-                        
+                        <div className="dashboard-container04">
                         <div className="dashboard-icon03">
-                            <Link to="/JobOffer" className="dashboard-link" style={linkStyle}>
-                                <WorkIcon/>
+                            <Link
+                            to="/CompanyDash"
+                            style={{ color: "inherit", textDecoration: "none" }}
+                            >
+                            <img
+                                src="/external4/personoutline1174-82b9.svg"
+                                alt="PersonOutline1174"
+                                className="dashboard-person-outline"
+                            />
                             </Link>
                         </div>
-                    </div>
-                    <div className="dashboard-list-item4">
-                        <div className="dashboard-container05">
-                            <Link to="/AdminCatDash" className="dashboard-link" style={linkStyle}>
-                        <div className="dashboard-icon04">
-                            <CategoryIcon/>
-                        </div>
-                        </Link>
                         </div>
                     </div>
                     <div className="dashboard-list-item1">
@@ -128,30 +113,6 @@ import { userLogoutAction } from '../../redux/actions/userAction';
                             <LogoutIcon />
                             </button>
                         </div>
-                        </div>
-                    </div>
-                
-                    </div>
-                    <div className="dashboard-section-separator1">
-                    <div className="dashboard-list-subheader1">
-                        <img
-                        src="/external4/line11174-l1m5.svg"
-                        alt="Line11174"
-                        className="dashboard-line11"
-                        />
-                    </div>
-                    </div>
-                    <div className="dashboard-list-item6">
-        
-                    </div>
-                    <div className="dashboard-settings">
-                    <div className="dashboard-container08">
-                        <div className="dashboard-icon07">
-                        <img
-                            src="/external4/settings1174-c0iw.svg"
-                            alt="Settings1174"
-                            className="dashboard-settings1"
-                        />
                         </div>
                     </div>
                     </div>
@@ -219,51 +180,8 @@ import { userLogoutAction } from '../../redux/actions/userAction';
                 </div>
                 <div className="dashboard-table">
                     <div className="dashboard-content1">
-                        <Box>
-                <Typography variant="h4" sx={{ color: "white", pb: 3 }}>
-                    Dashboard
-                </Typography>
-                <Stack
-                    direction={{ xs: 'column', sm: 'row' }}
-                    spacing={{ xs: 1, sm: 2, md: 4 }}
-                >
-
-                    <StatComponent
-                        value="45621"
-                        icon={<SupervisorAccountIcon sx={{ color: "#fafafa", fontSize: 30 }} />}
-                        description="Administrators"
-                        money=''
-                    />
-                    <StatComponent
-                        value="450"
-                        icon={<WorkIcon sx={{ color: "#fafafa", fontSize: 30 }} />}
-                        description="Jobs"
-                        money=''
-                    />
-                    <StatComponent
-                        value="6548"
-                        icon={<CategoryIcon sx={{ color: "#fafafa", fontSize: 30 }} />}
-                        description="Jobs categories"
-                        money=''
-                    />
-
-                </Stack>
-
-                <Stack direction={{ xs: 'column', sm: 'row' }} sx={{ mt: 3 }}
-                    spacing={{ xs: 1, sm: 2, md: 4 }}>
-                    <ChartComponent>
-                        <Chart
-                            chartType="Bar"
-                            data={data}
-                            options={options}
-                            width="100%"
-                            height="300px"
-                            legendToggle
-                        />
-                    </ChartComponent>
-                </Stack>
-
-            </Box>
+                    {/* <UserJobsHistory/> */}
+                    <CompanyInfoDashboard />
                     </div>
                 </div>
                 </div>
@@ -272,6 +190,6 @@ import { userLogoutAction } from '../../redux/actions/userAction';
         </div>
         </div>
     );
-    }
+    };
 
-    export default AdminDashboard
+    export default CompanyAccountDashboard;

@@ -14,12 +14,14 @@
     } from "../../redux/actions/jobTypeAction";
     import { Box, Button, Paper, TextField, Typography } from "@mui/material";
     import { DataGrid, gridClasses } from "@mui/x-data-grid";
-    import { Link } from "react-router-dom";
+    import { Link, useNavigate } from "react-router-dom";
     import AddIcon from "@mui/icons-material/Add";
     import Dialog from "@mui/material/Dialog";
     import DialogTitle from "@mui/material/DialogTitle";
     import DialogContent from "@mui/material/DialogContent";
     import DialogActions from "@mui/material/DialogActions";
+    import LogoutIcon from "@mui/icons-material/Logout";
+import { userLogoutAction } from "../../redux/actions/userAction";
 
     const AdminCatDash = () => {
     const dispatch = useDispatch();
@@ -126,248 +128,319 @@
         ),
         },
     ];
+    const navigate = useNavigate();
+
+       const { userInfo } = useSelector((state) => state.signIn);
+       const logOutUser = () => {
+         localStorage.removeItem("userInfo");
+         dispatch(userLogoutAction()); // Dispatch your logout action if needed
+         navigate("/login");
+       };
+      const linkStyle = {
+        color: "#000", // Set the desired color for visited links
+        textDecoration: "none", // Remove underline
+        // Add other styling properties if needed
+      };
     return (
-        <div className="dashboard-container">
+      <div className="dashboard-container">
         <Helmet>
-            <title>exported project</title>
+          <title>exported project</title>
         </Helmet>
         <div className="dashboard-dashboard">
-            <div className="dashboard-frame1">
+          <div className="dashboard-frame1">
             <div className="dashboard-menu-collapsed-drawer">
-                <div className="dashboard-menu-drawer">
+              <div className="dashboard-menu-drawer">
                 <div className="dashboard-menu-drawer1">
-                    <div className="dashboard-dashboard1">
+                  <div className="dashboard-dashboard1">
                     <div className="dashboard-list-item">
-                        <div className="dashboard-container01">
+                      <div className="dashboard-container01">
                         <div className="dashboard-icon">
-                            <img
+                          <img
                             src="/external4/homeoutlined1174-3fl.svg"
                             alt="HomeOutlined1174"
                             className="dashboard-home-outlined"
-                            />
+                          />
                         </div>
-                        </div>
+                      </div>
                     </div>
-                    </div>
-                    <div className="dashboard-section-separator">
+                  </div>
+                  <div className="dashboard-section-separator">
                     <div className="dashboard-list-subheader">
-                        <img
+                      <img
                         src="/external4/line11174-a8d.svg"
                         alt="Line11174"
                         className="dashboard-line1"
-                        />
+                      />
                     </div>
-                    </div>
-                    <div className="dashboard-appspages">
+                  </div>
+                  <div className="dashboard-appspages">
                     <div className="dashboard-list-item1">
-                        <div className="dashboard-container02">
-                        <div className="dashboard-icon01">
+                      <div className="dashboard-container02">
+                        <Link
+                          to="/AdminDash"
+                          className="dashboard-link"
+                          style={linkStyle}
+                        >
+                          <div className="dashboard-icon01">
                             <DashboardIcon />
-                        </div>
-                        </div>
+                          </div>
+                        </Link>
+                      </div>
                     </div>
                     <div className="dashboard-list-item2">
-                        <div className="dashboard-container03">
-                        <div className="dashboard-icon02">
+                      <div className="dashboard-container03">
+                        <Link
+                          to="/AdminUserDash"
+                          className="dashboard-link"
+                          style={linkStyle}
+                        >
+                          <div className="dashboard-icon02">
                             <GroupAddIcon />
-                        </div>
-                        </div>
+                          </div>
+                        </Link>
+                      </div>
                     </div>
                     <div className="dashboard-list-item3">
-                        <div className="dashboard-container04">
+                      <div className="dashboard-container04">
                         <div className="dashboard-icon03">
+                          <Link
+                            to="/AdminJobsDash"
+                            className="dashboard-link"
+                            style={linkStyle}
+                          >
                             <WorkIcon />
+                          </Link>
                         </div>
-                        </div>
+                      </div>
+                    </div>
+                    <div className="dashboard-list-item3">
+                      <div className="dashboard-icon03">
+                        <Link
+                          to="/JobOffer"
+                          className="dashboard-link"
+                          style={linkStyle}
+                        >
+                          <WorkIcon />
+                        </Link>
+                      </div>
                     </div>
                     <div className="dashboard-list-item4">
-                        <div className="dashboard-container05">
-                        <div className="dashboard-icon04">
+                      <div className="dashboard-container05">
+                        <Link
+                          to="/AdminCatDash"
+                          className="dashboard-link"
+                          style={linkStyle}
+                        >
+                          <div className="dashboard-icon04">
                             <CategoryIcon />
-                        </div>
-                        </div>
+                          </div>
+                        </Link>
+                      </div>
                     </div>
+                    <div className="dashboard-list-item1">
+                      <div className="dashboard-container02">
+                        <div className="dashboard-icon01">
+                          <button
+                            onClick={logOutUser}
+                            style={{
+                              background: "none",
+                              border: "none",
+                              padding: 0,
+                              cursor: "pointer",
+                            }}
+                          >
+                            <LogoutIcon />
+                          </button>
+                        </div>
+                      </div>
                     </div>
-                    <div className="dashboard-section-separator1">
+                  </div>
+                  <div className="dashboard-section-separator1">
                     <div className="dashboard-list-subheader1">
-                        <img
+                      <img
                         src="/external4/line11174-l1m5.svg"
                         alt="Line11174"
                         className="dashboard-line11"
-                        />
+                      />
                     </div>
-                    </div>
-                    <div className="dashboard-list-item6"></div>
-                    <div className="dashboard-settings">
+                  </div>
+                  <div className="dashboard-list-item6"></div>
+                  <div className="dashboard-settings">
                     <div className="dashboard-container08">
-                        <div className="dashboard-icon07">
+                      <div className="dashboard-icon07">
                         <img
-                            src="/external4/settings1174-c0iw.svg"
-                            alt="Settings1174"
-                            className="dashboard-settings1"
+                          src="/external4/settings1174-c0iw.svg"
+                          alt="Settings1174"
+                          className="dashboard-settings1"
                         />
-                        </div>
+                      </div>
                     </div>
-                    </div>
+                  </div>
                 </div>
-                </div>
+              </div>
             </div>
             <div className="dashboard-frame11">
-                <div className="dashboard-body">
+              <div className="dashboard-body">
                 <div className="dashboard-cards">
-                    <div className="dashboard-filter">
+                  <div className="dashboard-filter">
                     <span className="dashboard-text LightTypographyH6">
-                        <span>Search Filters</span>
+                      <span>Search Filters</span>
                     </span>
                     <div className="dashboard-filter1">
-                        <div className="dashboard-select-outlined">
+                      <div className="dashboard-select-outlined">
                         <div className="dashboard-input">
-                            <div className="dashboard-inactive">
+                          <div className="dashboard-inactive">
                             <span className="dashboard-text002 LightComponentsInputText">
-                                <span>Select Role</span>
+                              <span>Select Role</span>
                             </span>
                             <div className="dashboard-arrow">
-                                <img
+                              <img
                                 src="/external4/arrowdropdown1215-rxve.svg"
                                 alt="ArrowDropDown1215"
                                 className="dashboard-arrow-drop-down"
-                                />
+                              />
                             </div>
-                            </div>
+                          </div>
                         </div>
-                        </div>
-                        <div className="dashboard-select-outlined1">
+                      </div>
+                      <div className="dashboard-select-outlined1">
                         <div className="dashboard-input1">
-                            <div className="dashboard-inactive1">
+                          <div className="dashboard-inactive1">
                             <span className="dashboard-text004 LightComponentsInputText">
-                                <span>Invoice Date</span>
+                              <span>Invoice Date</span>
                             </span>
                             <div className="dashboard-arrow1">
-                                <img
+                              <img
                                 src="/external4/arrowdropdown1215-kt6vl.svg"
                                 alt="ArrowDropDown1215"
                                 className="dashboard-arrow-drop-down1"
-                                />
+                              />
                             </div>
-                            </div>
+                          </div>
                         </div>
-                        </div>
-                        <div className="dashboard-select-outlined2">
+                      </div>
+                      <div className="dashboard-select-outlined2">
                         <div className="dashboard-input2">
-                            <div className="dashboard-inactive2">
+                          <div className="dashboard-inactive2">
                             <span className="dashboard-text006 LightComponentsInputText">
-                                <span>Invoice Status</span>
+                              <span>Invoice Status</span>
                             </span>
                             <div className="dashboard-arrow2">
-                                <img
+                              <img
                                 src="/external4/arrowdropdown1215-tvjo.svg"
                                 alt="ArrowDropDown1215"
                                 className="dashboard-arrow-drop-down2"
-                                />
+                              />
                             </div>
-                            </div>
+                          </div>
                         </div>
-                        </div>
+                      </div>
                     </div>
-                    </div>
+                  </div>
                 </div>
                 <div className="dashboard-table">
-                    <div className="dashboard-content1">
+                  <div className="dashboard-content1">
                     <Box>
-                        <Typography variant="h4" sx={{ color: "black", pb: 3 }}>
-                        Jobs list
-                        </Typography>
-                        <Box
+                      <Typography variant="h4" sx={{ color: "black", pb: 3 }}>
+                        Job Types
+                      </Typography>
+                      <Box
                         sx={{
-                            pb: 2,
-                            display: "flex",
-                            justifyContent: "right",
+                          pb: 2,
+                          display: "flex",
+                          justifyContent: "right",
                         }}
-                        >
+                      >
                         <Button
-                            variant="contained"
-                            color="success"
-                            startIcon={<AddIcon />}
-                            onClick={handleOpenDialogCreate}
+                          variant="contained"
+                          color="success"
+                          startIcon={<AddIcon />}
+                          onClick={handleOpenDialogCreate}
                         >
-                            Create Category
+                          Create Category
                         </Button>
-                        </Box>
-                        <Paper sx={{ bgcolor: "#807777" }}>
+                      </Box>
+                      <Paper sx={{ bgcolor: "#f05151" }}>
                         <Box sx={{ height: 400, width: "100%" }}>
-                            <DataGrid
+                          <DataGrid
                             getRowId={(row) => row._id}
                             sx={{
-                                "& .MuiTablePagination-displayedRows": {
+                              "& .MuiTablePagination-displayedRows": {
                                 color: "white",
-                                },
-                                color: "white",
-                                [`& .${gridClasses.row}`]: {
-                                bgcolor: (theme) => theme.palette.secondary.main,
-                                },
-                                button: {
+                              },
+                              color: "white",
+
+                              button: {
                                 color: "#ffffff",
-                                },
+                              },
                             }}
                             rows={gridData}
                             columns={columns}
                             pageSize={10}
                             rowsPerPageOptions={[10]}
                             checkboxSelection
-                            />
+                          />
                         </Box>
-                        </Paper>
-                        <Dialog open={isDialogOpenCreate} onClose={handleCloseDialogCreate}>
-                                <DialogTitle>Create Category</DialogTitle>
-                                <DialogContent>
-                                    {/* Add your form or content for creating a category */}
-                                    {/* For example, you can add text fields, dropdowns, etc. */}
-                                    <TextField
-                                        label="Category Name"
-                                        variant="outlined"
-                                        fullWidth
-                                        value={categoryName}
-                                        onChange={(e) => setCategoryName(e.target.value)}
-                                    />
-
-                                </DialogContent>
-                                <DialogActions>
-                                    <Button onClick={handleCloseDialog} color="primary">
-                                        Cancel
-                                    </Button>
-                                    <Button onClick={handleCreateCategory} color="primary">
-                                                Create
-                                    </Button>
-                                </DialogActions>
-                                </Dialog>
-                        <Dialog open={isDialogOpen} onClose={handleCloseDialog}>
-                            <DialogTitle>Edit Category</DialogTitle>
-                            <DialogContent>
-                                <TextField
-                                label="Category Name"
-                                variant="outlined"
-                                fullWidth
-                                value={categoryName}
-                                onChange={(e) => setCategoryName(e.target.value)}
-                                />
-                            </DialogContent>
-                            <DialogActions>
-                                <Button onClick={handleCloseDialog} color="primary">
-                                Cancel
-                                </Button>
-                                <Button onClick={handleUpdateCategory} color="primary">
-                                Update
-                                </Button>
-                            </DialogActions>
-                        </Dialog>
+                      </Paper>
+                      <Dialog
+                        open={isDialogOpenCreate}
+                        onClose={handleCloseDialogCreate}
+                      >
+                        <DialogTitle>Create Category</DialogTitle>
+                        <DialogContent>
+                          {/* Add your form or content for creating a category */}
+                          {/* For example, you can add text fields, dropdowns, etc. */}
+                          <TextField
+                            label="Category Name"
+                            variant="outlined"
+                            fullWidth
+                            value={categoryName}
+                            onChange={(e) => setCategoryName(e.target.value)}
+                          />
+                        </DialogContent>
+                        <DialogActions>
+                          <Button onClick={handleCloseDialog} color="primary">
+                            Cancel
+                          </Button>
+                          <Button
+                            onClick={handleCreateCategory}
+                            color="primary"
+                          >
+                            Create
+                          </Button>
+                        </DialogActions>
+                      </Dialog>
+                      <Dialog open={isDialogOpen} onClose={handleCloseDialog}>
+                        <DialogTitle>Edit Category</DialogTitle>
+                        <DialogContent>
+                          <TextField
+                            label="Category Name"
+                            variant="outlined"
+                            fullWidth
+                            value={categoryName}
+                            onChange={(e) => setCategoryName(e.target.value)}
+                          />
+                        </DialogContent>
+                        <DialogActions>
+                          <Button onClick={handleCloseDialog} color="primary">
+                            Cancel
+                          </Button>
+                          <Button
+                            onClick={handleUpdateCategory}
+                            color="primary"
+                          >
+                            Update
+                          </Button>
+                        </DialogActions>
+                      </Dialog>
                     </Box>
-                    </div>
+                  </div>
                 </div>
-                </div>
+              </div>
             </div>
-            </div>
+          </div>
         </div>
-        </div>
+      </div>
     );
     };
 

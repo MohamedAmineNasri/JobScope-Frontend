@@ -1,27 +1,35 @@
-import React from "react";
-import { Helmet } from "react-helmet";
-import "./UserDashboard.css";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import WorkHistoryIcon from "@mui/icons-material/WorkHistory";
-import UserJobsHistory from "./UserJobsHistory";
-import { Link, useNavigate } from "react-router-dom";
-import LogoutIcon from "@mui/icons-material/Logout";
+   import React from "react";
+    import { Helmet } from "react-helmet";
+    //import "./UserDashboard.css";
+    import "../user/UserDashboard.css";
+    import DashboardIcon from "@mui/icons-material/Dashboard";
+    import WorkHistoryIcon from "@mui/icons-material/WorkHistory";
+    import UserJobsHistory from "../user/UserJobsHistory";
+    import { Link, useNavigate } from "react-router-dom";
+    import UserInfoDashboard from "../user/UserInfoDashboard";
+    import UserHomeDashboardInfo from "../user/UserHomeDashboardInfo";
+import CompanyHomeDashboardInfo from "./CompanyHomeDashboardInfo";
+    import GroupAddIcon from "@mui/icons-material/GroupAdd";
+    import WorkIcon from "@mui/icons-material/Work";
+    import LogoutIcon from '@mui/icons-material/Logout';
 import { useDispatch, useSelector } from "react-redux";
 import { userLogoutAction } from "../../redux/actions/userAction";
 
-const HistoryJobUser = () => {
+
+
+const CompanyDashUser = () => {
   const navigate = useNavigate();
-   const dispatch = useDispatch();
-   const { userInfo } = useSelector((state) => state.signIn);
-   const logOutUser = () => {
-     localStorage.removeItem("userInfo");
-     dispatch(userLogoutAction()); // Dispatch your logout action if needed
-     navigate("/login");
-   };
+    const dispatch = useDispatch();
+    const { userInfo } = useSelector((state) => state.signIn);
+    const logOutUser = () => {
+      localStorage.removeItem("userInfo");
+      dispatch(userLogoutAction()); // Dispatch your logout action if needed
+      navigate("/login");
+    };
   return (
     <div className="dashboard-container">
       <Helmet>
-        <title>exported project</title>
+        <title>Company Dashboard</title>
       </Helmet>
       <div className="dashboard-dashboard">
         <div className="dashboard-frame1">
@@ -32,16 +40,11 @@ const HistoryJobUser = () => {
                   <div className="dashboard-list-item">
                     <div className="dashboard-container01">
                       <div className="dashboard-icon">
-                        <Link
-                          to="/"
-                          style={{ color: "inherit", textDecoration: "none" }}
-                        >
-                          <img
-                            src="/external4/homeoutlined1174-3fl.svg"
-                            alt="HomeOutlined1174"
-                            className="dashboard-home-outlined"
-                          />
-                        </Link>
+                        <img
+                          src="/external4/homeoutlined1174-3fl.svg"
+                          alt="HomeOutlined1174"
+                          className="dashboard-home-outlined"
+                        />
                       </div>
                     </div>
                   </div>
@@ -60,22 +63,10 @@ const HistoryJobUser = () => {
                     <div className="dashboard-container02">
                       <div className="dashboard-icon01">
                         <Link
-                          to="/UserHomeDash"
+                          to="/CompanyHomeDash"
                           style={{ color: "inherit", textDecoration: "none" }}
                         >
                           <DashboardIcon />
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="dashboard-list-item2">
-                    <div className="dashboard-container03">
-                      <div className="dashboard-icon02">
-                        <Link
-                          to="/user/JobHistory"
-                          style={{ color: "inherit", textDecoration: "none" }}
-                        >
-                          <WorkHistoryIcon />
                         </Link>
                       </div>
                     </div>
@@ -84,7 +75,31 @@ const HistoryJobUser = () => {
                     <div className="dashboard-container04">
                       <div className="dashboard-icon03">
                         <Link
-                          to="/UserDash"
+                          to="/CompanyJobsDash"
+                          className="dashboard-link"
+                          style={{ color: "inherit", textDecoration: "none" }}
+                        >
+                          <WorkIcon />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="dashboard-list-item3">
+                    <div className="dashboard-icon03">
+                      <Link
+                        to="/CompanyJobOffer"
+                        className="dashboard-link"
+                        style={{ color: "inherit", textDecoration: "none" }}
+                      >
+                        <WorkIcon />
+                      </Link>
+                    </div>
+                  </div>
+                  <div className="dashboard-list-item3">
+                    <div className="dashboard-container04">
+                      <div className="dashboard-icon03">
+                        <Link
+                          to="/CompanyDash"
                           style={{ color: "inherit", textDecoration: "none" }}
                         >
                           <img
@@ -178,7 +193,9 @@ const HistoryJobUser = () => {
               </div>
               <div className="dashboard-table">
                 <div className="dashboard-content1">
-                  <UserJobsHistory />
+                  {/* <UserJobsHistory/> */}
+                  {/* <UserInfoDashboard/>  */}
+                  <CompanyHomeDashboardInfo />
                 </div>
               </div>
             </div>
@@ -187,6 +204,6 @@ const HistoryJobUser = () => {
       </div>
     </div>
   );
-};
+}
 
-export default HistoryJobUser;
+export default CompanyDashUser
