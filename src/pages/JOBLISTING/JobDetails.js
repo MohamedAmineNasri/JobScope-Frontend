@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { jobLoadAction, jobLoadSingleAction } from "../../redux/actions/jobAction";
 import { jobTypeLoadAction } from "../../redux/actions/jobTypeAction";
-import { allUserAction, userApplyJobAction } from "../../redux/actions/userAction";
+import { allUserAction, userApplyJobAction, userProfileAction } from "../../redux/actions/userAction";
 import styles from "./jobofferplatform.module.css";
 
 
@@ -29,6 +29,10 @@ const JobDetails = () => {
         localStorage.removeItem("userInfo");
         navigate("/login");
       };
+      const { user } = useSelector((state) => state.userProfile);
+      useEffect(() => {
+        dispatch(userProfileAction());
+      }, []);
 
     useEffect(() => {
       dispatch(jobLoadAction(page, keyword, cat, location));
@@ -79,6 +83,7 @@ const JobDetails = () => {
       const applyForAJob = () => {
         const jobId = singleJob && singleJob._id;
         console.log("Job ID:", jobId); // Add this line to check the value
+         // Add this line to check the value
         dispatch(
           userApplyJobAction({
             jobId,
@@ -86,6 +91,7 @@ const JobDetails = () => {
             description: singleJob && singleJob.description,
             salary: singleJob && singleJob.salary,
             location: singleJob && singleJob.location,
+            available: singleJob && singleJob.available,
           })
         );
       };
@@ -93,17 +99,14 @@ const JobDetails = () => {
       console.log("users",users)
       const userId = singleJob && singleJob.user;
       console.log("userId", userId);
-      let userDisplayName = ""; // Initialize an empty string
+  
+      const findUserById = (userId, users) => {
+        const user = users.find((user) => user._id === userId);
+        return user ? user.userName : "Esprit";
+      };
 
-      if (userId) {
-        // Find the user in the users array by matching the _id
-        const matchingUser = users.find((user) => user._id === userId);
+      const userName = findUserById(userId, users);
 
-        if (matchingUser) {
-          // If a matching user is found, set the display name to the userName if it exists, or firstName if it doesn't
-          userDisplayName = matchingUser.userName || matchingUser.firstName;
-        }
-      }
       
 
         
@@ -147,9 +150,29 @@ const JobDetails = () => {
                     Home
                   </Link>
                 </span>
-                <span className={styles["text189"]}>
-                  <span>Pricing</span>
-                </span>
+                {user && user.role === "admin" ? (
+                  <span className={styles["text189"]}>
+                    <Link to="/AdminDash" className={styles["text185"]}>
+                      Admin Dashboard
+                    </Link>
+                  </span>
+                ) : user && user.role === "company" ? (
+                  <span className={styles["text189"]}>
+                    <Link to="/CompanyHomeDash" className={styles["text185"]}>
+                      Company Dashboard
+                    </Link>
+                  </span>
+                ) : user && user.role === "user" ? (
+                  <span className={styles["text189"]}>
+                    <Link to="/UserHomeDash" className={styles["text185"]}>
+                      User Dashboard
+                    </Link>
+                  </span>
+                ) : (
+                  <span className={styles["text189"]}>
+                    <span></span>
+                  </span>
+                )}
               </div>
               <div
                 className={styles["column1"]}
@@ -2170,13 +2193,21 @@ const JobDetails = () => {
               <span>View Company</span>
             </span>
             <span className="details-text224">
-              <button
-                className="details-button224"
-                onClick={applyForAJob}
-                // style={{ top: "250px", left: "745px" }}
-              >
-                Apply This Job
-              </button>
+          {user && user.role === "user" ? (
+      singleJob && singleJob.available ? (
+        <button className="details-button224" onClick={applyForAJob}>
+          Apply This Job
+        </button>
+      ) : (
+        <button className="details-button224" disabled>
+          The job is unavailable
+        </button>
+      )
+    ) : (
+      <button className="details-button224" disabled>
+        You Can't Apply 
+      </button>
+    )}
             </span>
           </div>
           <span className="details-text226">
@@ -2184,7 +2215,7 @@ const JobDetails = () => {
               <br></br>
               <br></br>
               <br></br>
-              <span>Job description</span>
+              <span>Job Description</span>
               <br></br>
               <span></span>
             </span>
@@ -2199,7 +2230,7 @@ const JobDetails = () => {
               /> */}
             </span>
             <span className="details-text234">
-              <span>{userDisplayName}</span>
+              <span>{userName}</span>
               <br></br>
               <br></br>
               <br></br>

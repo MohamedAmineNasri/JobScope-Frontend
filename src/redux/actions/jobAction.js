@@ -20,6 +20,21 @@ export const jobLoadAction = (pageNumber, keyword = '', cat = '', location = '')
         });
     }
 }
+export const jobAllLoadAction = (pageNumber, keyword = '', cat = '', location = '') => async (dispatch) => {
+    dispatch({ type: JOB_LOAD_REQUEST });
+    try {
+        const { data } = await axios.get(`/api/jobs/showAll?pageNumber=${pageNumber}&keyword=${keyword}&cat=${cat}&location=${location}`)
+        dispatch({
+            type: JOB_LOAD_SUCCESS,
+            payload: data
+        });
+    } catch (error) {
+        dispatch({
+            type: JOB_LOAD_FAIL,
+            payload: error.response.data.error
+        });
+    }
+}
 
 // single job action
 export const jobLoadSingleAction = (id) => async (dispatch) => {

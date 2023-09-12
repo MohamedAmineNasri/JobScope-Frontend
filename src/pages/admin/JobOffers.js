@@ -180,10 +180,13 @@
           jobHistoryId,
           newStatus
         ) => {
+          console.log("UserID:", userId);
+          console.log("JobHistoryID:", jobHistoryId);
           dispatch(
             updateUserApplicationStatusAction(userId, jobHistoryId, newStatus)
           );
         };
+
           const linkStyle = {
             color: "#000", // Set the desired color for visited links
             textDecoration: "none", // Remove underline
@@ -502,7 +505,7 @@
                                       Users Applied for Job:{" "}
                                       {jobTitleLookup[jobId]}
                                     </h2>
-                                    <Paper sx={{ bgcolor: "#f05151" }}>
+                                    <Paper sx={{ bgcolor: "#3593b8" }}>
                                       <Box sx={{ height: 400, width: "100%" }}>
                                         <DataGrid
                                           getRowId={(row) => row._id}
@@ -514,6 +517,12 @@
                                             title: user.jobHistory.find(
                                               (job) => job.job === jobId
                                             ).title,
+                                            _id: user.jobHistory.find(
+                                              (job) => job.job === jobId
+                                            )._id,
+                                            userid: user.jobHistory.find(
+                                              (job) => job.job === jobId
+                                            ).user,
                                             applicationStatus:
                                               user.jobHistory.find(
                                                 (job) => job.job === jobId
@@ -541,6 +550,11 @@
                                               headerName: "Job Title",
                                               width: 200,
                                             },
+                                            // {
+                                            //   field: "user",
+                                            //   headerName: "user",
+                                            //   width: 200,
+                                            // },
                                             {
                                               field: "applicationStatus",
                                               headerName: "Application Status",
@@ -554,7 +568,7 @@
                                                     }
                                                     onChange={(event) =>
                                                       handleChangeApplicationStatus(
-                                                        params.row.user, // User ID
+                                                        params.row.userid, // User ID
                                                         params.row._id, // Job history entry ID
                                                         event.target.value
                                                       )

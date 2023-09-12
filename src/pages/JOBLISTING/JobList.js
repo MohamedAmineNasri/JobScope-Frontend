@@ -16,7 +16,7 @@ MenuItem, MenuList,
 import SelectComponent from '../../components/SelectComponent';
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import SearchInputEl from '../../components/SearchInputEl';
-import { userLogoutAction } from '../../redux/actions/userAction';
+import { userLogoutAction, userProfileAction } from '../../redux/actions/userAction';
 import { USER_SIGNIN_SUCCESS } from '../../redux/constants/userConstant';
 import moment from 'moment';
 
@@ -67,20 +67,17 @@ const  JobList = ({props}) => {
   const linkStyle = {
     textDecoration: "none", // Hide the underline
   };
-     // log out user
-    // const logOutUser = () => {
-    //     dispatch(userLogoutAction());
-    //     window.location.reload(true);
-    //     setTimeout(() => {
-    //         Navigate('/');
-    //     }, 500)
-    // }
+
 const navigate = useNavigate();
 
 const logOutUser = () => {
   localStorage.removeItem("userInfo");
   navigate("/login");
 };
+  const { user } = useSelector((state) => state.userProfile);
+  useEffect(() => {
+    dispatch(userProfileAction());
+  }, []);
 
 
     return (
@@ -386,102 +383,6 @@ const logOutUser = () => {
                       />
                     </div>
                   </div>
-
-                  {/* card */}
-                  {/* <div>
-                    <div className={styles["frame26"]}>
-                      <div>
-                        <div className={styles["frame17"]}></div>
-                        <div className={styles["frame23"]}>
-                          <div className={styles["frame28"]}>
-                            <div className={styles["frame29"]}>
-                              <div className={styles["frame27"]}>
-                                <span className={styles["text064"]}>
-                                  <span>Linear company</span>
-                                </span>
-                              </div>
-                              <div className={styles["frame30"]}>
-                                <span className={styles["text066"]}>
-                                  <span>Software Engineer</span>
-                                </span>
-                                <div className={styles["frame25"]}>
-                                  <span className={styles["text068"]}>
-                                    <span>New post</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                            <div className={styles["frame3001"]}>
-                              <div className={styles["frame18"]}>
-                                <img
-                                  src="/external2/mappinline1131-vkfk.svg"
-                                  alt="MapPinLine1131"
-                                  className={styles["map-pin-line"]}
-                                />
-                                <span className={styles["text070"]}>
-                                  <span>Brussels</span>
-                                </span>
-                              </div>
-                              <img
-                                src="/external2/ellipse31136-fwn-200h.png"
-                                alt="Ellipse31136"
-                                className={styles["ellipse3"]}
-                              />
-                              <div className={styles["frame20"]}>
-                                <img
-                                  src="/external2/clock1138-m03.svg"
-                                  alt="Clock1138"
-                                  className={styles["clock"]}
-                                />
-                                <span className={styles["text072"]}>
-                                  <span>Full time</span>
-                                </span>
-                              </div>
-                              <img
-                                src="/external2/ellipse21142-tqzb-200h.png"
-                                alt="Ellipse21142"
-                                className={styles["ellipse2"]}
-                              />
-                              <div className={styles["frame21"]}>
-                                <img
-                                  src="/external2/currencydollar1144-8xg.svg"
-                                  alt="CurrencyDollar1144"
-                                  className={styles["currency-dollar"]}
-                                />
-                                <span className={styles["text074"]}>
-                                  <span>50-55k</span>
-                                </span>
-                              </div>
-                              <img
-                                src="/external2/ellipse11148-r50a-200h.png"
-                                alt="Ellipse11148"
-                                className={styles["ellipse1"]}
-                              />
-                              <div className={styles["frame22"]}>
-                                <img
-                                  src="/external2/calendarblank1150-16u9.svg"
-                                  alt="CalendarBlank1150"
-                                  className={styles["calendar-blank"]}
-                                />
-                                <span className={styles["text076"]}>
-                                  <span>29 min ago</span>
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                          <span className={styles["text078"]}>
-                            <span>
-                              Mollit in laborum tempor Lorem incididunt irure.
-                              Aute eu ex ad sunt. Pariatur sint culpa do
-                              incididunt eiusmod eiusmod culpa. laborum tempor
-                              Lorem incididunt.
-                            </span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div> */}
-
                   <div>
                     {jobs &&
                       jobs.map((job, index) => (
@@ -909,9 +810,29 @@ const logOutUser = () => {
                     Home
                   </Link>
                 </span>
-                <span className={styles["text189"]}>
-                  <span>Pricing</span>
-                </span>
+                {user && user.role === "admin" ? (
+                  <span className={styles["text189"]}>
+                    <Link to="/AdminDash" className={styles["text185"]}>
+                      Admin Dashboard
+                    </Link>
+                  </span>
+                ) : user && user.role === "company" ? (
+                  <span className={styles["text189"]}>
+                    <Link to="/CompanyHomeDash" className={styles["text185"]}>
+                      Company Dashboard
+                    </Link>
+                  </span>
+                ) : user && user.role === "user" ? (
+                  <span className={styles["text189"]}>
+                    <Link to="/UserHomeDash" className={styles["text185"]}>
+                      User Dashboard
+                    </Link>
+                  </span>
+                ) : (
+                  <span className={styles["text189"]}>
+                    <span>Dashboard</span>
+                  </span>
+                )}
               </div>
               <div className={styles["column1"]}>
                 {/* <button className={styles["button10"]}>

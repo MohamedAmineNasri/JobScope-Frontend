@@ -15,12 +15,12 @@ import { userLogoutAction } from "../../redux/actions/userAction";
             
                 const navigate = useNavigate();
                const dispatch = useDispatch();
-               const { userInfo } = useSelector((state) => state.signIn);
-               const logOutUser = () => {
-                 localStorage.removeItem("userInfo");
-                 dispatch(userLogoutAction()); // Dispatch your logout action if needed
-                 navigate("/login");
-               };
+                const { userInfo } = useSelector((state) => state.signIn);
+                const logOutUser = () => {
+                  localStorage.removeItem("userInfo");
+                  dispatch(userLogoutAction()); // Dispatch your logout action if needed
+                  navigate("/login");
+                };
         return (
         <div className="dashboard-container">
             <Helmet>

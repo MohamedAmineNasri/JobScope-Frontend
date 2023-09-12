@@ -10,7 +10,7 @@
     import { Link, useNavigate, useParams } from "react-router-dom";
     import AddIcon from "@mui/icons-material/Add";
 import { useDispatch, useSelector } from 'react-redux';
-import { createJobAction, deleteJobAction, jobLoadAction, updateJobAction } from '../../redux/actions/jobAction';
+import { createJobAction, deleteJobAction, jobAllLoadAction, jobLoadAction, updateJobAction } from '../../redux/actions/jobAction';
 import SelectComponent from '../../components/SelectComponent';
 import { jobTypeLoadAction } from '../../redux/actions/jobTypeAction';
 import SelectComponentLocation from '../../components/SelectComponentLocation';
@@ -44,7 +44,7 @@ const AdminDashJobs = () => {
   const [specialization, setSpecialization] = useState(""); // Add specialization state
 
   useEffect(() => {
-    dispatch(jobLoadAction());
+    dispatch(jobAllLoadAction());
   }, []);
   const handleOpenDialog = (jobId) => {
     setIsDialogOpen(true);
@@ -122,19 +122,6 @@ const AdminDashJobs = () => {
     console.log(id);
   };
 
-  // const handleUpdateJob = () => {
-  //   const jobData = {
-  //     title: jobtitle,
-  //     description: jobdescription,
-  //     salary: jobdsalary,
-  //     location: location,
-  //     JobType: cat,
-  //   };
-  //   if (selectedJobId) {
-  //     dispatch(updateJobAction(selectedJobId, jobData.title, jobData.salary)); // Pass the correct field names
-  //     handleCloseDialog();
-  //   }
-  // };
 const handleUpdateJob = () => {
   const jobData = {
     title: jobtitle,
@@ -159,7 +146,7 @@ const handleUpdateJob = () => {
   };
 
   useEffect(() => {
-    dispatch(jobLoadAction(page, keyword, cat, location));
+    dispatch(jobAllLoadAction(page, keyword, cat, location));
   }, [page, keyword, cat, location]);
   const handleChangeCategory = (e) => {
     setCat(e.target.value);
@@ -458,7 +445,7 @@ const handleUpdateJob = () => {
                         Create Job Offer
                       </Button>
                     </Box>
-                    <Paper sx={{ bgcolor: "#f05151" }}>
+                    <Paper sx={{ bgcolor: "#3593b8" }}>
                       <Box sx={{ height: 400, width: "100%" }}>
                         <DataGrid
                           getRowId={(row) => row._id}

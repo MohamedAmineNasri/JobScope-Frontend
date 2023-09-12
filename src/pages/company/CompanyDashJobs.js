@@ -25,6 +25,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import {
   createJobAction,
   deleteJobAction,
+  jobAllLoadAction,
   jobLoadAction,
   updateJobAction,
 } from "../../redux/actions/jobAction";
@@ -57,7 +58,7 @@ const CompanyDashJobs = () => {
      const [specialization, setSpecialization] = useState(""); // Add specialization state
 
      useEffect(() => {
-       dispatch(jobLoadAction());
+       dispatch(jobAllLoadAction());
      }, []);
      const handleOpenDialog = (jobId) => {
        setIsDialogOpen(true);
@@ -169,7 +170,7 @@ const CompanyDashJobs = () => {
      };
 
      useEffect(() => {
-       dispatch(jobLoadAction(page, keyword, cat, location));
+       dispatch(jobAllLoadAction(page, keyword, cat, location));
      }, [page, keyword, cat, location]);
      const handleChangeCategory = (e) => {
        setCat(e.target.value);

@@ -512,6 +512,9 @@ import "@react-pdf-viewer/default-layout/lib/styles/index.css";
                                           title: user.jobHistory.find(
                                             (job) => job.job === jobId
                                           ).title,
+                                          _id: user.jobHistory.find(
+                                            (job) => job.job === jobId
+                                          )._id,
                                           applicationStatus:
                                             user.jobHistory.find(
                                               (job) => job.job === jobId

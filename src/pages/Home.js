@@ -4,6 +4,7 @@ import { jobLoadAction } from '../redux/actions/jobAction';
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { jobTypeLoadAction } from '../redux/actions/jobTypeAction';
 import styles from "./JOBLISTING/jobofferplatform.module.css";
+import { userProfileAction } from '../redux/actions/userAction';
 
 
 
@@ -63,6 +64,10 @@ const linkStyle = {
       jobTypeMap[jobType._id] = jobType.jobTypeName;
     });
   }
+   const { user } = useSelector((state) => state.userProfile);
+      useEffect(() => {
+        dispatch(userProfileAction());
+      }, []);
   
     return (
       <div>
@@ -124,9 +129,29 @@ const linkStyle = {
                           Home
                         </Link>
                       </span>
+                    {user && user.role === "admin" ? (
                       <span className={styles["text189"]}>
-                        <span>Pricing</span>
+                        <Link to="/AdminDash" className={styles["text185"]}>
+                          Admin Dashboard
+                        </Link>
                       </span>
+                    ) : user && user.role === "company" ? (
+                      <span className={styles["text189"]}>
+                        <Link to="/CompanyHomeDash" className={styles["text185"]}>
+                          Company Dashboard
+                        </Link>
+                      </span>
+                    ) : user && user.role === "user" ? (
+                      <span className={styles["text189"]}>
+                        <Link to="/UserHomeDash" className={styles["text185"]}>
+                          User Dashboard
+                        </Link>
+                      </span>
+                    ) : (
+                      <span className={styles["text189"]}>
+                        <span></span>
+                      </span>
+                    )}
                     </div>
                     <div
                       className={styles["column1"]}
